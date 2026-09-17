@@ -18,6 +18,7 @@ FEED = "https://tokyo-haneda.com/app_resource/flight/data/int/hdacfdep.json"
 REMARK = {
     "10": "check-in not open yet",
     "11": "check-in open",
+    "14": "now boarding",
     "15": "final call",
     "16": "gate closed",
     "17": "departed",
