@@ -13,6 +13,16 @@ import urllib.request
 
 FEED = "https://tokyo-haneda.com/app_resource/flight/data/int/hdacfdep.json"
 
+# Remark codes observed in the feed (備考コード). Code 10 has an empty English
+# remark, which is how Haneda represents a flight whose check-in has not opened.
+REMARK = {
+    "10": "check-in not open yet",
+    "11": "check-in open",
+    "15": "final call",
+    "16": "gate closed",
+    "17": "departed",
+}
+
 
 def fetch(url=FEED):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -46,7 +56,8 @@ def main():
             f"  terminal  : {f['ターミナル区分']}\n"
             f"  check-in  : counter {f['チェックインカウンター番号'] or '-'}\n"
             f"  gate      : {f['ゲート番号コード'] or '-'}\n"
-            f"  status    : {f['備考英名称'] or '-'}"
+            f"  status    : {f['備考英名称'] or '-'} "
+            f"(code {f['備考コード'] or '-'}: {REMARK.get(f['備考コード'], 'unknown')})"
         )
     return 0
 
