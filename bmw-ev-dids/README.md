@@ -103,6 +103,15 @@ Unsupported entries simply return `7F`, so one list works for every generation.
   cell voltages; Gen5 has `22 E5 54` (all cell voltages), `22 E5 9A` (cell SoC), `22 E5 CA` (cell temperatures),
   `22 E5 45` (SoH), `22 E5 C7` (kWh capacity), `22 A8 60` (isolation). The battery ECU is at address `0x07` on every
   generation. Gen4 PHEVs answer many of the same DIDs as the i3 (`0xDFA0`, `0xDD6A`, `0xDDC0`, …) with the same layout.
+- **Confirmed cars:** `data/community_confirmations.json` records which cars really answer which request, from
+  OVMS's MINI SE module and [OBDb](https://github.com/OBDb) logged responses. In `scan_reads.json` these show up as
+  `confirmed_on`. The i3-style SME set (`63 35`, `DD 68/69`, `DD BC`, `DD C0`, `DF 71`, `DF A0`) answers on MINI Cooper
+  SE (F56), 330e (F30, G20), 530e (G30), X5 40e/45e, i8 and Countryman SE (F60). iX3 (G08), i5 and 2025 X5 50e answer
+  the Gen5 `E5 CE` / `E5 C7`, and the i5 and 2024-25 X5 still answer `DD BC` / `DD C0`. `22 DF 71` reports the pack
+  configuration (e.g. G20 330e: 96 cells, 6 modules × 16; MINI SE: 96 cells, 12 modules × 8). The MINI SE module sends
+  the cell index again in the results request (`31 03 AD 6E <cell>`), so try that form if plain `31 03 AD 6E` is rejected.
+- **Nothing public** was found for i4, iX, i7, iX1/iX2, MINI J01/U25, 225xe, 740e/745e, X1/X2 25e or X3 30e beyond
+  what the Gen5 platform DIDs cover. Use discovery mode on those.
 - **Discovery mode:** the `discovery` block in `scan_reads.json` describes a read-only brute-force: find ECU addresses,
   sweep every `22 XXXX` DID on the battery ECU (priority ranges first, full range ~15-20 min), optionally sweep routine
   IDs using only `31 03` (request results, never starts anything; existing routines answer `7F 31 24`), and read DTCs.

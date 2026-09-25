@@ -1,0 +1,837 @@
+[
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "31 01 AD 6E nn",
+  "name": "Select cell nn for voltage readout (routine start), nn=1..96",
+  "returns": "positive response only",
+  "layout": "OVMS polls 31 01 AD 6E nn then 31 03 AD 6E nn for each of 96 cells. Not present in OVMS i3 module (MINI-specific addition).",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L215-L245",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "31 03 AD 6E nn",
+  "name": "Cell voltage of cell nn (routine results)",
+  "returns": "single cell voltage",
+  "layout": "After RID echo: uint16 BE at data offset 2 (i.e. bytes right after 'AD 6E' in 71 03 AD 6E ..) = mV (/1000 -> V). Code: RXBUF_UINT(2)/1000.",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L534-L555",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "31 01 AD 6D nn",
+  "name": "Select module nn for temperature readout, nn=1..12",
+  "returns": "positive response only",
+  "layout": "OVMS pairs with 31 03 AD 6D nn; 12 modules x 1 temp",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L233-L245",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "31 03 AD 6D nn",
+  "name": "Module nn temperature (routine results)",
+  "returns": "module temperature",
+  "layout": "uint16 at data offset 2 (after RID echo) /100 = degC (OVMS treats as unsigned).",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L534-L555",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 63 35",
+  "name": "ALTERUNG_KAPAZITAET_TS (SoH)",
+  "returns": "remaining capacity %",
+  "layout": "uint32 BE at data[0] = % (OBDb uses byte 3). OBDb MINI-Hardtop 2023 real responses: 00 00 00 60 -> 96%.",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp ; https://github.com/OBDb/MINI-Hardtop/tree/main/tests/test_cases",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DD 68",
+  "name": "HV_SPANNUNG_BERECHNET",
+  "returns": "HV pack voltage (behind contactors)",
+  "layout": "uint16 BE /100 V. Real MINI 2023 resp 8D 10 -> 361.12 V.",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp ; https://github.com/OBDb/MINI-Hardtop/tree/main/tests/test_cases",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DD 69",
+  "name": "HV_STROM",
+  "returns": "HV current",
+  "layout": "sint32 BE /100 A; OVMS negates (positive=discharge in OVMS convention).",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp ; https://github.com/OBDb/MINI-Hardtop/tree/main/tests/test_cases",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DD BC",
+  "name": "ANZEIGE_SOC",
+  "returns": "display SoC + upper/lower window",
+  "layout": "u16[0]/10 SoC %, u16[2]/10 max display SoC %, u16[4]/10 min display SoC %. MINI 2023 example 01F8 03BB 0073 -> 50.4/95.5/11.5. WiCAN MINI SE profile uses same (ATSH6F1, ATCEA07, ATCRA607).",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp ; https://github.com/meatpiHQ/wican-fw/blob/main/vehicle_profiles/mini_cooper/se_electric.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DD C0",
+  "name": "TEMPERATUREN",
+  "returns": "cell core temperature min/max/mean",
+  "layout": "s16[0]/100, s16[2]/100, s16[4]/100 degC",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DF A0",
+  "name": "ZUSTAND_SPEICHER",
+  "returns": "cell stats block (38 bytes)",
+  "layout": "u16 BE each: [0]capMin/100Ah [2]capMax [4]capMean; [6]Vmin/10000 V [8]Vmax [10]Vmean; [12]Tmin s16/100 C [14]Tmax [16]Tmean; [18]Rfactor min/10000 [20]max [22]mean; [24]cell SoC min/100 % [26]max [28]mean; [30]OCV min/10000 V [32]max [34]mean; [36]impedance alpha /10000. MINI 2023 shows 0xFFFF (6.5535) for OCV/some Rfactor fields.",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L680-L800",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (tx 0x6F1 ext-addr 07 / rx 0x607 ext-addr F1)",
+  "request": "22 DF 71",
+  "name": "PROJEKT_PARAMETER (pack config)",
+  "returns": "cell/module counts",
+  "layout": "u16[0] cells, u8[2] cells/module, u8[3] modules, u8[4] temp sensors/module. MINI 2023: 96 cells, 8/module, 12 modules, 4 sensors.",
+  "source_url": "https://github.com/OBDb/MINI-Hardtop/tree/main/tests/test_cases/2023/commands",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "EME (drive electronics / DCDC / charger coordinator)",
+  "addr": "0x1A (tx 0x6F1 ext 1A / rx 0x61A)",
+  "request": "22 DE 00",
+  "name": "EME_HVPM_DCDC_ANSTEUERUNG",
+  "returns": "HVPM SoC, min SoC, charger flags, DCDC values",
+  "layout": "u16[0]*0.1 SoC%; u8[2]*0.5 min SoC%; u8[3] charger connected; u8[4] ext charging; u8[5] ready to drive; u8[6] DCDC mode; s16[7]*0.1 A HV out; u16[9]*0.1 V; s16[11]*0.1 A LV; u16[13]*0.01 V; u8[15]; u8[16]*0.5; s16[17]*0.1; u16[19]*0.1; s16[21]*0.1; u16[23]*0.01. Confirmed on MINI 2023 by OBDb test.",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L1752 ; https://github.com/OBDb/MINI-Hardtop/tree/main/tests/test_cases",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "EME (drive electronics / DCDC / charger coordinator)",
+  "addr": "0x1A (tx 0x6F1 ext 1A / rx 0x61A)",
+  "request": "22 DE 8A",
+  "name": "AE_STROM_EMASCHINE",
+  "returns": "motor phase currents, DC current",
+  "layout": "s16 x4 *0.0625 A (W,V,U,excitation), s16[8]*0.1 A DC HV",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L1846",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "EME (drive electronics / DCDC / charger coordinator)",
+  "addr": "0x1A (tx 0x6F1 ext 1A / rx 0x61A)",
+  "request": "22 DE 8C",
+  "name": "AE_TEMP_LE",
+  "returns": "inverter/DCDC/SLE temperatures",
+  "layout": "15 x s16 *0.0156 degC (inverter U/V/W/GT, DCDC x4, SLE PFC/GR/GTW/BO, ELUP, MC0, MC2)",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L1880",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "EME (drive electronics / DCDC / charger coordinator)",
+  "addr": "0x1A (tx 0x6F1 ext 1A / rx 0x61A)",
+  "request": "22 DE A6",
+  "name": "AE_TEMP_EMASCHINE",
+  "returns": "motor temps",
+  "layout": "s16[0],s16[2] *0.0156 degC",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L1963",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "EME (drive electronics / DCDC / charger coordinator)",
+  "addr": "0x1A (tx 0x6F1 ext 1A / rx 0x61A)",
+  "request": "22 DE A7",
+  "name": "AE_ELEKTRISCHE_MASCHINE",
+  "returns": "motor rpm/torque",
+  "layout": "u16[0]*0.5-5000 rpm; s16[2]*0.5 Nm actual; s16[4]*0.5 Nm target; u8[6] mode",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L1983",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "KLE (charger)",
+  "addr": "0x15 (tx 0x6F1 ext 15 / rx 0x615)",
+  "request": "22 DE 84",
+  "name": "BETRIEBSZUSTAND_LADEGERAET",
+  "returns": "charger state, derating, faults",
+  "layout": "u8[0]/4 Hz grid freq L1; u8[1] derating bits; u16[2]*10 W derating power; u8[4] derating %; u8[5] fault bits; u16[6] failsafe bits; u8[8] interruption cause; u8[9] mode; u8[10]/4,u8[11]/4 Hz L2/L3; u32[12] module error bits (>=16 bytes)",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2162",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "KLE (charger)",
+  "addr": "0x15 (tx 0x6F1 ext 15 / rx 0x615)",
+  "request": "22 DE 85",
+  "name": "LADEGERAET_LEISTUNG",
+  "returns": "charger efficiency/power",
+  "layout": "u8[0] cycle eff %, u8[1] DC eff %, u16[2] W DC-link power",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2336",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "KLE (charger)",
+  "addr": "0x15 (tx 0x6F1 ext 15 / rx 0x615)",
+  "request": "22 DE 86",
+  "name": "LADEGERAET_SPANNUNG",
+  "returns": "charger voltages",
+  "layout": "u16[0] V AC L1 rms; u16[2]/10 V HV DC upper limit; u16[4]/10 V HV DC; u8[6]/10 KL30; u8[7]/10 KL30C; u16[8] L2; u16[10] L3",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2364",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "KLE (charger)",
+  "addr": "0x15 (tx 0x6F1 ext 15 / rx 0x615)",
+  "request": "22 DE 87",
+  "name": "LADEGERAET_STROM",
+  "returns": "charger currents",
+  "layout": "u16[0]/10 A AC L1; u16[2]/10 max stored AC; u16[4]/10-204.7 A HV DC; u16[6]/10 max HV DC; u16[8]/10-204.7 max stored DC; u16[10]/10 AC L2 ...",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2429",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F1",
+  "name": "STATUS_LADEKLAPPE",
+  "returns": "charge flap status",
+  "layout": "u8",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F2",
+  "name": "LADEBEREITSCHAFT_LIM",
+  "returns": "ready-to-charge line",
+  "layout": "u8[0] 1=yes",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F3",
+  "name": "LED_LADESTATUS",
+  "returns": "charge LED colour/state",
+  "layout": "u8 enum (observed 0 off,1 red blink,3 blue blink charging,6 ...)",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F5",
+  "name": "PROXIMITY",
+  "returns": "plug state, cable ampacity",
+  "layout": "u8[0] plug state, u8[1] A",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F6",
+  "name": "PILOTSIGNAL",
+  "returns": "CP pilot",
+  "layout": "u8[0] active,u8[1] duty %,u8[2] A,u8[3] ready,u16[4] Hz,u8[6]/10 V",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F7",
+  "name": "LADESCHNITTSTELLE_DC_TEPCO",
+  "returns": "CHAdeMO lines (noted not working on MINI)",
+  "layout": "u8 x4",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE F8",
+  "name": "DC_SCHUETZ_SCHALTER",
+  "returns": "DC charge contactor",
+  "layout": "u8[0]",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Cooper SE (F56 BEV)"
+  ],
+  "ecu": "LIM (charge interface module)",
+  "addr": "0x14 (tx 0x6F1 ext 14 / rx 0x614)",
+  "request": "22 DE FA",
+  "name": "DC_PINABDECKUNG_COMBO",
+  "returns": "CCS DC pin cover (noted not working)",
+  "layout": "u8[0] 0 closed 1 open",
+  "source_url": "https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/vehicle/OVMS.V3/components/vehicle_minise/src/vehicle_minise.cpp#L2545-L2780",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 63 35",
+  "name": "HV battery SoH",
+  "returns": "HV battery SoH",
+  "layout": "uint32 BE (value in low byte; OBDb reads byte 3) % | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 69",
+  "name": "HV battery current",
+  "returns": "HV battery current",
+  "layout": "s32/100 A | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS) | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF 71",
+  "name": "Pack configuration",
+  "returns": "Pack configuration",
+  "layout": "u16 cells, u8 cells/module, u8 modules, u8 temp sensors/module | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 330e F30 (2016)",
+   "BMW 330e G20 (2020)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF A0",
+  "name": "Cell stats block",
+  "returns": "Cell stats block",
+  "layout": "same 38-byte layout as MINI SE entry (cap/V/T/Rfactor/SoC/OCV min/max/mean + alpha) | F30 2016: DF71=80 cells,16/mod,5 mod,3 sensors; G20 2020: 96 cells,16/mod,6 mod,3 sensors",
+  "source_url": "https://github.com/OBDb/BMW-330e/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 63 35",
+  "name": "HV battery SoH",
+  "returns": "HV battery SoH",
+  "layout": "uint32 BE (value in low byte; OBDb reads byte 3) %",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 69",
+  "name": "HV battery current",
+  "returns": "HV battery current",
+  "layout": "s32/100 A",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS)",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF 71",
+  "name": "Pack configuration",
+  "returns": "Pack configuration",
+  "layout": "u16 cells, u8 cells/module, u8 modules, u8 temp sensors/module",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW 530e G30 (2016-2023 test data)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF A0",
+  "name": "Cell stats block",
+  "returns": "Cell stats block",
+  "layout": "same 38-byte layout as MINI SE entry (cap/V/T/Rfactor/SoC/OCV min/max/mean + alpha)",
+  "source_url": "https://github.com/OBDb/BMW-5-Series/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 63 35",
+  "name": "HV battery SoH",
+  "returns": "HV battery SoH",
+  "layout": "uint32 BE (value in low byte; OBDb reads byte 3) %",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 69",
+  "name": "HV battery current",
+  "returns": "HV battery current",
+  "layout": "s32/100 A",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS)",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF 71",
+  "name": "Pack configuration",
+  "returns": "Pack configuration",
+  "layout": "u16 cells, u8 cells/module, u8 modules, u8 temp sensors/module",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW X5 40e F15 / 45e G05 (2017-2023)",
+   "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF A0",
+  "name": "Cell stats block",
+  "returns": "Cell stats block",
+  "layout": "same 38-byte layout as MINI SE entry (cap/V/T/Rfactor/SoC/OCV min/max/mean + alpha)",
+  "source_url": "https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 63 35",
+  "name": "HV battery SoH",
+  "returns": "HV battery SoH",
+  "layout": "uint32 BE (value in low byte; OBDb reads byte 3) %",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 68",
+  "name": "HV battery voltage",
+  "returns": "HV battery voltage",
+  "layout": "u16/100 V",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 69",
+  "name": "HV battery current",
+  "returns": "HV battery current",
+  "layout": "s32/100 A",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS)",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF 71",
+  "name": "Pack configuration",
+  "returns": "Pack configuration",
+  "layout": "u16 cells, u8 cells/module, u8 modules, u8 temp sensors/module",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i8 I12 (2015-2016)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF A0",
+  "name": "Cell stats block",
+  "returns": "Cell stats block",
+  "layout": "same 38-byte layout as MINI SE entry (cap/V/T/Rfactor/SoC/OCV min/max/mean + alpha)",
+  "source_url": "https://github.com/OBDb/BMW-i8/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 63 35",
+  "name": "HV battery SoH",
+  "returns": "HV battery SoH",
+  "layout": "uint32 BE (value in low byte; OBDb reads byte 3) %",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD 69",
+  "name": "HV battery current",
+  "returns": "HV battery current",
+  "layout": "s32/100 A",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS)",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF 71",
+  "name": "Pack configuration",
+  "returns": "Pack configuration",
+  "layout": "u16 cells, u8 cells/module, u8 modules, u8 temp sensors/module",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "MINI Countryman SE PHEV F60 (2020-2021)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DF A0",
+  "name": "Cell stats block",
+  "returns": "Cell stats block",
+  "layout": "same 38-byte layout as MINI SE entry (cap/V/T/Rfactor/SoC/OCV min/max/mean + alpha)",
+  "source_url": "https://github.com/OBDb/MINI-Countryman/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i5 G60 (2024-2025)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD BC",
+  "name": "Display SoC + window",
+  "returns": "Display SoC + window",
+  "layout": "u16/10 SoC, u16/10 max, u16/10 min | Gen5 SME still answers legacy DDBC/DDC0",
+  "source_url": "https://github.com/OBDb/BMW-i5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW i5 G60 (2024-2025)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 DD C0",
+  "name": "Cell temp min/max",
+  "returns": "Cell temp min/max",
+  "layout": "s16/100 C min, max (mean at [4] per OVMS) | Gen5 SME still answers legacy DDBC/DDC0",
+  "source_url": "https://github.com/OBDb/BMW-i5/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW iX3 G08 (2021-2025)",
+   "BMW i5 G60 (2024-2025)",
+   "BMW X5 50e G05 LCI (2025)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 E5 CE",
+  "name": "Gen5 SoC",
+  "returns": "3 x u16 (OBDb decodes first /100 as SoC %)",
+  "layout": "iX3 example 21 EE 21 D9 21 FD -> 86.86 %. Real responses confirm DID exists on these cars.",
+  "source_url": "https://github.com/OBDb/BMW-iX3/tree/main/tests/test_cases ; https://github.com/OBDb/BMW/blob/main/signalsets/v3/default.json",
+  "confidence": "verified-code"
+ },
+ {
+  "vehicles": [
+   "BMW iX3 G08 (2021-2025)",
+   "BMW i5 G60 (2024-2025)",
+   "BMW X5 50e G05 LCI (2025)"
+  ],
+  "ecu": "SME (HV battery mgmt)",
+  "addr": "0x07 (0x6F1 ext 07 / 0x607)",
+  "request": "22 E5 C7",
+  "name": "Gen5 SoH (OBDb interpretation)",
+  "returns": "4 bytes",
+  "layout": "OBDb reads byte3 as SoH% clamped to 100, but iX3 raw 2B DE 30 85 (0x85=133) and X5 2025 raw 16 14 1B 35 -> '53%' show this layout is doubtful; prefer Battery-Emulator's decoding.",
+  "source_url": "https://github.com/OBDb/BMW-iX3/tree/main/tests/test_cases ; https://github.com/OBDb/BMW-X5/tree/main/tests/test_cases",
+  "confidence": "verified-code"
+ }
+]

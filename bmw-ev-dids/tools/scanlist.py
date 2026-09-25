@@ -186,16 +186,34 @@ DISCOVERY = {
     'step_4_dtcs': {'requests': ['19 02 FF', '19 0A'], 'note': 'Read stored / supported DTCs (read-only).'},
 }
 
+# confirmations: which cars answer which request (OVMS MINI SE module, OBDb logged responses, WiCAN)
+conf = json.load(open(H + '/data/community_confirmations.json'))
+for c in conf:
+    ecu = c['ecu'].split()[0].upper()
+    parts = c['request'].split()
+    if len(parts) < 3:
+        continue
+    did = '0x' + (parts[1] + parts[2] if parts[0] == '22' else parts[2] + parts[3]).upper()
+    for e in out.values():
+        if e['ecu'] == ecu and e['id'] == did:
+            e.setdefault('confirmed_on', [])
+            for v in c['vehicles']:
+                if v not in e['confirmed_on']:
+                    e['confirmed_on'].append(v)
+            if c['layout'] and parts[0] == '31' and parts[1] == '03':
+                e['followup_alt'] = f"31 03 {parts[2]} {parts[3]} <index>"
+                e['followup_note'] = c['layout']
+
 rows = sorted(out.values(), key=lambda e: (e['ecu'] not in BATTERY_ECUS, e['ecu'], e['kind'], e['id']))
 json.dump({'note': 'Read-only UDS requests for BMW EV/hybrid HV-battery related ECUs, merged across generations. '
                    'Send each to the ECU, save the raw response bytes (including negative responses).',
            'discovery': DISCOVERY, 'requests': rows}, open(H + '/data/scan_reads.json', 'w'), ensure_ascii=False, indent=1)
 with open(H + '/data/scan_reads.csv', 'w', newline='') as f:
     w = csv.writer(f)
-    w.writerow(['ecu', 'diag_addr_i3', 'kind', 'id', 'request', 'followup', 'sweep', 'names', 'expected_payload_len',
+    w.writerow(['ecu', 'diag_addr_i3', 'kind', 'id', 'request', 'followup', 'confirmed_on', 'sweep', 'names', 'expected_payload_len',
                 'layout_differs', 'vehicles', 'relevance', 'description_en'])
     for e in rows:
-        w.writerow([e['ecu'], e['diag_addr_i3'], e['kind'], e['id'], e['request'], e.get('followup', ''),
+        w.writerow([e['ecu'], e['diag_addr_i3'], e['kind'], e['id'], e['request'], e.get('followup', '') + (' (alt: ' + e['followup_alt'] + ')' if e.get('followup_alt') else ''), ' | '.join(e.get('confirmed_on', [])),
                     '; '.join(f"{s['arg']} {s['start']}..{s['end']}" for s in e['sweep']), ' / '.join(e['names']),
                     e['expected_payload_len'] if e['expected_payload_len'] is not None else '',
                     'yes' if e.get('layout_differs_between_generations') else '', ' | '.join(e['vehicles']),

@@ -145,7 +145,17 @@
     "ActiveHybrid 3/5/7 (F30/F10/F01)"
    ],
    "relevance": "battery",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)"
+   ]
   },
   {
    "ecu": "SME",
@@ -882,7 +892,11 @@
     "BMW ActiveE (E82, \"BEV10\")"
    ],
    "relevance": "battery",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW i8 I12 (2015-2016)"
+   ]
   },
   {
    "ecu": "SME",
@@ -914,6 +928,16 @@
      "layout": "0-3 s32 (source unsure of scale)",
      "source": "BE-PHEV"
     }
+   ],
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)"
    ]
   },
   {
@@ -2204,7 +2228,18 @@
     "BMW ActiveE (E82, \"BEV10\")"
    ],
    "relevance": "battery",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)",
+    "BMW i5 G60 (2024-2025)"
+   ]
   },
   {
    "ecu": "SME",
@@ -2313,6 +2348,17 @@
      "layout": "see i3 SME 0xDDC0",
      "source": "BE-PHEV"
     }
+   ],
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)",
+    "BMW i5 G60 (2024-2025)"
    ]
   },
   {
@@ -3064,6 +3110,16 @@
      "layout": "byte 1 = cell count (0x60 = 96)",
      "source": "BE-PHEV"
     }
+   ],
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)"
    ]
   },
   {
@@ -3512,6 +3568,16 @@
      "layout": "6-7 min cell V, 8-9 max cell V (÷10000 V) — see i3 SME table",
      "source": "BE-PHEV"
     }
+   ],
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)",
+    "BMW 330e F30 (2016)",
+    "BMW 330e G20 (2020)",
+    "BMW 530e G30 (2016-2023 test data)",
+    "BMW X5 40e F15 / 45e G05 (2017-2023)",
+    "BMW X5 50e G05 LCI (2024-2025: DDBC, DDC0)",
+    "BMW i8 I12 (2015-2016)",
+    "MINI Countryman SE PHEV F60 (2020-2021)"
    ]
   },
   {
@@ -4117,6 +4183,11 @@
      "layout": "0-1 remaining, 2-3 max: kWh = raw*0.01 - 50",
      "source": "BE-IX"
     }
+   ],
+   "confirmed_on": [
+    "BMW iX3 G08 (2021-2025)",
+    "BMW i5 G60 (2024-2025)",
+    "BMW X5 50e G05 LCI (2025)"
    ]
   },
   {
@@ -4177,6 +4248,11 @@
      "layout": "0-1 avg, 2-3 min, 4-5 max (u16, 0.01 %)",
      "source": "BE-IX"
     }
+   ],
+   "confirmed_on": [
+    "BMW iX3 G08 (2021-2025)",
+    "BMW i5 G60 (2024-2025)",
+    "BMW X5 50e G05 LCI (2025)"
    ]
   },
   {
@@ -4387,7 +4463,12 @@
    ],
    "relevance": "battery",
    "source": "sgbd",
-   "followup": "31 03 AD 6D"
+   "followup": "31 03 AD 6D",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ],
+   "followup_alt": "31 03 AD 6D <index>",
+   "followup_note": "uint16 at data offset 2 (after RID echo) /100 = degC (OVMS treats as unsigned)."
   },
   {
    "ecu": "SME",
@@ -4418,7 +4499,12 @@
    ],
    "relevance": "battery",
    "source": "sgbd",
-   "followup": "31 03 AD 6E"
+   "followup": "31 03 AD 6E",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ],
+   "followup_alt": "31 03 AD 6E <index>",
+   "followup_note": "After RID echo: uint16 BE at data offset 2 (i.e. bytes right after 'AD 6E' in 71 03 AD 6E ..) = mV (/1000 -> V). Code: RXBUF_UINT(2)/1000."
   },
   {
    "ecu": "SME",
@@ -11069,7 +11155,10 @@
     "ActiveHybrid 3/5/7 (F30/F10/F01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "EME",
@@ -12248,7 +12337,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "KLE",
@@ -12268,7 +12360,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "KLE",
@@ -12288,7 +12383,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "KLE",
@@ -12308,7 +12406,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "KLE",
@@ -13008,7 +13109,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13028,7 +13132,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13048,7 +13155,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13088,7 +13198,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13108,7 +13221,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13128,7 +13244,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "LIM",
@@ -13168,7 +13287,10 @@
     "BMW i3 / i3s (I01)"
    ],
    "relevance": "hv/charging/12v",
-   "source": "sgbd"
+   "source": "sgbd",
+   "confirmed_on": [
+    "MINI Cooper SE (F56 BEV)"
+   ]
   },
   {
    "ecu": "RDME",
