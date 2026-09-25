@@ -10,6 +10,7 @@ Tool32, INPA and ISTA use.
 | [`data/bmw_ev_dids.csv`](data/bmw_ev_dids.csv) | One row per DID/routine: vehicle, ECU, diag address, DID, service, job argument, English + German description |
 | [`data/bmw_ev_did_fields.csv`](data/bmw_ev_did_fields.csv) | One row per response/argument field: byte offset, data type, unit, scaling (mul/div/add), bit masks |
 | [`data/bmw_ev_dids.json`](data/bmw_ev_dids.json) | Everything above, nested |
+| [`data/scan_reads.csv`](data/scan_reads.csv) / [`.json`](data/scan_reads.json) | Read-only scan list: every battery-related read request across all generations (see below) |
 | [`tools/`](tools) | The `.prg` parser and the scripts that produced the data |
 
 ## Coverage
@@ -66,6 +67,34 @@ Service `2E` (write), `2F` (IO control) and `31` (routine) entries change ECU st
 close contactors, change SoC limits, and reset NV data or cell capacities. They are listed for
 reference. Several of them can disable the HV system.
 
+## Read-only scan list
+
+`data/scan_reads.json` (and `.csv`) lists every read request relevant to the HV battery, merged across
+generations per ECU type, so one script can send them all to any car and keep the raw bytes:
+
+| kind | Request | What it is |
+|---|---|---|
+| `did` | `22 XX XX` | Every 0x22 DID of the battery ECUs (SME, SMES1/2). From EME, KLE, LIM, SLE, IHX, EDME, REME, RDME only DIDs about the HV battery, charging, isolation, contactors, DC/DC or the 12V battery. Gen1.5 hybrids keep a lot of battery history in the EME. |
+| `routine_read` | `31 01 XX XX <index>` | Routines that only read data, indexed by cell, module, CSC, history record or histogram number, e.g. `ZELLSPANNUNG_LESEN` (0xAD6E, one cell voltage per call). `sweep` gives the argument and a range to try. |
+| `routine_results` | `31 03 XX XX` | Test/actuation routines (isolation test, capacity test, heating, balancing). Only *request results* is listed: it returns the last stored result and does not start the routine. Never send `31 01` for these. |
+
+Numbers: 594 DIDs, 18 read routines (swept), 9 results-only routines. Each entry carries the ECU,
+the i3 diagnostic address, the vehicles whose SGBD defines it, and `expected_payload_len` when the
+layout is fixed. `layout_differs` marks DIDs whose layout changes between generations, so decode
+them with the table for the matching vehicle in `bmw_ev_dids.json`.
+
+Recommended scan procedure:
+
+1. Start in the default session. If a request returns `7F 22 7F` (not supported in this session) or `7F 22 33`,
+   switch to the extended session (`10 03`) and retry. `7F 22 31` just means the DID doesn't exist on this car.
+2. For every entry, send the request to the ECU's address and store `{ecu, request, response hex, timestamp}`.
+   Negative responses are data too: `7F 22 31` = DID not supported on this car.
+3. For `routine_read`, loop the index over `sweep.start..sweep.end`, append it as `sweep.bytes` bytes, and stop after a few
+   consecutive `7F 31 31` (request out of range).
+4. Send `3E 00` (tester present) every ~2 s during long sweeps.
+
+Unsupported entries simply return `7F`, so one list works for every generation.
+
 ## Regenerating
 
 ```sh
@@ -77,6 +106,7 @@ git clone --filter=blob:none --sparse https://github.com/openvehicles/Open-Vehic
 # 2. build + export
 export OVMS_DEV=$PWD/ovms/vehicle/OVMS.V3/components/vehicle_bmwi3/dev PRG_PREFIX=$PWD/prg/ECU__ WORKDIR=$PWD/tools
 python3 tools/build.py && python3 tools/export.py out/
+python3 tools/scanlist.py   # rebuild data/scan_reads.* from data/bmw_ev_dids.json
 ```
 
 To add a newer vehicle, add a row to `GROUPS` in `tools/build.py` pointing at its SGBDs.

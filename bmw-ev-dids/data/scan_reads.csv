@@ -1,0 +1,622 @@
+ecu,diag_addr_i3,kind,id,request,sweep,names,expected_payload_len,layout_differs,vehicles,relevance,description_en
+SME,0x07,did,0x6334,22 63 34,,ALTERUNG_INNENWIDERSTAND_TS,4,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,"Aging of the internal resistance in percent: Internal resistance of the storage tank when new is related to the current value of the internal resistance (R_neu / R_akt) * 100 (100% = new condition, decreases with aging)"
+SME,0x07,did,0x6335,22 63 35,,ALTERUNG_KAPAZITAET_TS,4,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Remaining capacity of the memory
+SME,0x07,did,0x6516,22 65 16,,_ST_SYM_MODUS,1,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Status of the balancing
+SME,0x07,did,0x651D,22 65 1D,,_UEBERLAST_ZAHELER,16,,BMW i3 / i3s (I01),battery,Diagnostic job to read out the overload failures that have occurred for warranty returns
+SME,0x07,did,0x6526,22 65 26,,_STATUS_UEBERNAHME_KAPATEST_NV,1,,BMW i3 / i3s (I01),battery,"Current setting of the transfer of the results of a capacity test to the SoH_C estimator (0: no transfer, 1: transfer (standard))"
+SME,0x07,did,0xD4C5,22 D4 C5,,RB_SOC_REKALIBRIERUNG,255,,BMW i3 / i3s (I01),battery,Reading out the battery status BEFORE and AFTER the last 5 SOC recalibrations
+SME,0x07,did,0xD4C6,22 D4 C6,,RB_SOH_ADAPTION,295,,BMW i3 / i3s (I01),battery,This job is no longer requested and is no longer supported (all returns deliver '0')
+SME,0x07,did,0xD4C7,22 D4 C7,,SOC_GUETE,1,,BMW i3 / i3s (I01),battery,"Reading out the current SOC quality value based on the SOC estimate (1 == best quality,> 30 == worst quality)"
+SME,0x07,did,0xD4C8,22 D4 C8,,HIS_SOC_GUETE,20,,BMW i3 / i3s (I01),battery,Reading out the length of stay in 5 classes of the SOC quality value based on the SOC estimate
+SME,0x07,did,0xD4C9,22 D4 C9,,ANZAHL_OCV_SOC_REKAL,4,,BMW i3 / i3s (I01),battery,Number of OCV-SOC recalibrations
+SME,0x07,did,0xD4CA,22 D4 CA,,ANZAHL_LADEENDE_REKAL,4,,BMW i3 / i3s (I01),battery,Number of SoC recalibrations at the end of charging
+SME,0x07,did,0xD4CB,22 D4 CB,,RB_SOC_VOLLADEENDE,50,,BMW i3 / i3s (I01),battery,Reading out different SOCs of the last 5 full charges
+SME,0x07,did,0xD4CC,22 D4 CC,,KUEHLDAUER_HVB,9,,BMW i3 / i3s (I01),battery,Job is not relevant for SME_03 // Replacement is STATUS_KUEHLDAUER Cooling time of the HV battery
+SME,0x07,did,0xD67F,22 D6 7F,,LADUNGSVERLUST_ZELLE,22,,BMW i3 / i3s (I01),battery,Ring memory for the loss of charge in the cells
+SME,0x07,did,0xD681,22 D6 81,,STATUS_MIN_KAPAZITAET_MOD,12,,BMW i3 / i3s (I01),battery,"Reading of the current minimum capacity of ALL modules, based on the capacity quotient."
+SME,0x07,did,0xD6C7,22 D6 C7,,RB_ISO_MESS_TRG,15,,BMW i3 / i3s (I01),battery,Return of the R_iso including quality of the last 5 follow-up measurements
+SME,0x07,did,0xD6C8,22 D6 C8,,RB_ISO_MESS_STD_IO_NIO,70,,BMW i3 / i3s (I01),battery,Return of the last 10 events of the R_iso standard measurement when the error threshold is undershot / exceeded
+SME,0x07,did,0xD6C9,22 D6 C9,,RB_ISO_MESS_TRG_IO_NIO,70,,BMW i3 / i3s (I01),battery,Return of the last 10 events of the triggered follow-up ISO measurement when the error threshold is undershot / exceeded
+SME,0x07,did,0xD6CA,22 D6 CA,,ISODIAG_INPUT_ISTWERTE,15,,BMW i3 / i3s (I01),battery,Return of input signals of the R_ISO calculation formula
+SME,0x07,did,0xD6CB,22 D6 CB,,ISO_ERR_STD_FZ1_2,52,,BMW i3 / i3s (I01),battery,Return of input signals and result values of the standard ISO measurement at error time 1 and 2
+SME,0x07,did,0xD6CC,22 D6 CC,,RB_SOH_KAPATEST,51,,BMW i3 / i3s (I01),battery,Return of the results of the last 3 HVS offboard capacity tests (ring memory)
+SME,0x07,did,0xD6CD,22 D6 CD,,REKU_VOLTAGE_LIFT,6,,BMW i3 / i3s (I01),battery,Return of the duration and frequency in which the increased recuperation is made available when the HVS is almost full
+SME,0x07,did,0xD6CE,22 D6 CE,,RB_ALTERUNG_KAPA,241,,BMW i3 / i3s (I01),battery,Return of the results of the last 5 SoH_C adaptations including capacity tests (ring memory)
+SME,0x07,did,0xD6CF,22 D6 CF,,CSC_TEMPERATUREN,24,,BMW i3 / i3s (I01),battery,"Return of the current temperature measured values of all CSC sensors (max 3 * 12, without HW-RL)"
+SME,0x07,did,0xD6D1,22 D6 D1,,ISO_ERR_TRG_FZ1_2,52,,BMW i3 / i3s (I01),battery,Return of input signals and result values of the triggered follow-up ISO measurement at error time 1 and 2
+SME,0x07,did,0xDAFE,22 DA FE,,STATUS_KLEMME_15_EIN,2,,ActiveHybrid 7 (F04),battery,Returns status of the terminal(s) in the ECU: 0=OFF; 1=ON
+SME,0x07,did,0xDD60,22 DD 60,,SCHUETZ_SCHALTER,1,yes,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04),battery,"Contactor switch status: closed, open, welded contacts or not defined. For results see table TAB_SCHUETZ_SCHALTER"
+SME,0x07,did,0xDD61,22 DD 61,,SCHUETZ_FREIGABE,1,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe
+SME,0x07,did,0xDD63,22 DD 63,,SCHUETZSCHALTUNGEN_ANZAHL,8,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Number of switchings of the contactor switch (currentless and under load)
+SME,0x07,did,0xDD64,22 DD 64,,HVIL,1,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,HVIL test result
+SME,0x07,did,0xDD66,22 DD 66,,HV_SPANNUNG,2,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,"Intermediate circuit voltage to the HV connection plug, depending on the contactor status"
+SME,0x07,did,0xDD67,22 DD 67,,ANZAHL_KUEHLANFORDERUNG_DRINGEND,1,,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Number of consecutive wake cycles with urgent cooling requirements (service life max. Value)
+SME,0x07,did,0xDD68,22 DD 68,,HV_SPANNUNG_BERECHNET,2,,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,"Battery voltage behind the contactors, regardless of the contactor status"
+SME,0x07,did,0xDD69,22 DD 69,,HV_STROM,4,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,HV current in A
+SME,0x07,did,0xDD6A,22 DD 6A,,ISOLATIONSWIDERSTAND,9,yes,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04),battery,Reading out the currently applied insulation resistance
+SME,0x07,did,0xDD6B,22 DD 6B,,TEMP_SENSOREN,16,yes,ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04),battery,Cell temperature
+SME,0x07,did,0xDD6C,22 DD 6C,,KUEHLKREISLAUF_TEMP,2,,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04),battery,Temperature of the cooling medium in ° C (327.67 = implausible)
+SME,0x07,did,0xDD6D,22 DD 6D,,KAPAZITAETSVERLUST / SOH,3,,ActiveHybrid 7 (F04),battery,HV battery capacity loss
+SME,0x07,did,0xDD6F,22 DD 6F,,KUEHLKREISLAUF_VENTIL,1,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Status / control coolant valve: Closed or open / close or open
+SME,0x07,did,0xDD70,22 DD 70,,AUSLIEFERUNGSDATEN,6,,ActiveHybrid 7 (F04),battery,Read manufacturer data
+SME,0x07,did,0xDD71,22 DD 71,,ZELLSPANNUNG,70,,ActiveHybrid 7 (F04),battery,Cell voltages
+SME,0x07,did,0xDD72,22 DD 72,,AUFSTART_VERHINDERER,1,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04),battery,Reason for not starting the HV system
+SME,0x07,did,0xDD73,22 DD 73,,CUMULATIVE_LADUNG,4,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,The accumulated charge for charges in Ah
+SME,0x07,did,0xDD74,22 DD 74,,CUMULATIVE_ENTLADUNG,4,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,The accumulated charge for discharges in Ah
+SME,0x07,did,0xDD75,22 DD 75,,SERIENNUMMER,10,,ActiveHybrid 7 (F04),battery,Write/read serial number
+SME,0x07,did,0xDD76,22 DD 76,,STATUS_KL30C_SPANNUNG,1,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Voltage terminal 30C in V
+SME,0x07,did,0xDD77,22 DD 77,,HISTOGRAM,72,,ActiveHybrid 7 (F04),battery,Time/temperature histogram SoC 1-3
+SME,0x07,did,0xDD7B,22 DD 7B,,ALTERUNG_KAPAZITAET / REFERENZ_KAPAZITAET,1,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Readout of the battery capacity adjustment
+SME,0x07,did,0xDD7C,22 DD 7C,,GW_INFO,85,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Warranty data
+SME,0x07,did,0xDD7D,22 DD 7D,,STROMGRENZEN,4,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Current limits
+SME,0x07,did,0xDD7E,22 DD 7E,,SPANNUNGSGRENZEN,4,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Voltage limits
+SME,0x07,did,0xDD7F,22 DD 7F,,OCV_KENNLINIE,42,,ActiveHybrid 7 (F04),battery,SoC-dependent open-circuit voltage
+SME,0x07,did,0xDD8E,22 DD 8E,,HVB_HISTORIE_ZYKLEN,116,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Output of the current load (current histogram)
+SME,0x07,did,0xDD90,22 DD 90,,ZEIT_TEMP_HISTOGRAMM,112,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Time in different temperature classes and control unit states (SG awake, SG asleep) of the averaged calculated temperature over all cell nuclei"
+SME,0x07,did,0xDD91,22 DD 91,,ZEIT_SOC_KLASSE,48,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Returns the length of stay of the SoC in SoC classes over the service life - SE03 from 11/13 total duration (sleep + awake) - up to 11/13 only operating time (awake)
+SME,0x07,did,0xDD94,22 DD 94,,HV_BATT_HIST_SOC_T1_1 / HV_BATT_HIST_SOC_T1,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at temperature less than 0 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD95,22 DD 95,,HV_BATT_HIST_SOC_T2_1 / HV_BATT_HIST_SOC_T2,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 0 ° C less than temperature less than 10 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD96,22 DD 96,,HV_BATT_HIST_SOC_T3_1 / HV_BATT_HIST_SOC_T3,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 10 ° C less than temperature less than 20 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD97,22 DD 97,,HV_BATT_HIST_SOC_T4_1 / HV_BATT_HIST_SOC_T4,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 20 ° C less than temperature less than 27.5 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD98,22 DD 98,,HV_BATT_HIST_SOC_T5_1 / HV_BATT_HIST_SOC_T5,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 27.5 ° C less than temperature less than 32.5 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD99,22 DD 99,,HV_BATT_HIST_SOC_T6_1 / HV_BATT_HIST_SOC_T6,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 32.5 ° C less than temperature less than 40 ° C and with different values of current and SOC - part 1
+SME,0x07,did,0xDD9A,22 DD 9A,,HV_BATT_HIST_SOC_T7_1 / HV_BATT_HIST_SOC_T7,160,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Duration at 40 ° C less than temperature and with different values of current and SOC - part 1
+SME,0x07,did,0xDD9B,22 DD 9B,,ZELLSPANNUNG_MODUL_9,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 9"
+SME,0x07,did,0xDD9C,22 DD 9C,,ZELLSPANNUNG_MODUL_10,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 10"
+SME,0x07,did,0xDD9D,22 DD 9D,,ZELLSPANNUNG_MODUL_11,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 11"
+SME,0x07,did,0xDD9E,22 DD 9E,,ZELLSPANNUNG_MODUL_12,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 12"
+SME,0x07,did,0xDD9F,22 DD 9F,,FAHRGESTELLNUMMER,7,,"BMW ActiveE (E82, ""BEV10"")",battery,Current chassis number (VIN) of the vehicle in which the HV battery (storage) is installed
+SME,0x07,did,0xDDA1,22 DD A1,,KUEHLMITTELPUMPE,1,,"BMW 530Le (F18) | BMW ActiveE (E82, ""BEV10"")",battery,Result values or control of the coolant pump for cooling the HV battery in % (0-100%)
+SME,0x07,did,0xDDA2,22 DD A2,,TEMP_SENSOREN_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the temperature values of all CSCs
+SME,0x07,did,0xDDA3,22 DD A3,,ZELLSPANNUNG_MODUL_13,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 13"
+SME,0x07,did,0xDDA5,22 DD A5,,FREIGABE_KUEHLMITTELPUMPE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,"Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled)"
+SME,0x07,did,0xDDA6,22 DD A6,,SCHUETZ_SCHALTER_BEV10,3,,"BMW ActiveE (E82, ""BEV10"")",battery,"Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank"
+SME,0x07,did,0xDDA7,22 DD A7,,ISOLATIONSWIDERSTAND_BEV10,18,,"BMW ActiveE (E82, ""BEV10"")",battery,Value of all insulation resistances (all HV batteries)
+SME,0x07,did,0xDDA8,22 DD A8,,CSC_IDS_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010
+SME,0x07,did,0xDDA9,22 DD A9,,KUEHLKREISLAUF_TEMP_BEV10,6,,"BMW ActiveE (E82, ""BEV10"")",battery,Coolant circuit temperature BEV2010
+SME,0x07,did,0xDDAA,22 DD AA,,HV_SPANNUNG_BATT_BEV10,28,,"BMW ActiveE (E82, ""BEV10"")",battery,Values for HV voltages for the BEV2010
+SME,0x07,did,0xDDAB,22 DD AB,,LADEZIELSPANNUNG_TAUSCH,2,,BMW i3 / i3s (I01),battery,Output of the charging target voltage for module replacement before installing the module in the vehicle
+SME,0x07,did,0xDDAD,22 DD AD,,VARIANTE_CSCS_BEV10,13,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the CSC variant of all modules
+SME,0x07,did,0xDDAE,22 DD AE,,ZELLSPANNUNG_MODUL_4,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 4"
+SME,0x07,did,0xDDAF,22 DD AF,,ZELLSPANNUNG_MODUL_5,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 5"
+SME,0x07,did,0xDDB0,22 DD B0,,ZELLSPANNUNG_MODUL_6,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 6"
+SME,0x07,did,0xDDB1,22 DD B1,,ZELLSPANNUNG_MODUL_7,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 7"
+SME,0x07,did,0xDDB2,22 DD B2,,ZELLSPANNUNG_MODUL_8,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 8"
+SME,0x07,did,0xDDB3,22 DD B3,,LADUNGSMENGE_HV_BOOST_RECUP,8,,ActiveHybrid 3/5/7 (F30/F10/F01),battery,Status of charge quantity drawn or supplied
+SME,0x07,did,0xDDB4,22 DD B4,,HV_SPANNUNG_BATTERIE,2,,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,"Battery voltage behind the contactors, regardless of the contactor status"
+SME,0x07,did,0xDDB6,22 DD B6,,ALTERUNG_INNENWIDERSTAND,2,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Aging of the internal resistance in percent: Internal resistance of the storage tank when new is related to the current value of the internal resistance (R_neu / R_akt) * 100 (100% = new condition, decreases with aging)"
+SME,0x07,did,0xDDB7,22 DD B7,,REFERENZ_KAPAZITAET / ALTERUNG_KAPAZITAET,1,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Remaining capacity of the memory, percentage value: (C_akt / C_nenn (new)) * 100, 100 = new state. Raw estimate of the onboard capacity estimate of total storage"
+SME,0x07,did,0xDDB9,22 DD B9,,ZELLSPANNUNG_MODUL_1,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 1"
+SME,0x07,did,0xDDBA,22 DD BA,,ZELLSPANNUNG_MODUL_2,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 2"
+SME,0x07,did,0xDDBB,22 DD BB,,ZELLSPANNUNG_MODUL_3,24,,"ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 3"
+SME,0x07,did,0xDDBC,22 DD BC,,ANZEIGE_SOC,6,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,current advertisement Soc
+SME,0x07,did,0xDDBD,22 DD BD,,SERVICE_DISCONNECT,1,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Status Service Disconnect (0 = open, 1 = closed)"
+SME,0x07,did,0xDDBE,22 DD BE,,VORLADUNG,20,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Info about time, current and temperatures during pre-charging"
+SME,0x07,did,0xDDBF,22 DD BF,,ZELLSPANNUNGEN_MIN_MAX,4,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,minimum and maximum single cell voltages are output
+SME,0x07,did,0xDDC0,22 DD C0,,TEMPERATUREN / TEMPSENSOREN_MIN_MAX,6,yes,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,"Output of the calculated cell core temperatures (minimum, maximum and average)"
+SME,0x07,did,0xDDC1,22 DD C1,,CSC_IDS,64,,ActiveHybrid 3/5/7 (F30/F10/F01),battery,Hardware IDs of the individual CSCs (Cell Supervisory Circuit)
+SME,0x07,did,0xDDC2,22 DD C2,,ALTERUNG_PARAMETER,6,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Correction factor of the serial and parallel ohmic resistance as well as the parallel capacitance (1.5 = increase in resistance by 50%)
+SME,0x07,did,0xDDC4,22 DD C4,,SOC,3,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Read out SOC value (in%) and plausibility or specification of the SOC value (0-100%)
+SME,0x07,did,0xDDC5,22 DD C5,,MODULSPANNUNG_UNPLAUSIBEL,8,,ActiveHybrid 3/5/7 (F30/F10/F01),battery,"Returns the module number of the CSCs in which an implausible voltage value was detected (linked to DTC). Return value is a component vector (length 8) with assignment 0 = no fault, 1 = fault detected."
+SME,0x07,did,0xDDC6,22 DD C6,,HISTO_SYM_DAUER,34,yes,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Reading out the number of balancing processes in the respective time classes (actual time in which the balancing resistors were active)
+SME,0x07,did,0xDDC7,22 DD C7,,HISTO_SYM_ZELLANZAHL,16,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Frequency over the lifetime of the number of cells that were instructed for balancing. Increment if symmetry is required when falling asleep after FIRST cyclical waking up.
+SME,0x07,did,0xDDC8,22 DD C8,,SYM_DELTASOC,10,,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Maximum SoC difference in% over the entire HVS. Ring memory of the last 5 trips
+SME,0x07,did,0xDDC9,22 DD C9,,MAX_SYM_DAUER,45,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Maximum symmetry duration of the last symmetrization process
+SME,0x07,did,0xDDCA,22 DD CA,,SERIENNUMMER_ECU,10,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Serial number of the SME control unit
+SME,0x07,did,0xDDCB,22 DD CB,,SOC_GRENZEN,4,,BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Reading and changing the SOC limits
+SME,0x07,did,0xDDCC,22 DD CC,,SCHUETZ_RESTZAEHLER,12,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,"Read out or reset (0 = no reset; 1 = reset) of the counter for the possible switching of contactors K1, K2, K3"
+SME,0x07,did,0xDDCF,22 DD CF,,DIFFERENZ_SPANNUNGEN,2,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Differential voltage: total voltage HV battery - total cell voltage (static determination)
+SME,0x07,did,0xDDE8,22 DD E8,,ALTERUNG_KAPAZITAET_DEGRADATION,4,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Number of age-related stress degradations
+SME,0x07,did,0xDDE9,22 DD E9,,ALTERUNG_KAPAZITAET_HISTOGRAMM_SOC_HUB,60,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Histogram with the frequency of individual SoC strokes that occurred during the operating period
+SME,0x07,did,0xDDEB,22 DD EB,,RINGPUFFER_LADEVORGAENGE,60,,BMW i3 / i3s (I01),battery,"Return of measured variables of the last 5 completed charging processes: - Start SOC - Available charging power - Actual end SOC - Reason charging end (no charging end detected 0, target SOC reached 1, U / I full charge detection 2, external cancellation 3, error SME 4 ) - Start temperature - End temperature - Charging time forecast at the beginning in min - Actual charging time in min - Relative time (continuous combination system time from ACAN with start in the factory)"
+SME,0x07,did,0xDDEC,22 DD EC,,HIS_PROG_LADEZEIT,14,,BMW i3 / i3s (I01),battery,Representation of the frequency of a relative deviation of the charging time forecast from the real value (fact = (t_prog-t_ist) / t_ist * 100%). t_prog = predicted value at the beginning of the charging phase. t_ist = time actually required to reach the loading target.
+SME,0x07,did,0xDDEF,22 DD EF,,HV_SPANNUNG_QUER,2,,BMW i3 / i3s (I01),battery,"SBox, high-voltage transverse (same as battery voltage when K1 or K3 is closed)"
+SME,0x07,did,0xDE37,22 DE 37,,ALPHA_INITIAL_ALTERUNG,2,,BMW i3 / i3s (I01),battery,Initial value of the SOH_R calculation
+SME,0x07,did,0xDF60,22 DF 60,,BETRIEBSSTUNDEN,8,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Time for closed main switch and total battery life (closed and open time of main switch)
+SME,0x07,did,0xDF62,22 DF 62,,COOL_DOWN,2,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Number of CoolDown scenarios (departure with hot HV storage)
+SME,0x07,did,0xDF63,22 DF 63,,KLEMMENZYKLEN,4,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Number of terminal cycles
+SME,0x07,did,0xDF64,22 DF 64,,KUEHLDAUER,10,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,HV battery cooling time
+SME,0x07,did,0xDF65,22 DF 65,,TEMP_SPREIZUNG_SYSTEM,26,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Time in different dT classes with active cooling
+SME,0x07,did,0xDF66,22 DF 66,,TEMP_KUEHLMITTEL,26,yes,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Time in different temperature classes of the coolant
+SME,0x07,did,0xDF67,22 DF 67,,LADUNG_KUEHLUNG,8,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Amount of charge and discharge with the cooling switched on
+SME,0x07,did,0xDF68,22 DF 68,,HV_BATT_HIST_SOC_T1_2,120,,BMW i3 / i3s (I01),battery,Duration at temperature less than 0 ° C and with different values of current and SOC - part 2
+SME,0x07,did,0xDF69,22 DF 69,,HV_BATT_HIST_SOC_T4_2,120,,BMW i3 / i3s (I01),battery,Duration at 20 ° C less than temperature less than 27.5 ° C and with different values of current and SOC - part 2
+SME,0x07,did,0xDF6A,22 DF 6A,,HV_BATT_HIST_SOC_T3_2,120,,BMW i3 / i3s (I01),battery,Duration at 10 ° C less than temperature less than 20 ° C and with different values of current and SOC - Part 2
+SME,0x07,did,0xDF6B,22 DF 6B,,HV_BATT_HIST_SOC_T5_2,120,,BMW i3 / i3s (I01),battery,Duration at 27.5 ° C less than temperature less than 32.5 ° C and with different values of current and SOC - part 2
+SME,0x07,did,0xDF6C,22 DF 6C,,HV_BATT_HIST_SOC_T2_2,120,,BMW i3 / i3s (I01),battery,Duration at 0 ° C less than temperature less than 10 ° C and with different values of current and SOC - part 2
+SME,0x07,did,0xDF6D,22 DF 6D,,HV_BATT_HIST_SOC_T7_2,120,,BMW i3 / i3s (I01),battery,Duration at 40 ° C less than temperature and with different values of current and SOC - part 2
+SME,0x07,did,0xDF6E,22 DF 6E,,HV_BATT_HIST_SOC_T6_2,120,,BMW i3 / i3s (I01),battery,Duration at 32.5 ° C less than temperature less than 40 ° C and with different values of current and SOC - part 2
+SME,0x07,did,0xDF6F,22 DF 6F,,HIS_ERR_LIM_STROM,24,,BMW i3 / i3s (I01),battery,Time in minutes in different current error limit classes separately for charging and discharging over all temperatures
+SME,0x07,did,0xDF70,22 DF 70,,HIS_EFF_STROM,48,,BMW i3 / i3s (I01),battery,Time in minutes in different effective current value classes separately for charging and discharging
+SME,0x07,did,0xDF71,22 DF 71,,PROJEKT_PARAMETER,5,,BMW i3 / i3s (I01) | BMW 530Le (F18),battery,Reading out the project-specific parameters
+SME,0x07,did,0xDF72,22 DF 72,,KURZSCHLUESSE,1,,BMW i3 / i3s (I01),battery,Number of short circuits that occurred
+SME,0x07,did,0xDF73,22 DF 73,,HEIZUNG_VERBAUT,1,,BMW i3 / i3s (I01),battery,Status heating installed (0 = no / 1 = yes)
+SME,0x07,did,0xDF74,22 DF 74,,VOKO_HEIZ_DAUER,25,,BMW i3 / i3s (I01),battery,Number of preconditioning heating cycles
+SME,0x07,did,0xDF75,22 DF 75,,LADE_KOND_HEIZ_DAUER,16,,BMW i3 / i3s (I01),battery,Number of heating conditioning processes during charging
+SME,0x07,did,0xDF76,22 DF 76,,VOKO_KUEHL_DAUER,25,,BMW i3 / i3s (I01),battery,Number of pre-conditioning cooling cycles
+SME,0x07,did,0xDF77,22 DF 77,,LADE_DAUER,13,,BMW i3 / i3s (I01),battery,Number of charging processes in charging duration classes
+SME,0x07,did,0xDF81,22 DF 81,,HIS_SOC_WARN_GRENZEN,28,,BMW i3 / i3s (I01),battery,Operating time in minutes in the lower and upper SOC warning limits
+SME,0x07,did,0xDF83,22 DF 83,,ID_SBOX,8,,BMW i3 / i3s (I01),battery,Reading out the identification parameters of the SBOX
+SME,0x07,did,0xDF86,22 DF 86,,SOC_HISTORIE,15,,BMW i3 / i3s (I01),battery,Reading out the SOC history data
+SME,0x07,did,0xDF89,22 DF 89,,KL30C,1,,BMW i3 / i3s (I01),battery,"Reading out the logical status of the KL30C> not for I01 and I12, use STATUS_KL30C_SPANNUNG here"
+SME,0x07,did,0xDF8A,22 DF 8A,,HIS_EFF_STROM_TMIN,48,,BMW i3 / i3s (I01),battery,At T <-10: time in minutes in different percentage value classes for the ratio of effective current to current limit separately for charging and discharging (SBL)
+SME,0x07,did,0xDF8B,22 DF 8B,,HIS_EFF_STROM_TLOW,48,,BMW i3 / i3s (I01),battery,At -10 <= T <5: time in minutes in various percentage value classes for the ratio of effective current to current limit separately for charging and discharging (SBL)
+SME,0x07,did,0xDF8C,22 DF 8C,,HIS_EFF_STROM_TMID,48,,BMW i3 / i3s (I01),battery,At 5 <= T <25 (40 SP01): Time in minutes in various percentage value classes for the ratio of effective current to current limit separately for charging and discharging (SBL)
+SME,0x07,did,0xDF8D,22 DF 8D,,HIS_EFF_STROM_THIGH,48,,BMW i3 / i3s (I01),battery,ONLY SE03 !!! At 25 <= T <40: Time in minutes in different percentage classes for the ratio of effective current to current limit separately for charging and discharging (SBL)
+SME,0x07,did,0xDF8E,22 DF 8E,,HIS_EFF_STROM_TMAX,48,,BMW i3 / i3s (I01),battery,At 40 <= T: time in minutes in various percentage value classes for the ratio of effective current to current limit separately for charging and discharging (SBL)
+SME,0x07,did,0xDF8F,22 DF 8F,,HIS_ERR_LIM_STROM_TMIN,24,,BMW i3 / i3s (I01),battery,At T <= -10: time in minutes in different current error limit classes separately for charging and discharging
+SME,0x07,did,0xDF90,22 DF 90,,HIS_ERR_LIM_STROM_TLOW,24,,BMW i3 / i3s (I01),battery,At -10 <T <= 5: time in minutes in different current error limit classes separately for charging and discharging
+SME,0x07,did,0xDF91,22 DF 91,,HIS_ERR_LIM_STROM_THIGH,24,,BMW i3 / i3s (I01),battery,If 5 <T <= 25: time in minutes in different current error limit classes separately for charging and discharging
+SME,0x07,did,0xDF92,22 DF 92,,HIS_ERR_LIM_STROM_TMAX,24,,BMW i3 / i3s (I01),battery,At 25 <T: time in minutes in different current error limit classes separately for charging and discharging
+SME,0x07,did,0xDF9C,22 DF 9C,,LADEZEIT_ADAPT_KENNFELD_LESEN,51,,BMW i3 / i3s (I01),battery,Reading out the map of learning factors to correct the charging time prognosis raw value
+SME,0x07,did,0xDF9E,22 DF 9E,,VERH_VOLLADE_LADEVORG_LESEN,1,,BMW i3 / i3s (I01),battery,Percentage of the ratio of full charges to total charges
+SME,0x07,did,0xDFA0,22 DF A0,,ZUSTAND_SPEICHER,38,,BMW i3 / i3s (I01),battery,"Output of central storage quantities as max., Min. And mean values"
+SME,0x07,did,0xDFA1,22 DF A1,,HIS_ERR_LIM_SPANNUNG,12,,BMW i3 / i3s (I01),battery,"Output of the maximum dwell time in voltage error limit classes across all modules in minutes. At temperatures <-10 ° C, the voltage error limit changes depending on the temperature."
+SME,0x07,did,0xDFAE,22 DF AE,,HIS_SOC_MAX_MIN,2,,BMW i3 / i3s (I01),battery,Job has not been requested for SME_03 since I001_14-03-490 and is therefore not implemented from now on. Output of the minimum and maximum MIN nominal SoC that occurs over the life of the vehicle.
+SME,0x07,did,0xDFC9,22 DF C9,,LPA_HVS_LD_INT,14,,BMW i3 / i3s (I01),battery,Setting the new HVS self-protection current integral value / reading the current HVS self-protection current integral value and returning the project-specific current and current integral limits
+SME,0x07,did,0xDFE1,22 DF E1,,STATUS_HV_SPEICHER_ID,4,,BMW i3 / i3s (I01),battery,Reading out the storage identification number of the HV storage
+SME,0x07,did,0xDFE2,22 DF E2,,SYMMETRIERBAND,11,,BMW i3 / i3s (I01),battery,Information about the last successful balancing process and the last no-load SoCs
+SME,0x07,did,0xE50D,22 E5 0D,,GW_INFO_SCHNELLLADEN,16,,BMW i3 / i3s (I01),battery,Provides warranty-relevant information on the share of fast charging in the total energy throughput of the storage facility at different temperatures.
+SME,0x07,did,0xE540,22 E5 40,,CODIERVARIABLEN_HV_SPEICHER,4,,BMW i3 / i3s (I01),battery,Reads out all coding variables with manipulation potential
+SME,0x07,did,0xE5EC,22 E5 EC,,SOH_OFFSET,3,,BMW i3 / i3s (I01),battery,Correction variables with which the functions for capacity aging are corrected during operation.
+SME,0x07,did,0xE5F1,22 E5 F1,,ANZAHL_DEFEKTE_SICHERUNG,1,,BMW i3 / i3s (I01),battery,Number of defective fuses since all modules were last replaced
+SME,0x07,did,0xE5F2,22 E5 F2,,HVOFF_VOLTAGES,139,,BMW i3 / i3s (I01),battery,"Status job to analyze the voltage drop after parking the vehicle. In connection with the cell indices and status signals of the symmetry requirement, this enables a collection of indices for defective or particularly weak cells in the module network."
+SME,0x07,did,0xE5F3,22 E5 F3,,RB_SOH_KAPATEST_ERW,27,,BMW i3 / i3s (I01),battery,Extension of the return of the results of the last 3 HVS offboard capacity tests (ring memory)
+SME,0x07,did,0xE5F4,22 E5 F4,,CPI_ANALYSE,23,,BMW i3 / i3s (I01),battery,Returns a data packet with the most critical relative temperature deviation since the last reset (drag pointer). A data package contains the relevant measured values for data entry for the CPI diagnosis.
+SME,0x07,did,0xE5FA,22 E5 FA,,KAPAZITAETSTEST_ASYMMETRIE_POTENTIAL,4,,BMW i3 / i3s (I01),battery,"Return of sizes for the asymmetry potential of the memory that were determined as part of a capacity determination (offboard capacity test). The cell and module index of the cell that potentially has the lowest capacity, as well as the additional capacity range of this cell (in percent), which can potentially be made usable by balancing the memory, are output."
+SME,0x07,did,0xF190,22 F1 90,,VIN,17,,"BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01) | BMW ActiveE (E82, ""BEV10"")",battery,Chassis number
+SME,0x07,routine_read,0xAD6C,31 01 AD 6C <NR_MODUL>,NR_MODUL 0..32,ZELLSPANNUNG_UNPLAUSIBEL_LESEN,,,BMW i3 / i3s (I01),battery,"Returns the module number of the CSCs in which an implausible voltage value was detected (linked to DTC). The return value is a component vector length 8) with the assignment 0 = no error, 1 = error detected."
+SME,0x07,routine_read,0xAD6D,31 01 AD 6D <NR_MODUL>,NR_MODUL 0..32,MODULTEMPERATUREN_LESEN,,,BMW i3 / i3s (I01),battery,Currently measured temperature from the selected module
+SME,0x07,routine_read,0xAD6E,31 01 AD 6E <NR_ZELLE>,NR_ZELLE 0..255,ZELLSPANNUNG_LESEN,,,BMW i3 / i3s (I01) | BMW 530Le (F18),battery,Cell whose voltage is to be determined
+SME,0x07,routine_read,0xAD6F,31 01 AD 6F <NR_MODUL>,NR_MODUL 0..32,HIS_TEMP_MOD_LESEN,,,BMW i3 / i3s (I01),battery,Time (minutes with HVON and 100ms with NO_OP) in various temperature classes of the maximum and minimum cell temperature of individual modules (storage in operation) and the mean cell temperature of the individual modules (storage out of operation). ATTENTION: The correct unit of the output value STAT_HIS_TEMP_NO_OP_MOD_MEAN_X_WERT is [100ms] and not [min] as entered in the UNIT box. The counter can start again from zero around 13.2 years from the beginning of the logging process due to integer overflow.
+SME,0x07,routine_read,0xAD70,31 01 AD 70 <NR_MODUL>,NR_MODUL 0..32,HIS_ERR_LIM_SPANNUNG_MOD_LESEN,,,BMW i3 / i3s (I01),battery,"Output of the dwell time in voltage fault limit classes of individual modules. At temperatures <-10 ° C, the voltage error limit changes depending on the temperature. (Samsung)"
+SME,0x07,routine_read,0xAD71,31 01 AD 71 <NR_MODUL>,NR_MODUL 0..32,HIS_SPANNUNG_MOD_LESEN,,,BMW i3 / i3s (I01),battery,Time in minutes in different voltage classes of individual modules
+SME,0x07,routine_read,0xAD74,31 01 AD 74 <NR_ZELLE>,NR_ZELLE 0..255,HIS_ZELL_DSOCS_LESEN,,,BMW i3 / i3s (I01),battery,"Reading out the totaled Delta_SOC values of all individual cells over X_end driving cycles (X_end = 30, can be calibrated)."
+SME,0x07,routine_read,0xAD76,31 01 AD 76 <NR_CSC>,NR_CSC 0..32,CSC_IDS_LESEN,,,BMW i3 / i3s (I01),battery,Enter the CSC number to read out the DMC from CSC x
+SME,0x07,routine_read,0xAD77,31 01 AD 77 <NR_MODUL>,NR_MODUL 0..32,STEUERN_MIN_KAPAZITAET_MOD_LESEN / ALTERUNG_KAPAZITAET_MODUL_LESEN,,,BMW i3 / i3s (I01),battery,"Reading out the current minimum capacity of module x, based on the capacity quotient (capacity quotient = (C_akt / C_nenn (new)) * 100 (100% = corresponds to nominal capacity; capacity quotient> 100% corresponds to cell capacity> nominal capacity, capacity quotient <100% corresponds to cell capacity <nominal capacity) ."
+SME,0x07,routine_read,0xAD78,31 01 AD 78 <NR_MODUL>,NR_MODUL 0..32,MAX_INNENWIDERSTANDSFAKTOR_MOD_LESEN / ALTERUNG_INNENWIEDERSTAND_MODUL_LESEN,,,BMW i3 / i3s (I01),battery,"Reading out the current maximum internal resistance factor of module x, (factor = 0-5 with two decimal places; factor &lt;1 corresponds to a reduced cell internal resistance compared to the average, factor&gt; 1 corresponds to an increased cell resistance compared to the average)"
+SME,0x07,routine_read,0xAD79,31 01 AD 79 <NR_MODUL>,NR_MODUL 0..32,ZELLPACK_STATUS_LESEN / ZELLPACK_SOH_LESEN,,,BMW i3 / i3s (I01),battery,"Reading out the aging status (e.g. defect, etc.) of module x"
+SME,0x07,routine_read,0xAD7C,31 01 AD 7C <NR_MODUL>,NR_MODUL 0..32,HIS_SPANNUNG_NOP_MOD_LESEN,,,BMW i3 / i3s (I01),battery,Time in 100ms in different voltage classes of individual modules while the memory is not in operation ATTENTION: The correct unit of the output value STAT_HIS_SPANNUNG_NOP_MOD_X_WERT is [100ms] and not [min] as entered in the UNIT box. The counter can start again from zero around 13.2 years from the beginning of the logging process due to integer overflow.
+SME,0x07,routine_read,0xAD7D,31 01 AD 7D <NR_MODUL>,NR_MODUL 0..32,ZELLPACK_DMC_LESEN,,,BMW i3 / i3s (I01),battery,This job reads out the DMC from cell pack x.
+SME,0x07,routine_results,0xAD60,31 03 AD 60,,ZELLAUSGLEICHSENTLADESPANNUNG,,,ActiveHybrid 7 (F04),battery,Cell balancing discharge voltage
+SME,0x07,routine_results,0xAD61,31 03 AD 61,,ISOLATION,,,"BMW i3 / i3s (I01) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01) | ActiveHybrid 7 (F04) | BMW ActiveE (E82, ""BEV10"")",battery,Isolation test result
+SME,0x07,routine_results,0xAD62,31 03 AD 62,,SOC,,,ActiveHybrid 7 (F04),battery,HV battery SOC (state of charge)
+SME,0x07,routine_results,0xAD66,31 03 AD 66,,KAPAZITAET_BESTIMMUNG,,,BMW i3 / i3s (I01) | ActiveHybrid 3/5/7 (F30/F10/F01),battery,Determination of the capacity
+SME,0x07,routine_results,0xAD6A,31 03 AD 6A,,HEIZUNG,,,BMW i3 / i3s (I01),battery,Activation and reading of the heating in the HV battery
+SME,0x07,routine_results,0xAD6B,31 03 AD 6B,,SYMMETRIERUNG,,,BMW i3 / i3s (I01) | BMW 530Le (F18),battery,Activate balancing
+SME,0x07,routine_results,0xAD73,31 03 AD 73,,HEIZUNG_FUNKTION,,,BMW i3 / i3s (I01),battery,Execution of the functional diagnosis heating
+SMES1,,did,0x6516,22 65 16,,_ST_SYM_MODUS,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Status of the SME cell balancing mode
+SMES1,,did,0xDD61,22 DD 61,,SCHUETZ_FREIGABE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe
+SMES1,,did,0xDD62,22 DD 62,,HV_STROM_MAX,8,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum HV current
+SMES1,,did,0xDD63,22 DD 63,,SCHUETZSCHALTUNGEN_ANZAHL,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of switchings of the contactor switch (currentless and under load)
+SMES1,,did,0xDD64,22 DD 64,,HVIL,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Disturb/disable the interlock generator in the BMS / HVIL test result
+SMES1,,did,0xDD65,22 DD 65,,SOC_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Min/max values of the SOC
+SMES1,,did,0xDD66,22 DD 66,,HV_SPANNUNG,2,,"BMW ActiveE (E82, ""BEV10"")",battery,HV voltage of the DC link before the contactors
+SMES1,,did,0xDD67,22 DD 67,,ANZAHL_KUEHLANFORDERUNG_DRINGEND,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Counter describing how often a higher temperature state was reached in consecutive terminal cycles. (Maximum value)
+SMES1,,did,0xDD68,22 DD 68,,HV_SPANNUNG_BERECHNET,2,,"BMW ActiveE (E82, ""BEV10"")",battery,HV voltage calculated from the individual cells (battery voltage behind the contactors)
+SMES1,,did,0xDD69,22 DD 69,,HV_STROM,4,,"BMW ActiveE (E82, ""BEV10"")",battery,HV electricity
+SMES1,,did,0xDD6F,22 DD 6F,,KUEHLKREISLAUF_VENTIL,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Status / control coolant valve: Closed or open / close or open
+SMES1,,did,0xDD72,22 DD 72,,AUFSTART_VERHINDERER,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Reason for not starting the HV system
+SMES1,,did,0xDD73,22 DD 73,,CUMULATIVE_LADUNG,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Status cumulative charge
+SMES1,,did,0xDD74,22 DD 74,,CUMULATIVE_ENTLADUNG,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Status cumulative discharge
+SMES1,,did,0xDD76,22 DD 76,,STATUS_KL30C_SPANNUNG,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Voltage terminal 30C
+SMES1,,did,0xDD7B,22 DD 7B,,REFERENZ_KAPAZITAET,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Read and adjust battery capacity
+SMES1,,did,0xDD7C,22 DD 7C,,GW_INFO,83,,"BMW ActiveE (E82, ""BEV10"")",battery,Warranty data
+SMES1,,did,0xDD7D,22 DD 7D,,STROMGRENZEN,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Current limits
+SMES1,,did,0xDD7E,22 DD 7E,,SPANNUNGSGRENZEN,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Voltage limits
+SMES1,,did,0xDD8E,22 DD 8E,,HVB_HISTORIE_ZYKLEN,112,,"BMW ActiveE (E82, ""BEV10"")",battery,Output of the sum of cyclizations in the respective range during charging/discharging and output of the current loads
+SMES1,,did,0xDD90,22 DD 90,,ZEIT_TEMP_HISTOGRAMM,80,,"BMW ActiveE (E82, ""BEV10"")",battery,Time in various temperature classes and main contactor states
+SMES1,,did,0xDD91,22 DD 91,,ZEIT_SOC_KLASSE,40,,"BMW ActiveE (E82, ""BEV10"")",battery,Time since installation in SOC classes
+SMES1,,did,0xDD92,22 DD 92,,HVB_HISTORIE_MIN_SOC,12,,"BMW ActiveE (E82, ""BEV10"")",battery,"History, state of charge, minimum value of the last five days"
+SMES1,,did,0xDD93,22 DD 93,,HVB_HISTORIE_MAX_SOC,12,,"BMW ActiveE (E82, ""BEV10"")",battery,"History, state of charge, maximum value of the last five days"
+SMES1,,did,0xDD94,22 DD 94,,HV_BATT_HIST_SOC_T1,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature < 0°C  and at different values of current and SoC
+SMES1,,did,0xDD95,22 DD 95,,HV_BATT_HIST_SOC_T2,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 0°C < T < 10°C and at different values of current and SoC
+SMES1,,did,0xDD96,22 DD 96,,HV_BATT_HIST_SOC_T3,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 10°C < T < 20°C and at different values of current and SoC.
+SMES1,,did,0xDD97,22 DD 97,,HV_BATT_HIST_SOC_T4,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 20°C < T < 30°C and at different values of current and SoC
+SMES1,,did,0xDD98,22 DD 98,,HV_BATT_HIST_SOC_T5,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 30°C < T < 40°C and at different values of current and SoC.
+SMES1,,did,0xDD99,22 DD 99,,HV_BATT_HIST_SOC_T6,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 40°C < T < 50°C and at different values of current and SoC
+SMES1,,did,0xDD9A,22 DD 9A,,HV_BATT_HIST_SOC_T7,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Values for histogram of the HV battery in the temperature range above 50°C
+SMES1,,did,0xDD9B,22 DD 9B,,ZELLSPANNUNG_MODUL_9,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 9"
+SMES1,,did,0xDD9C,22 DD 9C,,ZELLSPANNUNG_MODUL_10,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 10"
+SMES1,,did,0xDD9D,22 DD 9D,,ZELLSPANNUNG_MODUL_11,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 11"
+SMES1,,did,0xDD9E,22 DD 9E,,ZELLSPANNUNG_MODUL_12,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 12"
+SMES1,,did,0xDD9F,22 DD 9F,,FAHRGESTELLNUMMER,7,,"BMW ActiveE (E82, ""BEV10"")",battery,Current chassis number (VIN) of the vehicle in which the HV battery (storage) is installed
+SMES1,,did,0xDDA1,22 DD A1,,KUEHLMITTELPUMPE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Result values or control of the coolant pump for cooling the HV battery in % (0-100%)
+SMES1,,did,0xDDA2,22 DD A2,,TEMP_SENSOREN_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the temperature values of all CSCs
+SMES1,,did,0xDDA3,22 DD A3,,ZELLSPANNUNG_MODUL_13,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 13"
+SMES1,,did,0xDDA5,22 DD A5,,FREIGABE_KUEHLMITTELPUMPE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,"Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled)"
+SMES1,,did,0xDDA6,22 DD A6,,SCHUETZ_SCHALTER_BEV10,3,,"BMW ActiveE (E82, ""BEV10"")",battery,"Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank"
+SMES1,,did,0xDDA7,22 DD A7,,ISOLATIONSWIDERSTAND_BEV10,18,,"BMW ActiveE (E82, ""BEV10"")",battery,Value of all insulation resistances (all HV batteries)
+SMES1,,did,0xDDA8,22 DD A8,,CSC_IDS_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010
+SMES1,,did,0xDDA9,22 DD A9,,KUEHLKREISLAUF_TEMP_BEV10,6,,"BMW ActiveE (E82, ""BEV10"")",battery,Coolant circuit temperature BEV2010
+SMES1,,did,0xDDAA,22 DD AA,,HV_SPANNUNG_BATT_BEV10,28,,"BMW ActiveE (E82, ""BEV10"")",battery,Values for HV voltages for the BEV2010
+SMES1,,did,0xDDAD,22 DD AD,,VARIANTE_CSCS_BEV10,13,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the CSC variant of all modules
+SMES1,,did,0xDDAE,22 DD AE,,ZELLSPANNUNG_MODUL_4,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 4"
+SMES1,,did,0xDDAF,22 DD AF,,ZELLSPANNUNG_MODUL_5,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 5"
+SMES1,,did,0xDDB0,22 DD B0,,ZELLSPANNUNG_MODUL_6,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 6"
+SMES1,,did,0xDDB1,22 DD B1,,ZELLSPANNUNG_MODUL_7,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 7"
+SMES1,,did,0xDDB2,22 DD B2,,ZELLSPANNUNG_MODUL_8,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 8"
+SMES1,,did,0xDDB6,22 DD B6,,ALTERUNG_INNENWIDERSTAND,2,,"BMW ActiveE (E82, ""BEV10"")",battery,"Resistance increase: resistance increased by x %, percentage value: (R_akt / R_neu - 1) * 100, 0 = end of life reached, 100 = new condition"
+SMES1,,did,0xDDB7,22 DD B7,,ALTERUNG_KAPAZITAET,2,,"BMW ActiveE (E82, ""BEV10"")",battery,"Remaining capacity of the battery (storage), percentage value: ( C_akt/C_nenn(neu) ) * 100, 0 = end of life reached, 100 = new condition"
+SMES1,,did,0xDDB9,22 DD B9,,ZELLSPANNUNG_MODUL_1,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 1"
+SMES1,,did,0xDDBA,22 DD BA,,ZELLSPANNUNG_MODUL_2,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 2"
+SMES1,,did,0xDDBB,22 DD BB,,ZELLSPANNUNG_MODUL_3,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 3"
+SMES1,,did,0xDDBC,22 DD BC,,ANZEIGE_SOC,6,,"BMW ActiveE (E82, ""BEV10"")",battery,current advertisement Soc
+SMES1,,did,0xDDBD,22 DD BD,,SERVICE_DISCONNECT,1,,"BMW ActiveE (E82, ""BEV10"")",battery,"Status of the service disconnect (0 = open, 1 = closed)"
+SMES1,,did,0xDDBE,22 DD BE,,ZEIT_VORLADUNG,30,,"BMW ActiveE (E82, ""BEV10"")",battery,Last required precharge time (ring buffer)
+SMES1,,did,0xDDBF,22 DD BF,,ZELLSPANNUNGEN_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,minimum and maximum single cell voltages are output
+SMES1,,did,0xDDC0,22 DD C0,,TEMPSENSOREN_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Output of the minimum and maximum temperature values of all individual cells
+SMES1,,did,0xDDC2,22 DD C2,,ALTERUNG_PARAMETER,12,,"BMW ActiveE (E82, ""BEV10"")",battery,Aging values of the series/parallel ohmic resistance and the parallel capacitance
+SMES1,,did,0xDDC4,22 DD C4,,SOC,3,,"BMW ActiveE (E82, ""BEV10"")",battery,Return SOC value (in %) and plausibility
+SMES1,,did,0xDDC6,22 DD C6,,HISTO_SYM_DAUER,32,,"BMW ActiveE (E82, ""BEV10"")",battery,Read the number of cell balancing events in the respective time classes (target time during which the balancing resistors are to be switched active).
+SMES1,,did,0xDDC7,22 DD C7,,HISTO_SYM_ZELLANZAHL,32,,"BMW ActiveE (E82, ""BEV10"")",battery,Read the number of sleep events in which the respective cell count was commanded for cell balancing.
+SMES1,,did,0xDDC8,22 DD C8,,SYM_DELTASOC,10,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum SoC difference in% over the entire HVS. Ring memory of the last 5 trips
+SMES1,,did,0xDDC9,22 DD C9,,MAX_SYM_DAUER,40,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum cell-balancing duration of the last successful balancing operations
+SMES1,,did,0xDDCA,22 DD CA,,SERIENNUMMER_ECU,10,,"BMW ActiveE (E82, ""BEV10"")",battery,Serial number SME ECU
+SMES1,,routine_results,0xAD61,31 03 AD 61,,ISOLATION,,,"BMW ActiveE (E82, ""BEV10"")",battery,Isolation test result
+SMES2,,did,0x6516,22 65 16,,_ST_SYM_MODUS,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Status of the SME cell balancing mode
+SMES2,,did,0xDD61,22 DD 61,,SCHUETZ_FREIGABE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe
+SMES2,,did,0xDD62,22 DD 62,,HV_STROM_MAX,8,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum HV current
+SMES2,,did,0xDD63,22 DD 63,,SCHUETZSCHALTUNGEN_ANZAHL,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of switchings of the contactor switch (currentless and under load)
+SMES2,,did,0xDD64,22 DD 64,,HVIL,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Disturb/disable the interlock generator in the BMS / HVIL test result
+SMES2,,did,0xDD65,22 DD 65,,SOC_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Min/max values of the SOC
+SMES2,,did,0xDD66,22 DD 66,,HV_SPANNUNG,2,,"BMW ActiveE (E82, ""BEV10"")",battery,HV voltage of the DC link before the contactors
+SMES2,,did,0xDD67,22 DD 67,,ANZAHL_KUEHLANFORDERUNG_DRINGEND,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Counter describing how often a higher temperature state was reached in consecutive terminal cycles. (Maximum value)
+SMES2,,did,0xDD68,22 DD 68,,HV_SPANNUNG_BERECHNET,2,,"BMW ActiveE (E82, ""BEV10"")",battery,HV voltage calculated from the individual cells (battery voltage behind the contactors)
+SMES2,,did,0xDD69,22 DD 69,,HV_STROM,4,,"BMW ActiveE (E82, ""BEV10"")",battery,HV electricity
+SMES2,,did,0xDD6F,22 DD 6F,,KUEHLKREISLAUF_VENTIL,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Status / control coolant valve: Closed or open / close or open
+SMES2,,did,0xDD72,22 DD 72,,AUFSTART_VERHINDERER,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Reason for not starting the HV system
+SMES2,,did,0xDD73,22 DD 73,,CUMULATIVE_LADUNG,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Status cumulative charge
+SMES2,,did,0xDD74,22 DD 74,,CUMULATIVE_ENTLADUNG,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Status cumulative discharge
+SMES2,,did,0xDD76,22 DD 76,,STATUS_KL30C_SPANNUNG,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Voltage terminal 30C
+SMES2,,did,0xDD7B,22 DD 7B,,REFERENZ_KAPAZITAET,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Read and adjust battery capacity
+SMES2,,did,0xDD7C,22 DD 7C,,GW_INFO,83,,"BMW ActiveE (E82, ""BEV10"")",battery,Warranty data
+SMES2,,did,0xDD7D,22 DD 7D,,STROMGRENZEN,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Current limits
+SMES2,,did,0xDD7E,22 DD 7E,,SPANNUNGSGRENZEN,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Voltage limits
+SMES2,,did,0xDD8E,22 DD 8E,,HVB_HISTORIE_ZYKLEN,112,,"BMW ActiveE (E82, ""BEV10"")",battery,Output of the sum of cyclizations in the respective range during charging/discharging and output of the current loads
+SMES2,,did,0xDD90,22 DD 90,,ZEIT_TEMP_HISTOGRAMM,80,,"BMW ActiveE (E82, ""BEV10"")",battery,Time in various temperature classes and main contactor states
+SMES2,,did,0xDD91,22 DD 91,,ZEIT_SOC_KLASSE,40,,"BMW ActiveE (E82, ""BEV10"")",battery,Time since installation in SOC classes
+SMES2,,did,0xDD92,22 DD 92,,HVB_HISTORIE_MIN_SOC,12,,"BMW ActiveE (E82, ""BEV10"")",battery,"History, state of charge, minimum value of the last five days"
+SMES2,,did,0xDD93,22 DD 93,,HVB_HISTORIE_MAX_SOC,12,,"BMW ActiveE (E82, ""BEV10"")",battery,"History, state of charge, maximum value of the last five days"
+SMES2,,did,0xDD94,22 DD 94,,HV_BATT_HIST_SOC_T1,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature < 0°C  and at different values of current and SoC
+SMES2,,did,0xDD95,22 DD 95,,HV_BATT_HIST_SOC_T2,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 0°C < T < 10°C and at different values of current and SoC
+SMES2,,did,0xDD96,22 DD 96,,HV_BATT_HIST_SOC_T3,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 10°C < T < 20°C and at different values of current and SoC.
+SMES2,,did,0xDD97,22 DD 97,,HV_BATT_HIST_SOC_T4,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 20°C < T < 30°C and at different values of current and SoC
+SMES2,,did,0xDD98,22 DD 98,,HV_BATT_HIST_SOC_T5,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 30°C < T < 40°C and at different values of current and SoC.
+SMES2,,did,0xDD99,22 DD 99,,HV_BATT_HIST_SOC_T6,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Number of cycles at temperature 40°C < T < 50°C and at different values of current and SoC
+SMES2,,did,0xDD9A,22 DD 9A,,HV_BATT_HIST_SOC_T7,280,,"BMW ActiveE (E82, ""BEV10"")",battery,Values for histogram of the HV battery in the temperature range above 50°C
+SMES2,,did,0xDD9B,22 DD 9B,,ZELLSPANNUNG_MODUL_9,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 9"
+SMES2,,did,0xDD9C,22 DD 9C,,ZELLSPANNUNG_MODUL_10,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 10"
+SMES2,,did,0xDD9D,22 DD 9D,,ZELLSPANNUNG_MODUL_11,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 11"
+SMES2,,did,0xDD9E,22 DD 9E,,ZELLSPANNUNG_MODUL_12,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 12"
+SMES2,,did,0xDD9F,22 DD 9F,,FAHRGESTELLNUMMER,7,,"BMW ActiveE (E82, ""BEV10"")",battery,Current chassis number (VIN) of the vehicle in which the HV battery (storage) is installed
+SMES2,,did,0xDDA1,22 DD A1,,KUEHLMITTELPUMPE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,Result values or control of the coolant pump for cooling the HV battery in % (0-100%)
+SMES2,,did,0xDDA2,22 DD A2,,TEMP_SENSOREN_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the temperature values of all CSCs
+SMES2,,did,0xDDA3,22 DD A3,,ZELLSPANNUNG_MODUL_13,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 13"
+SMES2,,did,0xDDA5,22 DD A5,,FREIGABE_KUEHLMITTELPUMPE,1,,"BMW ActiveE (E82, ""BEV10"")",battery,"Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled)"
+SMES2,,did,0xDDA6,22 DD A6,,SCHUETZ_SCHALTER_BEV10,3,,"BMW ActiveE (E82, ""BEV10"")",battery,"Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank"
+SMES2,,did,0xDDA7,22 DD A7,,ISOLATIONSWIDERSTAND_BEV10,18,,"BMW ActiveE (E82, ""BEV10"")",battery,Value of all insulation resistances (all HV batteries)
+SMES2,,did,0xDDA8,22 DD A8,,CSC_IDS_BEV10,104,,"BMW ActiveE (E82, ""BEV10"")",battery,HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010
+SMES2,,did,0xDDA9,22 DD A9,,KUEHLKREISLAUF_TEMP_BEV10,6,,"BMW ActiveE (E82, ""BEV10"")",battery,Coolant circuit temperature BEV2010
+SMES2,,did,0xDDAA,22 DD AA,,HV_SPANNUNG_BATT_BEV10,28,,"BMW ActiveE (E82, ""BEV10"")",battery,Values for HV voltages for the BEV2010
+SMES2,,did,0xDDAD,22 DD AD,,VARIANTE_CSCS_BEV10,13,,"BMW ActiveE (E82, ""BEV10"")",battery,Return the CSC variant of all modules
+SMES2,,did,0xDDAE,22 DD AE,,ZELLSPANNUNG_MODUL_4,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 4"
+SMES2,,did,0xDDAF,22 DD AF,,ZELLSPANNUNG_MODUL_5,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 5"
+SMES2,,did,0xDDB0,22 DD B0,,ZELLSPANNUNG_MODUL_6,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 6"
+SMES2,,did,0xDDB1,22 DD B1,,ZELLSPANNUNG_MODUL_7,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 7"
+SMES2,,did,0xDDB2,22 DD B2,,ZELLSPANNUNG_MODUL_8,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 8"
+SMES2,,did,0xDDB6,22 DD B6,,ALTERUNG_INNENWIDERSTAND,2,,"BMW ActiveE (E82, ""BEV10"")",battery,"Resistance increase: resistance increased by x %, percentage value: (R_akt / R_neu - 1) * 100, 0 = end of life reached, 100 = new condition"
+SMES2,,did,0xDDB7,22 DD B7,,ALTERUNG_KAPAZITAET,2,,"BMW ActiveE (E82, ""BEV10"")",battery,"Remaining capacity of the battery (storage), percentage value: ( C_akt/C_nenn(neu) ) * 100, 0 = end of life reached, 100 = new condition"
+SMES2,,did,0xDDB9,22 DD B9,,ZELLSPANNUNG_MODUL_1,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 1"
+SMES2,,did,0xDDBA,22 DD BA,,ZELLSPANNUNG_MODUL_2,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages, module 2"
+SMES2,,did,0xDDBB,22 DD BB,,ZELLSPANNUNG_MODUL_3,24,,"BMW ActiveE (E82, ""BEV10"")",battery,"Currently measured cell voltages in V, module 3"
+SMES2,,did,0xDDBC,22 DD BC,,ANZEIGE_SOC,6,,"BMW ActiveE (E82, ""BEV10"")",battery,current advertisement Soc
+SMES2,,did,0xDDBD,22 DD BD,,SERVICE_DISCONNECT,1,,"BMW ActiveE (E82, ""BEV10"")",battery,"Status of the service disconnect (0 = open, 1 = closed)"
+SMES2,,did,0xDDBE,22 DD BE,,ZEIT_VORLADUNG,30,,"BMW ActiveE (E82, ""BEV10"")",battery,Last required precharge time (ring buffer)
+SMES2,,did,0xDDBF,22 DD BF,,ZELLSPANNUNGEN_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,minimum and maximum single cell voltages are output
+SMES2,,did,0xDDC0,22 DD C0,,TEMPSENSOREN_MIN_MAX,4,,"BMW ActiveE (E82, ""BEV10"")",battery,Output of the minimum and maximum temperature values of all individual cells
+SMES2,,did,0xDDC2,22 DD C2,,ALTERUNG_PARAMETER,12,,"BMW ActiveE (E82, ""BEV10"")",battery,Aging values of the series/parallel ohmic resistance and the parallel capacitance
+SMES2,,did,0xDDC4,22 DD C4,,SOC,3,,"BMW ActiveE (E82, ""BEV10"")",battery,Return SOC value (in %) and plausibility
+SMES2,,did,0xDDC6,22 DD C6,,HISTO_SYM_DAUER,32,,"BMW ActiveE (E82, ""BEV10"")",battery,Read the number of cell balancing events in the respective time classes (target time during which the balancing resistors are to be switched active).
+SMES2,,did,0xDDC7,22 DD C7,,HISTO_SYM_ZELLANZAHL,32,,"BMW ActiveE (E82, ""BEV10"")",battery,Read the number of sleep events in which the respective cell count was commanded for cell balancing.
+SMES2,,did,0xDDC8,22 DD C8,,SYM_DELTASOC,10,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum SoC difference in% over the entire HVS. Ring memory of the last 5 trips
+SMES2,,did,0xDDC9,22 DD C9,,MAX_SYM_DAUER,40,,"BMW ActiveE (E82, ""BEV10"")",battery,Maximum cell-balancing duration of the last successful balancing operations
+SMES2,,did,0xDDCA,22 DD CA,,SERIENNUMMER_ECU,10,,"BMW ActiveE (E82, ""BEV10"")",battery,Serial number SME ECU
+SMES2,,routine_results,0xAD61,31 03 AD 61,,ISOLATION,,,"BMW ActiveE (E82, ""BEV10"")",battery,Isolation test result
+EDME,0x12,did,0x409D,22 40 9D,,12V_NACHLADEHISTORIE,93,,BMW i3 / i3s (I01),hv/charging/12v,History with important parameters of the 12V recharge function. Last 4 records
+EDME,0x12,did,0x409E,22 40 9E,,12V_NACHLADEHISTOGRAMM,16,,BMW i3 / i3s (I01),hv/charging/12v,Reading out the histograms for the 12V recharge function
+EDME,0x12,did,0x4105,22 41 05,,STATUS_BATTERIE_VOLTAGE_RAUS,2,,BMW i3 / i3s (I01),hv/charging/12v,Battery voltage raw
+EDME,0x12,did,0x4185,22 41 85,,STATUS_BATTERY_VOLTAGE_FILTERED,2,,BMW i3 / i3s (I01),hv/charging/12v,Battery voltage filtered
+EDME,0x12,did,0xDEAF,22 DE AF,,12V_NACHLADEHISTOGRAMM,24,,BMW i3 / i3s (I01),hv/charging/12v,Read/clear histogram and counter of all charging events of the 12V battery from the high-voltage system
+EDME,0x12,did,0xDEFD,22 DE FD,,ZYKLISCHES_NACHLADEN_INFO,97,,BMW i3 / i3s (I01),hv/charging/12v,Reading out of important parameters of the last 4 processes of the cyclical reloading plus the last parking process.
+EDME,0x12,did,0xDEFE,22 DE FE,,ZYKLISCHES_NACHLADEN_HISTOGRAMM,16,,BMW i3 / i3s (I01),hv/charging/12v,Reading out the histograms over the service life up to the start of the cyclical reloading and the loading times of the cyclical reloading processes
+EDME,0x12,did,0xDF56,22 DF 56,,REX_STATISTIK_SOC_KILOMETER_KLASSEN,64,,BMW i3 / i3s (I01),hv/charging/12v,Number of REX starts after X kilometers with Y SOC at the start of the journey
+EDME,0x12,routine_read,0xADFD,31 01 AD FD <SATZ>,SATZ 0..32,12V_NACHLADEHISTORIE_SATZ_LESEN,,,BMW i3 / i3s (I01),hv/charging/12v,Read one record of the 12V top-up charge history
+EME,0x1A,did,0x6302,22 63 02,,STATUS_HVIL_GESAMT,1,,ActiveHybrid 7 (F04),hv/charging/12v,"Read the HVIL status; if HVIL is interrupted, then not OK"
+EME,0x1A,did,0x6303,22 63 03,,STATUS_HV_ISOLATION,1,,ActiveHybrid 7 (F04),hv/charging/12v,"Read the insulation monitor; if insulation fault, then not OK"
+EME,0x1A,did,0x6304,22 63 04,,STATUS_PRECHARGE,1,,ActiveHybrid 7 (F04),hv/charging/12v,"Variable in the base SW: ECUM_eSystemState = Run -> precharge complete. However, precharge is performed by the SME"
+EME,0x1A,did,0x6305,22 63 05,,STATUS_SPANNUNG_DC_HV,2,,ActiveHybrid 7 (F04),hv/charging/12v,DC voltage of the EMK EMR (HV battery side) (referred to internal)
+EME,0x1A,did,0x6306,22 63 06,,STATUS_HV_STROM,8,,ActiveHybrid 7 (F04),hv/charging/12v,"HV current, electrical system (Bordnetz)"
+EME,0x1A,did,0x630A,22 63 0A,,STATUS_DCDC_LADEMODUS,3,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6310,22 63 10,,STATUS_KL30C_SPANNUNG,1,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6313,22 63 13,,STATUS_TEMPERATUR_HVB,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6314,22 63 14,,STATUS_TEMP_DCDC,6,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6315,22 63 15,,STATUS_SPANNUNG_DC_HV_DCDC,2,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6317,22 63 17,,STATUS_DCDC_LV,2,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6320,22 63 20,,STATUS_HVPM_DC/DC_ANSTEUERUNG,29,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6321,22 63 21,,STATUS_HVPM_VERBRAUCHERREDUZIERUNG,17,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6322,22 63 22,,STATUS_HVPM_HV_SYSTEM_ON_OFF,14,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6323,22 63 23,,STATUS_HVPM_ENERGIEBORDNETZ,134,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6324,22 63 24,,STATUS_HVPM_MSA,90,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6325,22 63 25,,STATUS_HVPM_PKOR,34,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6326,22 63 26,,STATUS_REFERENZKAPAZITAET_HVB,2,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6327,22 63 27,,STATUS_SOC_HVB,2,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x632B,22 63 2B,,STATUS_ESOC_SOC,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x632C,22 63 2C,,STATUS_LADUNGSMENGE_HVB,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x632D,22 63 2D,,STATUS_HVB_TAUSCH_LESEN,8,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x632E,22 63 2E,,STATUS_HVB_LADUNGSMENGE,16,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6332,22 63 32,,STATUS_LADUNG_HV_BATTERIE,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6333,22 63 33,,STATUS_ENTLADUNG_HV_BATTERIE,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6336,22 63 36,,STATUS_HVB_WARRANTY,22,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6351,22 63 51,,STATUS_ENTLADE_INNENWIDERSTAND_T1,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6352,22 63 52,,STATUS_ENTLADE_INNENWIDERSTAND_T2,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6353,22 63 53,,STATUS_ENTLADE_INNENWIDERSTAND_T3,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6354,22 63 54,,STATUS_ENTLADE_INNENWIDERSTAND_T4,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6355,22 63 55,,STATUS_ENTLADE_INNENWIDERSTAND_T5,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6356,22 63 56,,STATUS_ENTLADE_INNENWIDERSTAND_T6,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6357,22 63 57,,STATUS_ENTLADE_INNENWIDERSTAND_T7,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6358,22 63 58,,STATUS_LADE_INNENWIDERSTAND_T1,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6359,22 63 59,,STATUS_LADE_INNENWIDERSTAND_T2,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x635A,22 63 5A,,STATUS_LADE_INNENWIDERSTAND_T3,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x635B,22 63 5B,,STATUS_LADE_INNENWIDERSTAND_T4,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x635C,22 63 5C,,STATUS_LADE_INNENWIDERSTAND_T5,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x635D,22 63 5D,,STATUS_LADE_INNENWIDERSTAND_T6,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x635E,22 63 5E,,STATUS_LADE_INNENWIDERSTAND_T7,10,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6361,22 63 61,,STATUS_ANZEIGE_SOC,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6362,22 63 62,,STATUS_MAXIMALER_ANZEIGE_SOC,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6363,22 63 63,,STATUS_MINIMALER_ANZEIGE_SOC,4,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6369,22 63 69,,STATUS_HVB_HISTORIE_MIN_SOC,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636A,22 63 6A,,STATUS_HVB_HISTORIE_MAX_SOC,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636B,22 63 6B,,STATUS_HVB_HISTORIE_SOC_LADEHUEBE,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636C,22 63 6C,,STATUS_HVB_HISTORIE_SOC_ENTLADEHUEBE,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636D,22 63 6D,,STATUS_HVB_HISTORIE_STROMBELASTUNG,32,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636E,22 63 6E,,STATUS_HVB_HISTORIE_TEMPERATUR,32,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x636F,22 63 6F,,STATUS_HVB_HISTORIE_SOC_SEIT_EINBAU,32,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6370,22 63 70,,STATUS_HVPM_ENERGIEBORDNETZ_2 / STATUS_HVB_SOC_FAHRB,14,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6371,22 63 71,,STATUS_HVBHIST_STARTSOC_0_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6372,22 63 72,,STATUS_HVBHIST_STARTSOC_0_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6373,22 63 73,,STATUS_HVBHIST_STARTSOC_0_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6374,22 63 74,,STATUS_HVBHIST_STARTSOC_0_HUB_15_ L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6375,22 63 75,,STATUS_HVBHIST_STARTSOC_0_HUB_25_ L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6376,22 63 76,,STATUS_HVBHIST_STARTSOC_0_HUB_35_ L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6377,22 63 77,,STATUS_HVBHIST_STARTSOC_0_HUB_50_ L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6378,22 63 78,,STATUS_HVBHIST_STARTSOC_20_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6379,22 63 79,,STATUS_HVBHIST_STARTSOC_20_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637A,22 63 7A,,STATUS_HVBHIST_STARTSOC_20_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637B,22 63 7B,,STATUS_HVBHIST_STARTSOC_20_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637C,22 63 7C,,STATUS_HVBHIST_STARTSOC_20_HUB_25_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637D,22 63 7D,,STATUS_HVBHIST_STARTSOC_20_HUB_35_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637E,22 63 7E,,STATUS_HVBHIST_STARTSOC_20_HUB_50_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x637F,22 63 7F,,STATUS_HVBHIST_STARTSOC_25_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6380,22 63 80,,STATUS_HVBHIST_STARTSOC_25_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6381,22 63 81,,STATUS_HVBHIST_STARTSOC_25_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6382,22 63 82,,STATUS_HVBHIST_STARTSOC_25_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6383,22 63 83,,STATUS_HVBHIST_STARTSOC_25_HUB_25,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6384,22 63 84,,STATUS_HVBHIST_STARTSOC_25_HUB_35_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6385,22 63 85,,STATUS_HVBHIST_STARTSOC_25_HUB_50_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6386,22 63 86,,STATUS_HVBHIST_STARTSOC_30_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6387,22 63 87,,STATUS_HVBHIST_STARTSOC_30_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6388,22 63 88,,STATUS_HVBHIST_STARTSOC_30_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6389,22 63 89,,STATUS_HVBHIST_STARTSOC_30_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638A,22 63 8A,,STATUS_HVBHIST_STARTSOC_30_HUB_25,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638B,22 63 8B,,STATUS_HVBHIST_STARTSOC_30_HUB_35,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638C,22 63 8C,,STATUS_HVBHIST_STARTSOC_30_HUB_50_L,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638D,22 63 8D,,STATUS_HVBHIST_STARTSOC_50_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638E,22 63 8E,,STATUS_HVBHIST_STARTSOC_50_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x638F,22 63 8F,,STATUS_HVBHIST_STARTSOC_50_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6390,22 63 90,,STATUS_HVBHIST_STARTSOC_50_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6391,22 63 91,,STATUS_HVBHIST_STARTSOC_50_HUB_25,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6392,22 63 92,,STATUS_HVBHIST_STARTSOC_50_HUB_35,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6393,22 63 93,,STATUS_HVBHIST_STARTSOC_50_HUB_50_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6394,22 63 94,,STATUS_HVBHIST_STARTSOC_70_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6395,22 63 95,,STATUS_HVBHIST_STARTSOC_70_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6396,22 63 96,,STATUS_HVBHIST_STARTSOC_70_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6397,22 63 97,,STATUS_HVBHIST_STARTSOC_70_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6398,22 63 98,,STATUS_HVBHIST_STARTSOC_70_HUB_25,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x6399,22 63 99,,STATUS_HVBHIST_STARTSOC_70_HUB_35_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639A,22 63 9A,,STATUS_HVBHIST_STARTSOC_70_HUB_50_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639B,22 63 9B,,STATUS_HVBHIST_STARTSOC_80_HUB_0,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639C,22 63 9C,,STATUS_HVBHIST_STARTSOC_80_HUB_5,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639D,22 63 9D,,STATUS_HVBHIST_STARTSOC_80_HUB_10,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639E,22 63 9E,,STATUS_HVBHIST_STARTSOC_80_HUB_15,48,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x639F,22 63 9F,,STATUS_HVBHIST_STARTSOC_80_HUB_25_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A0,22 63 A0,,STATUS_HVBHIST_STARTSOC_80_HUB_35_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A1,22 63 A1,,STATUS_HVBHIST_STARTSOC_80_HUB_50_EL,24,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A5,22 63 A5,,STATUS_HVPM_SPANNUNGSFREIHEIT,160,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A6,22 63 A6,,STATUS_HV_BATT_HIST_SOC1_T1 / STATUS_HV_BATT_HIST_SOC1_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A7,22 63 A7,,STATUS_HV_BATT_HIST_SOC2_T1 / STATUS_HV_BATT_HIST_SOC2_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A8,22 63 A8,,STATUS_HV_BATT_HIST_SOC3_T1 / STATUS_HV_BATT_HIST_SOC3_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63A9,22 63 A9,,STATUS_HV_BATT_HIST_SOC4_T1 / STATUS_HV_BATT_HIST_SOC4_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AA,22 63 AA,,STATUS_HV_BATT_HIST_SOC5_T1 / STATUS_HV_BATT_HIST_SOC5_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AB,22 63 AB,,STATUS_HV_BATT_HIST_SOC6_T1 / STATUS_HV_BATT_HIST_SOC6_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AC,22 63 AC,,STATUS_HV_BATT_HIST_SOC7_T1 / STATUS_HV_BATT_HIST_SOC7_ T1,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AD,22 63 AD,,STATUS_HV_BATT_HIST_SOC1_T2 / STATUS_HV_BATT_HIST_SOC1_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AE,22 63 AE,,STATUS_HV_BATT_HIST_SOC2_T2 / STATUS_HV_BATT_HIST_SOC2_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63AF,22 63 AF,,STATUS_HV_BATT_HIST_SOC3_T2 / STATUS_HV_BATT_HIST_SOC3_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B0,22 63 B0,,STATUS_HV_BATT_HIST_SOC4_T2 / STATUS_HV_BATT_HIST_SOC4_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B1,22 63 B1,,STATUS_HV_BATT_HIST_SOC5_T2 / STATUS_HV_BATT_HIST_SOC5_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B2,22 63 B2,,STATUS_HV_BATT_HIST_SOC6_T2 / STATUS_HV_BATT_HIST_SOC6_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B3,22 63 B3,,STATUS_HV_BATT_HIST_SOC7_T2 / STATUS_HV_BATT_HIST_SOC7_ T2,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B4,22 63 B4,,STATUS_HV_BATT_HIST_SOC1_T3 / STATUS_HV_BATT_HIST_SOC1_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B5,22 63 B5,,STATUS_HV_BATT_HIST_SOC2_T3 / STATUS_HV_BATT_HIST_SOC2_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B6,22 63 B6,,STATUS_HV_BATT_HIST_SOC3_T3 / STATUS_HV_BATT_HIST_SOC3_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B7,22 63 B7,,STATUS_HV_BATT_HIST_SOC4_T3 / STATUS_HV_BATT_HIST_SOC4_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B8,22 63 B8,,STATUS_HV_BATT_HIST_SOC5_T3 / STATUS_HV_BATT_HIST_SOC5_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63B9,22 63 B9,,STATUS_HV_BATT_HIST_SOC6_T3 / STATUS_HV_BATT_HIST_SOC6_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BA,22 63 BA,,STATUS_HV_BATT_HIST_SOC7_T3 / STATUS_HV_BATT_HIST_SOC7_ T3,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BB,22 63 BB,,STATUS_HV_BATT_HIST_SOC1_T4 / STATUS_HV_BATT_HIST_SOC1_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BC,22 63 BC,,STATUS_HV_BATT_HIST_SOC2_T4 / STATUS_HV_BATT_HIST_SOC2_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BD,22 63 BD,,STATUS_HV_BATT_HIST_SOC3_T4 / STATUS_HV_BATT_HIST_SOC3_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BE,22 63 BE,,STATUS_HV_BATT_HIST_SOC4_T4 / STATUS_HV_BATT_HIST_SOC4_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63BF,22 63 BF,,STATUS_HV_BATT_HIST_SOC5_T4 / STATUS_HV_BATT_HIST_SOC5_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C0,22 63 C0,,STATUS_HV_BATT_HIST_SOC6_T4 / STATUS_HV_BATT_HIST_SOC6_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C1,22 63 C1,,STATUS_HV_BATT_HIST_SOC7_T4 / STATUS_HV_BATT_HIST_SOC7_ T4,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C2,22 63 C2,,STATUS_HV_BATT_HIST_SOC1_T5 / STATUS_HV_BATT_HIST_SOC1_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C3,22 63 C3,,STATUS_HV_BATT_HIST_SOC2_T5 / STATUS_HV_BATT_HIST_SOC2_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C4,22 63 C4,,STATUS_HV_BATT_HIST_SOC3_T5 / STATUS_HV_BATT_HIST_SOC3_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C5,22 63 C5,,STATUS_HV_BATT_HIST_SOC4_T5 / STATUS_HV_BATT_HIST_SOC4_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C6,22 63 C6,,STATUS_HV_BATT_HIST_SOC5_T5 / STATUS_HV_BATT_HIST_SOC5_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C7,22 63 C7,,STATUS_HV_BATT_HIST_SOC6_T5 / STATUS_HV_BATT_HIST_SOC6_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C8,22 63 C8,,STATUS_HV_BATT_HIST_SOC7_T5 / STATUS_HV_BATT_HIST_SOC7_ T5,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63C9,22 63 C9,,STATUS_HV_BATT_HIST_SOC1_T6 / STATUS_HV_BATT_HIST_SOC1_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CA,22 63 CA,,STATUS_HV_BATT_HIST_SOC2_T6 / STATUS_HV_BATT_HIST_SOC2_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CB,22 63 CB,,STATUS_HV_BATT_HIST_SOC3_T6 / STATUS_HV_BATT_HIST_SOC3_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CC,22 63 CC,,STATUS_HV_BATT_HIST_SOC4_T6 / STATUS_HV_BATT_HIST_SOC4_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CD,22 63 CD,,STATUS_HV_BATT_HIST_SOC5_T6 / STATUS_HV_BATT_HIST_SOC5_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CE,22 63 CE,,STATUS_HV_BATT_HIST_SOC6_T6 / STATUS_HV_BATT_HIST_SOC6_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63CF,22 63 CF,,STATUS_HV_BATT_HIST_SOC7_T6 / STATUS_HV_BATT_HIST_SOC7_ T6,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D0,22 63 D0,,STATUS_HV_BATT_HIST_SOC1_T7 / STATUS_HV_BATT_HIST_SOC1_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D1,22 63 D1,,STATUS_HV_BATT_HIST_SOC2_T7 / STATUS_HV_BATT_HIST_SOC2_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D2,22 63 D2,,STATUS_HV_BATT_HIST_SOC3_T7 / STATUS_HV_BATT_HIST_SOC3_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D3,22 63 D3,,STATUS_HV_BATT_HIST_SOC4_T7 / STATUS_HV_BATT_HIST_SOC4_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D4,22 63 D4,,STATUS_HV_BATT_HIST_SOC5_T7 / STATUS_HV_BATT_HIST_SOC5_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D5,22 63 D5,,STATUS_HV_BATT_HIST_SOC6_T7 / STATUS_HV_BATT_HIST_SOC6_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D6,22 63 D6,,STATUS_HV_BATT_HIST_SOC7_T7 / STATUS_HV_BATT_HIST_SOC7_ T7,40,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D7,22 63 D7,,STATUS_12VBATT_ENTL_STANDKL,2,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D8,22 63 D8,,STATUS_HVPM_MSA_2,22,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0x63D9,22 63 D9,,STATUS_HVPM_DCDC_ALS,16,,ActiveHybrid 7 (F04),hv/charging/12v,
+EME,0x1A,did,0xDDF1,22 DD F1,,EME_SPANNUNG_DC_HV,2,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,"DC voltage of the e-machine after rectification by the EME (HV battery side, referred to internal)"
+EME,0x1A,did,0xDDF2,22 DD F2,,EME_SPANNUNG_DC_HV_DCDC,2,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,High-voltage vehicle electrical system voltage measured by the DC/DC converter (in the EME)
+EME,0x1A,did,0xDDF3,22 DD F3,,EME_STROM_EMASCHINE_AC,4,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,HV current of the DC/DC converter and the averaged RMS current of the e-machine
+EME,0x1A,did,0xDDF6,22 DD F6,,EME_DCDC_LV,4,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Voltage / current DCDC (12V vehicle electrical system) at the B + bolt
+EME,0x1A,did,0xDDF8,22 DD F8,,EME_DCDC_LADEMODUS,3,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Query the DC/DC converter for operating mode and battery state of charge
+EME,0x1A,did,0xDE00,22 DE 00,,EME_HVPM_DCDC_ANSTEUERUNG,25,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Return values from the HVPM for DCDC control
+EME,0x1A,did,0xDE01,22 DE 01,,EME_HVPM_VERBRAUCHERREDUZIERUNG,15,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Return values for HVPM consumer reduction
+EME,0x1A,did,0xDE02,22 DE 02,,EME_HVPM_HV_SYSTEM_ON_OFF,8,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,High-voltage system on / off (HVPM 2013)
+EME,0x1A,did,0xDE03,22 DE 03,,EME_HVPM_ENERGIEBORDNETZ,134,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Return values of the HVPM for HV energy and cell voltages
+EME,0x1A,did,0xDE04,22 DE 04,,EME_HVPM_ENERGIEBORDNETZ_2,14,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Number of times the vehicle was ready to drive in the SOC area
+EME,0x1A,did,0xDE05,22 DE 05,,EME_HVPM_MSA,78,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,HVPM engine start-stop automatic
+EME,0x1A,did,0xDE06,22 DE 06,,EME_HVPM_PKOR,118,yes,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,HVPM performance coordinator
+EME,0x1A,did,0xDE0B,22 DE 0B,,EME_HV_ISOLATION,1,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,"External insulation fault, SME"
+EME,0x1A,did,0xDE0C,22 DE 0C,,EME_HVIL_GESAMT,1,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,"Reading out the HVIL status in the EME; if HVIL is interrupted, then not ok"
+EME,0x1A,did,0xDE0D,22 DE 0D,,EME_LV_BAT,5,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Status of the LV battery
+EME,0x1A,did,0xDE0F,22 DE 0F,,EME_KL30C_SPANNUNG,1,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,"0 = crash not detected, 1 = crash detected"
+EME,0x1A,did,0xDE10,22 DE 10,,EME_HVB_TAUSCH_LESEN,8,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Odometer reading (km) of the last battery replacement
+EME,0x1A,did,0xDE14,22 DE 14,,EME_ANF_NL,144,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Read out history memory of St_anf_nl_eme
+EME,0x1A,did,0xDE15,22 DE 15,,EME_NLM_DEAK,144,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Read out history memory of St_nlm_deakt_msa
+EME,0x1A,did,0xDE18,22 DE 18,,EME_HVPM_SPANNUNGSFREIHEIT,160,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Info memory for the de-energized state of the high-voltage system (monitored by HVPM)
+EME,0x1A,did,0xDE1A,22 DE 1A,,EME_12VBATT_ENTL_STANDKL,2,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Charge quantity
+EME,0x1A,did,0xDE1B,22 DE 1B,,EME_HVPM_MSA_2,16,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,HVPM MSA2
+EME,0x1A,did,0xDE1C,22 DE 1C,,EME_HVPM_DCDC_ALS,16,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18) | ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,HVPM DCDC ALS
+EME,0x1A,did,0xDE1E,22 DE 1E,,EME_SZE_ZSEBATTERIE,140,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Read out the results of the ZSE battery state-detection
+EME,0x1A,did,0xDE21,22 DE 21,,EME_TEMP_DCDC,2,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Current temperature value of the DC/DC converter transformer
+EME,0x1A,did,0xDE26,22 DE 26,,EME_HVSTART_FEHLER,1,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Indication of the fault when starting up the HV system
+EME,0x1A,did,0xDE29,22 DE 29,,EME_NOTENTL_ZAEHLER,2,,ActiveHybrid 3/5/7 (F30/F10/F01),hv/charging/12v,Emergency discharge counter: counter status / reset counter (0 = no reset; 1 = reset)
+EME,0x1A,did,0xDE3E,22 DE 3E,,EME_HVPM_KONFIGURATION_LADEEINSTELLUNG,1,,BMW i3 / i3s (I01),hv/charging/12v,Configuration loading or low-cost loading as a valid interface
+EME,0x1A,did,0xDE6E,22 DE 6E,,AE_LSC_LADEN_2,58,,BMW i3 / i3s (I01),hv/charging/12v,Last State Call Load (Extended) Feedback on the charging process
+EME,0x1A,did,0xDE71,22 DE 71,,AE_CHARGE_ENABLE,1,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Statement about the granting of loading clearance
+EME,0x1A,did,0xDE75,22 DE 75,,AE_HV_SPANNUNG_LESEN,10,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Values of all intermediate circuit voltages
+EME,0x1A,did,0xDE83,22 DE 83,,AE_ROHSIG_EINGANG_SENS_DCDC,12,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Raw signals sensors / inputs DC / DC converter
+EME,0x1A,did,0xDE88,22 DE 88,,AE_SPANNUNG_KLEMME30B,2,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,current voltage at KL30B
+EME,0x1A,did,0xDE89,22 DE 89,,AE_STROM_DCDC,10,yes,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,DC / DC converter currents
+EME,0x1A,did,0xDE92,22 DE 92,,AE_ZUSTAND_1_DCDC,4,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,DC / DC converter status
+EME,0x1A,did,0xDE96,22 DE 96,,AE_ZUSTAND_DCDC_FEHLERBILD,1,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Return of active / inactive errors DC / DC converter
+EME,0x1A,did,0xDEA0,22 DE A0,,STATUS_TSR_LADEN,236,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,All return values regarding TSR charging
+EME,0x1A,did,0xDEA1,22 DE A1,,LADEHISTORIE,164,,BMW i3 / i3s (I01),hv/charging/12v,Reading / deleting the charging history
+EME,0x1A,did,0xDEA9,22 DE A9,,AE_ZUSTAND_2_DCDC,1,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Various statuses returned from the DCDC converter
+EME,0x1A,did,0xDEAE,22 DE AE,,LADEHISTOGRAMM,44,,BMW i3 / i3s (I01),hv/charging/12v,Reading / deleting the histogram and counter of all charging processes (electric vehicle and plug-in hybrid)
+EME,0x1A,did,0xDEBD,22 DE BD,,AE_SPANNUNG_DCDC,2,yes,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,DC / DC voltage low-voltage side
+EME,0x1A,did,0xDEDE,22 DE DE,,AE_LSC_LADEN,42,yes,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Feedback on the charging process
+EME,0x1A,did,0xDF49,22 DF 49,,HISTOGRAMM_LADEKOORDINATOR,96,,BMW i3 / i3s (I01),hv/charging/12v,Charge coordinator histograms
+EME,0x1A,did,0xDF50,22 DF 50,,LADEMODUS_WERK,2,,BMW i3 / i3s (I01),hv/charging/12v,Setting and reading out the factory charging mode (charging to the specified SOC)
+EME,0x1A,did,0xDF59,22 DF 59,,DCDC_RBM_INFO,64,,BMW i3 / i3s (I01),hv/charging/12v,RBM information for the discontinuous DC / DC converter diagnosis in I01 and I12
+EME,0x1A,did,0xDF5A,22 DF 5A,,LADEGERAET_RBM_INFO,192,,BMW i3 / i3s (I01),hv/charging/12v,RBM information for the discontinuous charger diagnosis at I01 and I12
+EME,0x1A,did,0xDFB3,22 DF B3,,LADEGERAET_KONFIGURATION,2,,BMW i3 / i3s (I01),hv/charging/12v,Configuration of built-in charger type (s)
+EME,0x1A,did,0xDFB5,22 DF B5,,LADEGERAET_TEMPERATUR_HISTOGRAMM,72,,BMW i3 / i3s (I01),hv/charging/12v,Temperature histograms of the charging electronics (SLE) present within the drive electronics (AE)
+EME,0x1A,did,0xDFB7,22 DF B7,,LADEGERAET_HV_UEBERSTROM,4,,BMW i3 / i3s (I01),hv/charging/12v,Charger overcurrent meter based on HV DC current sensor raw value
+EME,0x1A,did,0xE5FE,22 E5 FE,,LADEKOORDINATOR_INTERFACE,125,,BMW i3 / i3s (I01),hv/charging/12v,Interfaces from the charging coordinator to HVPM and chargers
+EME,0x1A,did,0xE5FF,22 E5 FF,,DCDC_MESSGROESSEN_KOMPLETT,115,,BMW i3 / i3s (I01),hv/charging/12v,Status of all available DCDC measured values for both PKR2 and non-PKR2 software
+EME,0x1A,routine_read,0xADF9,31 01 AD F9 <HISTOGRAMM_NR>,HISTOGRAMM_NR 0..32,AE_DCDC_HISTOGRAMM,,,BMW i3 / i3s (I01) | BMW i8 (I12) | BMW 530Le (F18),hv/charging/12v,Reading the requested histogram of the DCDC converter
+EME,0x1A,routine_read,0xADFC,31 01 AD FC <SATZ>,SATZ 0..32,LADEHISTORIE_SATZ_LESEN,,,BMW i3 / i3s (I01),hv/charging/12v,Reads out the records of the loading history.
+EME,0x1A,routine_read,0xAF42,31 01 AF 42 <HISTOGRAMM_SLE_NR>,HISTOGRAMM_SLE_NR 0..32,LADEGERAET_HISTOGRAMM_LESEN,,,BMW i3 / i3s (I01),hv/charging/12v,Read out the histograms of the charger
+IHX,0x78,did,0x4020,22 40 20,,_VALEO_LESEN_SPEICHER,1,,BMW i3 / i3s (I01),hv/charging/12v,MEMORY BLOCK
+IHX,0x78,did,0xD8C7,22 D8 C7,,EKMV_AKS_GEN20,1,,BMW i3 / i3s (I01),hv/charging/12v,Insulation test eKMV
+IHX,0x78,did,0xD8D2,22 D8 D2,,BUS_IN_HV_POWERMANAGEMENT,3,,BMW i3 / i3s (I01),hv/charging/12v,The maximum power provided by the HV-PM for the air conditioning.
+IHX,0x78,did,0xD8D3,22 D8 D3,,BUS_IN_HV_PM_EDH,3,,BMW i3 / i3s (I01),hv/charging/12v,The maximum power provided by the HV-PM for the EDH.
+IHX,0x78,did,0xDFC0,22 DF C0,,HV_EDH_STECKVERBINDUNG,1,,BMW i3 / i3s (I01),hv/charging/12v,Status high-voltage plug connection: See table TAB_HV_STECKVERBINDUNG
+IHX,0x78,did,0xDFC1,22 DF C1,,HV_EKMV_STECKVERBINDUNG,1,,BMW i3 / i3s (I01),hv/charging/12v,Status high-voltage plug connection: See table TAB_HV_STECKVERBINDUNG
+KLE,0x15,did,0xDE84,22 DE 84,,BETRIEBSZUSTAND_LADEGERAET,13,,BMW i3 / i3s (I01),hv/charging/12v,Operating modes charger
+KLE,0x15,did,0xDE85,22 DE 85,,LADEGERAET_LEISTUNG,4,,BMW i3 / i3s (I01),hv/charging/12v,Power values intermediate circuit of the charger
+KLE,0x15,did,0xDE86,22 DE 86,,LADEGERAET_SPANNUNG,12,,BMW i3 / i3s (I01),hv/charging/12v,AC and DC voltages charger
+KLE,0x15,did,0xDE87,22 DE 87,,LADEGERAET_STROM,14,,BMW i3 / i3s (I01),hv/charging/12v,AC and DC currents charger
+KLE,0x15,did,0xDF20,22 DF 20,,BETRIEBSART_AKTUELL,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status of the current operating mode of the charger electronics
+KLE,0x15,did,0xDF21,22 DF 21,,FEHLERZUSTAENDE,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Fault states of the charging electronics
+KLE,0x15,did,0xDF24,22 DF 24,,WIRKUNGSGRAD_LADEZYKLUS,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Charge cycle efficiency status
+KLE,0x15,did,0xDF27,22 DF 27,,LADEDAUER,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Charge duration status
+KLE,0x15,did,0xDF28,22 DF 28,,TEMPERATUR_LADEELEKTRONIK,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Current temperature of charging electronics
+KLE,0x15,did,0xDF29,22 DF 29,,SME_BEGRENZUNGSGROESSEN,4,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Charging power limitation values from SME
+KLE,0x15,did,0xDF2A,22 DF 2A,,URSACHE_LADEUNTERBRECHUNG,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,"Charge inhibitor status, charger electronics"
+KLE,0x15,did,0xDF2B,22 DF 2B,,CHARGE_ENABLE_HW,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status charge enable HW line
+KLE,0x15,did,0xDF2E,22 DF 2E,,HVDC_LEISTUNG,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status HV DC power of the charger electronics
+KLE,0x15,did,0xDF2F,22 DF 2F,,HVDC_LEISTUNG_MAX,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status maximum HV DC power of the charger electronics
+KLE,0x15,did,0xDF30,22 DF 30,,AC_WIRKLEISTUNG_LADEZYKLUS,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,"Status of active power drawn from the mains, current charge cycle"
+KLE,0x15,did,0xDF32,22 DF 32,,HVDC_SPANNUNG,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,HV DC voltage at the charging electronics
+KLE,0x15,did,0xDF33,22 DF 33,,HVDC_SPANNUNG_MAX,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Maximum HV DC voltage at the charging electronics
+KLE,0x15,did,0xDF34,22 DF 34,,HVDC_STROM,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status HV DC current of the charger electronics
+KLE,0x15,did,0xDF35,22 DF 35,,HVDC_STROM_MAX,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status maximum HV DC current of the charger electronics
+KLE,0x15,did,0xDF37,22 DF 37,,AC_STROM_MAX,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Status maximum AC current of the charger electronics
+KLE,0x15,did,0xDF38,22 DF 38,,KL30_SPANNUNG,2,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Current voltage at terminal 30 of the charging electronics
+KLE,0x15,did,0xDF3D,22 DF 3D,,SOFTWAREVERSION_LADEELEKTRONIK,,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,SW version of the charger electronics
+KLE,0x15,did,0xDF3F,22 DF 3F,,DIGITAL_IN_OUT,1,,"BMW ActiveE (E82, ""BEV10"")",hv/charging/12v,Values of the digital inputs and outputs of the charger electronics
+KLE,0x15,did,0xDFB0,22 DF B0,,LADEGERAET_LADEDAUER,8,,BMW i3 / i3s (I01),hv/charging/12v,Information on the charging time
+KLE,0x15,did,0xDFB1,22 DF B1,,LADEGERAET_TEMPERATUREN,10,,BMW i3 / i3s (I01),hv/charging/12v,Reading out temperatures
+KLE,0x15,did,0xDFB4,22 DF B4,,LADEGERAET_LEISTUNG2,4,,BMW i3 / i3s (I01),hv/charging/12v,Power values for second charger (multi-phase charging)
+KLE,0x15,did,0xDFB6,22 DF B6,,LADEGERAET_LADE_HISTOGRAMM,40,,BMW i3 / i3s (I01),hv/charging/12v,Charge histogram related to temperature and power
+KLE,0x15,did,0xDFB7,22 DF B7,,LADEGERAET_LADE_HISTOGRAMM2,40,,BMW i3 / i3s (I01),hv/charging/12v,Charging histogram relating to temperature and power for a second charger (multi-phase charging).
+KLE,0x15,did,0xDFB8,22 DF B8,,LADEGERAET_LADEDAUER2,8,,BMW i3 / i3s (I01),hv/charging/12v,Information on the charging time for a second charger (multi-phase charging)
+KLE,0x15,did,0xDFB9,22 DF B9,,UMSCHALTMATRIX,20,,BMW i3 / i3s (I01),hv/charging/12v,Switching matrix (multi-phase charging): number of switching cycles and state of the switches
+KLE,0x15,did,0xDFBA,22 DF BA,,LADEGERAET_SPANNUNG2,12,,BMW i3 / i3s (I01),hv/charging/12v,AC and DC voltages for second charger (multi-phase charging)
+KLE,0x15,did,0xDFBB,22 DF BB,,LADEGERAET_STROM2,14,,BMW i3 / i3s (I01),hv/charging/12v,Charger currents for second charger (multi-phase charging)
+KLE,0x15,did,0xDFBC,22 DF BC,,BETRIEBSZUSTAND_LADEGERAET2,13,,BMW i3 / i3s (I01),hv/charging/12v,Operating modes charger for second charger (multi-phase charging)
+KLE,0x15,did,0xDFBD,22 DF BD,,LADEDAUER_LADEART,16,,BMW i3 / i3s (I01),hv/charging/12v,Charging time for different charging types
+LIM,0x14,did,0xDB0E,22 DB 0E,,ZV_LADESTECKER_CN,2,,BMW i3 / i3s (I01),hv/charging/12v,Actuator AC plug lock (China front)
+LIM,0x14,did,0xDB0F,22 DB 0F,,LADESTECKDOSE_TEMPERATUR,2,,BMW i3 / i3s (I01),hv/charging/12v,Temperature of the DC charging connection in ° C (China)
+LIM,0x14,did,0xDE6B,22 DE 6B,,LADEN_HOSPITALITY_FUNKTION,1,,BMW i3 / i3s (I01),hv/charging/12v,Hospitality function (automatic unlocking of the charging plug at the end of the charging process).
+LIM,0x14,did,0xDEF0,22 DE F0,,ZV_LADESTECKER,2,,BMW i3 / i3s (I01),hv/charging/12v,"Status and control of charging plug (depending on plug type and market) 0 = unlocked, 1 = locked"
+LIM,0x14,did,0xDEF1,22 DE F1,,ZV_LADEKLAPPE,2,,BMW i3 / i3s (I01),hv/charging/12v,"Status or control loading flap (0 = unlocked, 1 = locked)"
+LIM,0x14,did,0xDEF2,22 DE F2,,LADEBEREITSCHAFT_LIM,1,,BMW i3 / i3s (I01),hv/charging/12v,"Ready to charge (HW line), (1 = yes, 0 = no) sent from LIM to SLE"
+LIM,0x14,did,0xDEF3,22 DE F3,,LED_LADESTATUS,1,,BMW i3 / i3s (I01),hv/charging/12v,Status or control LED for charging status (RGB light ring)
+LIM,0x14,did,0xDEF4,22 DE F4,,LED_SUCHBELEUCHTUNG,1,,BMW i3 / i3s (I01),hv/charging/12v,"Status or activation of the LED for search lighting (0 = not activated, 1 = activated) - only for separate DC charging socket"
+LIM,0x14,did,0xDEF6,22 DE F6,,PILOTSIGNAL,7,,BMW i3 / i3s (I01),hv/charging/12v,current data of the pilot signal about the charging current
+LIM,0x14,did,0xDEF7,22 DE F7,,LADESCHNITTSTELLE_DC_TEPCO,4,,BMW i3 / i3s (I01),hv/charging/12v,Status of the batch control lines
+LIM,0x14,did,0xDEF8,22 DE F8,,DC_SCHUETZ_SCHALTER,1,,BMW i3 / i3s (I01),hv/charging/12v,Contactor switch status (DC charging)
+LIM,0x14,did,0xDEF9,22 DE F9,,DC_SCHUETZ_SPANNUNG_EINGANG,3,,BMW i3 / i3s (I01),hv/charging/12v,Voltage at the input of the relay box (contactors) for DC charging
+LIM,0x14,did,0xDEFA,22 DE FA,,DC_PINABDECKUNG_COMBO,1,,BMW i3 / i3s (I01),hv/charging/12v,"State of the DC pin cover for combo socket (0 = closed, 1 = open)"
+RDME,,did,0x581C,22 58 1C,,IUK87,1,,BMW i3 REx (I01),hv/charging/12v,Battery voltage
+RDME,,did,0x5828,22 58 28,,CL_MMV_ENVD,1,,BMW i3 REx (I01),hv/charging/12v,Charge in the activated-carbon filter (moving average)
+REME,,did,0xDDF1,22 DD F1,,EME_SPANNUNG_DC_HV,2,,BMW i3 REx (I01) | BMW i8 (I12),hv/charging/12v,"DC voltage of the e-machine after rectification by the EME (HV battery side, referred to internal)"
+REME,,did,0xDDF3,22 DD F3,,EME_STROM_EMASCHINE_AC,6,,BMW i3 REx (I01) | BMW i8 (I12),hv/charging/12v,HV current of the DC/DC converter and the averaged RMS current of the e-machine
+SLE,,did,0xDEF0,22 DE F0,,ZV_LADESTECKER,2,,BMW X5 xDrive40e (F15),hv/charging/12v,"Status and control of charging plug (depending on plug type and market) 0 = unlocked, 1 = locked"
+SLE,,did,0xDEF1,22 DE F1,,ZV_LADEKLAPPE,2,,BMW X5 xDrive40e (F15),hv/charging/12v,"Status or control loading flap (0 = unlocked, 1 = locked)"
+SLE,,did,0xDEF2,22 DE F2,,LADEBEREITSCHAFT_LIM,1,,BMW X5 xDrive40e (F15),hv/charging/12v,"Ready to charge (HW line), (1 = yes, 0 = no) sent from LIM to SLE"
+SLE,,did,0xDEF3,22 DE F3,,LED_LADESTATUS,1,,BMW X5 xDrive40e (F15),hv/charging/12v,Status or control LED for charging status (RGB light ring)
+SLE,,did,0xDEF4,22 DE F4,,LED_SUCHBELEUCHTUNG,1,,BMW X5 xDrive40e (F15),hv/charging/12v,"Status or activation of the LED for search lighting (0 = not activated, 1 = activated) - only for separate DC charging socket"
+SLE,,did,0xDEF6,22 DE F6,,PILOTSIGNAL,7,,BMW X5 xDrive40e (F15),hv/charging/12v,current data of the pilot signal about the charging current
+SLE,,did,0xDF20,22 DF 20,,BETRIEBSART_AKTUELL,1,,BMW X5 xDrive40e (F15),hv/charging/12v,Status of the current operating mode of the charger electronics
+SLE,,did,0xDF21,22 DF 21,,FEHLERZUSTAENDE,3,,BMW X5 xDrive40e (F15),hv/charging/12v,Fault states of the charging electronics
+SLE,,did,0xDF24,22 DF 24,,WIRKUNGSGRAD_LADEZYKLUS,1,,BMW X5 xDrive40e (F15),hv/charging/12v,Charge cycle efficiency status
+SLE,,did,0xDF27,22 DF 27,,LADEDAUER,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Charge duration status
+SLE,,did,0xDF28,22 DF 28,,TEMPERATUR_LADEELEKTRONIK,1,,BMW X5 xDrive40e (F15),hv/charging/12v,Current temperature of charging electronics
+SLE,,did,0xDF29,22 DF 29,,SME_BEGRENZUNGSGROESSEN,4,,BMW X5 xDrive40e (F15),hv/charging/12v,Charging power limitation values from SME
+SLE,,did,0xDF2E,22 DF 2E,,HVDC_LEISTUNG,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Status HV DC power of the charger electronics
+SLE,,did,0xDF2F,22 DF 2F,,HVDC_LEISTUNG_MAX,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Status maximum HV DC power of the charger electronics
+SLE,,did,0xDF30,22 DF 30,,AC_WIRKLEISTUNG_LADEZYKLUS,2,,BMW X5 xDrive40e (F15),hv/charging/12v,"Status of active power drawn from the mains, current charge cycle"
+SLE,,did,0xDF32,22 DF 32,,HVDC_SPANNUNG,2,,BMW X5 xDrive40e (F15),hv/charging/12v,HV DC voltage at the charging electronics
+SLE,,did,0xDF33,22 DF 33,,HVDC_SPANNUNG_MAX,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Maximum HV DC voltage at the charging electronics
+SLE,,did,0xDF34,22 DF 34,,HVDC_STROM,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Status HV DC current of the charger electronics
+SLE,,did,0xDF35,22 DF 35,,HVDC_STROM_MAX,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Status maximum HV DC current of the charger electronics
+SLE,,did,0xDF37,22 DF 37,,AC_STROM_MAX,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Status maximum AC current of the charger electronics
+SLE,,did,0xDF38,22 DF 38,,KL30_SPANNUNG,2,,BMW X5 xDrive40e (F15),hv/charging/12v,Current voltage at terminal 30 of the charging electronics
+SLE,,did,0xDF3C,22 DF 3C,,LADEBETRIEBSDAUER,4,,BMW X5 xDrive40e (F15),hv/charging/12v,Charger total charging operating time in minutes
+SLE,,did,0xDF3D,22 DF 3D,,SOFTWAREVERSION_LADEELEKTRONIK,,,BMW X5 xDrive40e (F15),hv/charging/12v,SW version of the charger electronics
+SLE,,routine_read,0xAF41,31 01 AF 41 <TEMPERATUR_BEREICH>,TEMPERATUR_BEREICH 0..16,SLE_TEMPHISTOGRAMM_LESEN,,,BMW X5 xDrive40e (F15),hv/charging/12v,Read the SLE temperature histograms
