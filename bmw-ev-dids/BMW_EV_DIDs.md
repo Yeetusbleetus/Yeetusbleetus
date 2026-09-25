@@ -6,7 +6,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 |---|---|---|---|---|---:|---:|---:|---:|---|
 | BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | SME | HV battery management | 0x07 | 215 | 134 | 65 | 25 | sme_i1.prg (OVMS dump, GPL-3.0)<br>sme_i1.prg rev 0.911 (2012) |
 | BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | EME | Drive inverter + DC/DC | 0x1A | 137 | 94 | 42 | 22 | eme_i01.prg (OVMS dump, GPL-3.0)<br>eme_i01.prg rev 0.540 (2012) |
-| BMW i3 (I01) | Gen3 BEV (2013-2022) | EME | Drive electronics (alternate SGBD EME_I1) | 0x1A | 55 | 35 | 16 | 7 | EME_I1.prg rev 1.1 (2012) |
+| BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | EME | Drive electronics (alternate SGBD EME_I1) | 0x1A | 55 | 35 | 16 | 7 | EME_I1.prg rev 1.1 (2012) |
 | BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | KLE | On-board charger (UCX2) | 0x15 | 18 | 16 | 0 | 2 | ucx2_i01.prg (OVMS dump, GPL-3.0) |
 | BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | LIM | Charge interface module | 0x14 | 21 | 18 | 12 | 0 | lim_i1.prg (OVMS dump, GPL-3.0)<br>lim_i1.prg rev 2.0 (2012) |
 | BMW i3 / i3s (I01) | Gen3 BEV (2013-2022) | IHX | Heating/AC, heat pump, HV heater | 0x78 | 156 | 131 | 44 | 4 | ihx_i1.prg (OVMS dump, GPL-3.0)<br>ihx_i1.prg rev 1.7 (2012) |
@@ -242,9 +242,9 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xAD78` | 31 | `ALTERUNG_INNENWIEDERSTAND_MODUL_LESEN` | Read the aging of module x, based on the internal resistance ratio (ratio = (R_new / R_current) * 100; 100% = new condition, decreases with aging) *(2012 SGBD only)* | 2 |
 | `0xAD79` | 31 | `ZELLPACK_SOH_LESEN` | Reading out the aging status (e.g. defect, etc.) of module x *(2012 SGBD only)* | 2 |
 | `0xDD6F` | 22;2E | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open *(2012 SGBD only)* | 2 |
-| `0xDDC1` | 2E | `CSC_IDS` | Hardware IDs der einzelnen CSCs (Cell Supervisory Circuit) *(2012 SGBD only)* | 1 |
+| `0xDDC1` | 2E | `CSC_IDS` | Hardware IDs of the individual CSCs (Cell Supervisory Circuit) *(2012 SGBD only)* | 1 |
 | `0xDF61` | 2E | `SOC_GRENZE_OBEN` | Opening/resetting the upper SOC limit *(2012 SGBD only)* | 2 |
-| `0xDF82` | 2E | `RESET_SBOX` | Eingabe zum Zurücksetzen der S-BOX Parameter *(2012 SGBD only)* | 1 |
+| `0xDF82` | 2E | `RESET_SBOX` | Input for resetting the S-BOX parameters *(2012 SGBD only)* | 1 |
 | `0xF190` | 22 | `VIN` | 17-digit vehicle identification number, 00000000000000000 if no VIN is present (virgin ECU). Note: the result value 00000000000000000 is returned if the CAS returns 0xFF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF in the response telegram. *(2012 SGBD only)* | 1 |
 
 ## BMW i3 / i3s (I01) — EME (Drive inverter + DC/DC)
@@ -377,19 +377,19 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xF050` | 31 | `AE_FREILAUF_MODUS` | Free running mode | 1 |
 | `0xADC9` | 31 | `AE_EWP` | Actuate and read out the electric coolant pump (actuation possible only when AE temperature is below threshold, house keeping not active, EWP not switched off, and manual speed control deactivated) *(2012 SGBD only)* | 5 |
 | `0xDE03` | 22 | `EME_HVPM_ENERGIEBORDNETZ` | Return values of the HVPM for HV energy and cell voltages *(2012 SGBD only)* | 34 |
-| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Infospeicher zur Spannungsfreiheit des Hochvoltsystems (durch HVPM überwacht) *(2012 SGBD only)* | 40 |
+| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Info memory for the de-energized state of the high-voltage system (monitored by HVPM) *(2012 SGBD only)* | 40 |
 | `0xDE19` | 22 | `EME_ELUP` | Number of brake actuations, running time and starts of the ELUP *(2012 SGBD only)* | 3 |
 | `0xDE78` | 22;2E | `AE_PARKSPERRE_EINLERNEN` | Parking lock / teaching in parking lock *(2012 SGBD only)* | 3 |
 | `0xDE7A` | 22 | `AE_PARKSPERRE_POSITIONEN` | Return learned parking lock positions *(2012 SGBD only)* | 2 |
 | `0xDE8B` | 22;2E | `AE_STROM_MAX` | Maximum measured currents since last reset or reset of values *(2012 SGBD only)* | 9 |
 | `0xDEA0` | 22 | `STATUS_TSR_LADEN` | All return values regarding TSR charging *(2012 SGBD only)* | 130 |
 | `0xDEA1` | 2E | `LADEHISTORIE` | Reading / deleting the charging history *(2012 SGBD only)* | 1 |
-| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direktes Schreiben des Resolveroffset Winkels *(2012 SGBD only)* | 1 |
-| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Gibt aktuellen Versionen der PIC-SW zurück *(2012 SGBD only)* | 2 |
+| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direct write of the resolver offset angle *(2012 SGBD only)* | 1 |
+| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Returns current version of the PIC software *(2012 SGBD only)* | 2 |
 | `0xDEDF` | 22;2E | `UI_DERATING_EM1` | Read out or reset UI derating values from E-machine 1 *(2012 SGBD only)* | 6 |
 | `0xDEE0` | 22;2E | `UI_DERATING_EM2` | Read out or reset UI derating values from e-machine 2 *(2012 SGBD only)* | 6 |
 
-## BMW i3 (I01) — EME (Drive electronics (alternate SGBD EME_I1))
+## BMW i3 / i3s (I01) — EME (Drive electronics (alternate SGBD EME_I1))
 
 | DID | Svc | Job argument | Description | Fields |
 |---|---|---|---|---:|
@@ -422,7 +422,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDE8C` | 22 | `AE_TEMP_LE` | Temperatures control unit drive electronics | 21 |
 | `0xDE92` | 22 | `AE_ZUSTAND_1_DCDC` | DC / DC converter status | 3 |
 | `0xDE93` | 22;2E | `AE_ELUP` | Current status ELUP or activate / deactivate ELUP | 5 |
-| `0xDE94` | 2E | `AE_PARKSPERRE_MAGNET` | Einschalten Magnet Parksperre | 1 |
+| `0xDE94` | 2E | `AE_PARKSPERRE_MAGNET` | Switch on park lock solenoid | 1 |
 | `0xDE95` | 2E | `AE_PARKSPERRE_NVRAM_LOESCHEN` | Deletes NV-RAM data from the parking lock | 1 |
 | `0xDE96` | 22 | `AE_ZUSTAND_DCDC_FEHLERBILD` | Return of active / inactive errors DC / DC converter | 1 |
 | `0xDEA5` | 22 | `AE_BUDS` | Brake vacuum sensor value | 1 |
@@ -430,11 +430,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDEA7` | 22 | `AE_ELEKTRISCHE_MASCHINE` | Reading out the speed, torque and operating mode of the electric machine | 4 |
 | `0xDEA9` | 22 | `AE_ZUSTAND_2_DCDC` | Various statuses returned from the DCDC converter | 1 |
 | `0xDEB0` | 22 | `AE_PARKSPERRE_VERSION` | Return of the current version of the parking lock software | 2 |
-| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direktes Schreiben des Resolveroffset Winkels | 1 |
+| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direct write of the resolver offset angle | 1 |
 | `0xDEB2` | 2E | `AE_DCDC_TEMPHISTOGRAMM_LESEN` | Read out temperature histograms DCDC / reset temperature histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB3` | 2E | `AE_DCDC_LEISTUNGSHISTOGRAMM` | Read out power histograms DCDC converter / reset power histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB4` | 2E | `AE_RESET_TEMP_MIN_MAX` | Resetting the minimum and maximum temperature of the DC / DC converter (0 = no reset; 1 = reset) | 1 |
-| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Gibt aktuellen Versionen der PIC-SW zurück | 2 |
+| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Returns current version of the PIC software | 2 |
 | `0xDEB6` | 2E | `AE_ROTORLAGESENSOR_RESET` | Resetting the resolver offset angle | 1 |
 | `0xDEB7` | 2E | `AE_KLASSIERUNG_LOESCHEN` | Deletion of the entire classification data | 1 |
 | `0xDEBC` | 22 | `AE_CTRL_VERSION` | Controller board version | 1 |
@@ -730,9 +730,9 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xF086` | 31 | `STEUERN_BETRIEBSART_EM1` | Control operating mode E-machine 1 | 3 |
 | `0xF087` | 31 | `STEUERN_BETRIEBSART_EM2` | Control operating mode E-machine 2 | 3 |
 | `0xF0D5` | 31 | `STEUERN_AKKS` | Controlling the active cooling flap | 6 |
-| `0xADFD` | 31 | `12V_NACHLADEHISTORIE_SATZ_LESEN` | Lesen eine Satz der 12V-Nachladehistorie *(2012 SGBD only)* | 15 |
-| `0xDEA2` | 2E | `12V_NACHLADEHISTORIE` | Lesen/Löschen des Historienspeichers für die letzen 4 Ladevorgänge der 12V-Batterie aus der Hochvolt-Batterie (Ringspeicher à 4 Sätze) *(2012 SGBD only)* | 1 |
-| `0xDEAF` | 22;2E | `12V_NACHLADEHISTOGRAMM` | Lesen/Löschen von Histogramm und Zähler aller Ladevorgänge der 12V-Batterie aus dem Hochvolt-System *(2012 SGBD only)* | 25 |
+| `0xADFD` | 31 | `12V_NACHLADEHISTORIE_SATZ_LESEN` | Read one record of the 12V top-up charge history *(2012 SGBD only)* | 15 |
+| `0xDEA2` | 2E | `12V_NACHLADEHISTORIE` | Read/clear the history memory for the last 4 charging events of the 12V battery from the high-voltage battery (ring buffer of 4 records) *(2012 SGBD only)* | 1 |
+| `0xDEAF` | 22;2E | `12V_NACHLADEHISTOGRAMM` | Read/clear histogram and counter of all charging events of the 12V battery from the high-voltage system *(2012 SGBD only)* | 25 |
 
 ## BMW i3 REx (I01) — REME (Range-extender generator electronics)
 
@@ -742,7 +742,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xADF7` | 31 | `EME_IGBT_FREILAUF` | Opening the IGBTs to switch the e-machine to high impedance on the AC side | 1 |
 | `0xDDF0` | 22 | `EME_TEMP_EMASCHINE` | Read the current temperature value of the e-machine in degrees Celsius | 5 |
 | `0xDDF1` | 22 | `EME_SPANNUNG_DC_HV` | DC voltage of the e-machine after rectification by the EME (HV battery side, referred to internal) | 1 |
-| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV-Strom des DCDC Wandlers und dem gemitteltem Effektivstrom der E-Maschine | 3 |
+| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV current of the DC/DC converter and the averaged RMS current of the e-machine | 3 |
 | `0xDDF4` | 22 | `EME_STROM_EMASCHINE_DC` | DC current (on the HV side) caused by the EMK | 1 |
 | `0xDDF5` | 22 | `EME_POSITIONSGEBER` | Angular position of the e-machines in degrees | 1 |
 | `0xDDF7` | 22 | `EME_ELEKTRISCHE_MASCHINE` | Read speed and torque of the e-machine | 3 |
@@ -757,11 +757,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x4004` | 22;2C | `SLS_DIAG` | Secondary air system diagnostic status. | 2 |
 | `0x4007` | 22 | `STATUS_DIGITAL_0` | Control loop status bank 1 | 1 |
 | `0x4402` | 22;2C | `ITOEL` | Oil temperature | 1 |
-| `0x4506` | 22 | `IPNWE` | Einlassnockenwellensensor Position in Grad Kurbelwelle | 1 |
-| `0x4600` | 22;2C | `IWDKL` | Drosselklappenwinkel bezogen auf unteren Anschlag | 1 |
+| `0x4506` | 22 | `IPNWE` | Intake camshaft sensor position in crankshaft degrees | 1 |
+| `0x4600` | 22;2C | `IWDKL` | Throttle valve angle relative to the lower stop | 1 |
 | `0x4700` | 22;2C | `ISBV1` | ISBV1 | 1 |
-| `0x4807` | 22;2C | `INMOT` | Kurbelwellendrehzahl | 1 |
-| `0x480B` | 22 | `IFPWG` | Fahrerwunsch Fahrpedal in % | 1 |
+| `0x4807` | 22;2C | `INMOT` | Crankshaft speed | 1 |
+| `0x480B` | 22 | `IFPWG` | Driver-demand accelerator pedal in % | 1 |
 | `0x4A30` | 22;2C | `ILUZ1` | ILUZ1 | 1 |
 | `0x4A35` | 22;2C | `ILUZ2` | ILUZ2 | 1 |
 | `0x4A85` | 22;2C | `IMUL1` | IMUL1 | 1 |
@@ -770,16 +770,16 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x4A96` | 22;2C | `IANWE` | Intake camshaft adaptation value, bank 1 | 1 |
 | `0x5801` | 22;2C | `UIPUMG` | Ambient pressure | 1 |
 | `0x5802` | 22;2C | `PWMTEV` | PWM control signal for tank ventilation | 1 |
-| `0x5803` | 22;2C | `UILAM1` | Lambdasonden Adaptionswert | 1 |
+| `0x5803` | 22;2C | `UILAM1` | Lambda sensor adaptation value | 1 |
 | `0x5804` | 22;2C | `UIINT1` | Lambda sensor adaptation value | 1 |
 | `0x5805` | 22;2C | `UIUDK1` | Absolute throttle valve position (sensor 1) | 1 |
 | `0x5806` | 22;2C | `UIUDK2` | Absolute throttle valve position | 1 |
-| `0x5807` | 22;2C | `UIKTFS` | Fuellstand Kraftstofftank | 1 |
+| `0x5807` | 22;2C | `UIKTFS` | Fuel tank level | 1 |
 | `0x5808` | 22;2C | `UIGANG` | Ignition angle | 1 |
 | `0x5809` | 22;2C | `UTRMLT` | Secondary fuel trim value (long-term) | 1 |
 | `0x580A` | 22;2C | `UTRMST` | Secondary fuel trim value (short-term) | 1 |
-| `0x580B` | 22;2C | `UILAG1` | Lambdawert | 1 |
-| `0x580C` | 22;2C | `UILAGSP1` | Lambda-Sollwert | 1 |
+| `0x580B` | 22;2C | `UILAG1` | Lambda value | 1 |
+| `0x580C` | 22;2C | `UILAGSP1` | Lambda setpoint | 1 |
 | `0x580D` | 22;2C | `MOTORLAST` | Relative engine load | 1 |
 | `0x580E` | 22;2C | `UIPSAU` | Intake manifold pressure - label MAP_MES_SAE | 1 |
 | `0x580F` | 22;2C | `UINMOT` | Engine speed | 1 |
@@ -788,11 +788,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x5812` | 22;2C | `UKSYS` | Fuel system status | 1 |
 | `0x5813` | 22;2C | `MOTORLAUFZEIT` | Elapsed time after engine start | 1 |
 | `0x5814` | 22;2C | `UITANS` | Intake air temperature from the HFM (air mass meter) | 1 |
-| `0x5815` | 22;2C | `UITSAUM` | Lufttemperatur im Saugrohr | 1 |
+| `0x5815` | 22;2C | `UITSAUM` | Air temperature in the intake manifold | 1 |
 | `0x5816` | 22;2C | `UITUMGM` | Ambient air temperature | 1 |
 | `0x5817` | 22;2C | `UITUMG` | Ambient air temperature | 1 |
-| `0x5818` | 22;2C | `UTCLNT` | Kühlmitteltemperatur | 1 |
-| `0x5819` | 22;2C | `UITKUM` | Kühlmitteltemperatur in Grad Celsius | 1 |
+| `0x5818` | 22;2C | `UTCLNT` | Coolant temperature | 1 |
+| `0x5819` | 22;2C | `UITKUM` | Coolant temperature in degrees Celsius | 1 |
 | `0x581A` | 22;2C | `DK_POSITION` | Relative throttle valve position | 1 |
 | `0x581B` | 22;2C | `DK_SOLLWERT` | Throttle valve setpoint | 1 |
 | `0x581C` | 22;2C | `IUK87` | Battery voltage | 1 |
@@ -800,22 +800,22 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x581E` | 22;2C | `UIUSN1` | Voltage lambda sensor downstream of catalytic converter (ADC value) | 1 |
 | `0x581F` | 22;2C | `FAHRGESCHWINDIGKEIT` | Vehicle speed | 1 |
 | `0x5820` | 22;2C | `UIUTANS` | Voltage (air temperature sensor) | 1 |
-| `0x5821` | 22;2C | `UIUTANSST` | Lufttemperatur im Saugrohr beim ersten Start (aktueller Fahrzyklus) | 1 |
+| `0x5821` | 22;2C | `UIUTANSST` | Air temperature in the intake manifold at first start (current drive cycle) | 1 |
 | `0x5822` | 22;2C | `UIUTUMGST` | Ambient air temperature at start | 1 |
 | `0x5823` | 22;2C | `UIUPW1` | Voltage (pedal value sensor 1) | 1 |
 | `0x5824` | 22;2C | `UIUPW2` | Voltage (pedal value sensor 2) | 1 |
 | `0x5825` | 22;2C | `VP_TCO_ENVD` | Voltage (coolant temperature sensor) | 1 |
-| `0x5826` | 22;2C | `TCO_ST_DC` | Kühlmitteltemperatur beim ersten Start (aktueller Fahrzyklus) | 1 |
-| `0x5827` | 22;2C | `TCO_STOP` | Kühlmitteltemperatur beim abstellen des Motors | 1 |
-| `0x5828` | 22;2C | `CL_MMV_ENVD` | Ladung im Aktivkohlefilter (gleitender MIttelwert) | 1 |
+| `0x5826` | 22;2C | `TCO_ST_DC` | Coolant temperature at first start (current drive cycle) | 1 |
+| `0x5827` | 22;2C | `TCO_STOP` | Coolant temperature when the engine is switched off | 1 |
+| `0x5828` | 22;2C | `CL_MMV_ENVD` | Charge in the activated-carbon filter (moving average) | 1 |
 | `0x5829` | 22;2C | `MFF_SP_MV_KWP` | Fuel mass setpoint | 1 |
-| `0x582A` | 22;2C | `TI_1_HOM_ENVD_1` | Einspritzzeit (Zylinderindividuell, erster Puls, Zylinder 1) | 1 |
-| `0x582B` | 22;2C | `TI_1_HOM_ENVD_2` | Einspritzzeit (Zylinderindividuell, erster Puls, Zylinder 2) | 1 |
-| `0x582C` | 22;2C | `UMAIRT` | Luftmassenstrom pro Segment | 1 |
-| `0x582D` | 22;2C | `UMAIRS` | Luftmassenstrom pro Segment | 1 |
-| `0x582E` | 22;2C | `STAT_0X582E_WERT` | Luftmasse | 1 |
+| `0x582A` | 22;2C | `TI_1_HOM_ENVD_1` | Injection time (cylinder-specific, first pulse, cylinder 1) | 1 |
+| `0x582B` | 22;2C | `TI_1_HOM_ENVD_2` | Injection time (cylinder-specific, first pulse, cylinder 2) | 1 |
+| `0x582C` | 22;2C | `UMAIRT` | Air mass flow per segment | 1 |
+| `0x582D` | 22;2C | `UMAIRS` | Air mass flow per segment | 1 |
+| `0x582E` | 22;2C | `STAT_0X582E_WERT` | Air mass | 1 |
 | `0x582F` | 22;2C | `STAT_0X582F_WERT` | Pressure regulator actuation value (divided by ambient pressure) | 1 |
-| `0x5830` | 22;2C | `FAC_AD_KNK` | Klopffaktor | 1 |
+| `0x5830` | 22;2C | `FAC_AD_KNK` | Knock factor | 1 |
 | `0x5831` | 22;2C | `V_TPS_1` | Voltage (throttle valve position sensor 1) | 1 |
 | `0x5832` | 22;2C | `V_TPS_2` | Voltage (throttle valve position sensor 2) | 1 |
 | `0x5833` | 22;2C | `ENVD_0_MON` | Environment data for general error | 1 |
@@ -827,10 +827,10 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x5839` | 22;2C | `ENVD_2_MON_3` | Environment data for processor error | 1 |
 | `0x583A` | 22;2C | `ENVD_3_MON_3` | Environment data for processor error | 1 |
 | `0x5A0E` | 22 | `IUSGI` | ECU temperature | 1 |
-| `0x602A` | 2F | `STEUERN_DK` | Drosselklappe ansteuern | 3 |
+| `0x602A` | 2F | `STEUERN_DK` | Actuate throttle valve | 3 |
 | `0x60CB` | 2F | `STEUERN_SLP` | Control secondary air pump. | 3 |
 | `0x60CF` | 2F | `STEUERN_TEV` | Tank ventilation valve | 3 |
-| `0x60D8` | 2F | `STEUERN_EKP` | EKP Ansteuern | 3 |
+| `0x60D8` | 2F | `STEUERN_EKP` | Actuate electric fuel pump | 3 |
 | `0xF020` | 31 | `SLSCHECK` | Secondary air system self-check | 1 |
 | `0xF022` | 31 | `TEVCHECK` | Tank ventilation valve self-check | 1 |
 | `0xF030` | 31 | `ADAP_SELEKTIV_LOESCHEN` | Clear adaptations | 6 |
@@ -853,15 +853,15 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xADF9` | 31 | `AE_DCDC_HISTOGRAMM` | Reading the requested histogram of the DCDC converter | 11 |
 | `0xDDF6` | 22 | `EME_DCDC_LV` | Voltage / current DCDC (12V vehicle electrical system) at the B + bolt | 2 |
 | `0xDE00` | 22 | `EME_HVPM_DCDC_ANSTEUERUNG` | Return values from the HVPM for DCDC control | 16 |
-| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | Hochvoltsystem An / Aus | 7 |
+| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | High-voltage system on / off | 7 |
 | `0xDE03` | 22 | `EME_HVPM_ENERGIEBORDNETZ` | Return values of the HVPM for HV energy and cell voltages | 34 |
 | `0xDE04` | 22 | `EME_HVPM_ENERGIEBORDNETZ_2` | Number of times the vehicle was ready to drive in the SOC area | 14 |
 | `0xDE06` | 22 | `EME_HVPM_PKOR` | HVPM performance coordinator | 24 |
 | `0xDE08` | 2E | `EME_HVPM_INFOSPEICHER_PKOR_LOESCHEN` | All fault memory entries of diagnostic job STATUS_HVPM_EKMV are set to zero. | 1 |
-| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Löschen des Infospeicher HSPM (STRZL) | 1 |
+| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Clear the info memory HSPM (STRZL) | 1 |
 | `0xDE0A` | 2E | `EME_HVPM_INFOSPEICHER_SPMON_LOESCHEN` | Deleting the information memory HVPMP (SPMON) | 1 |
 | `0xDE0C` | 22 | `EME_HVIL_GESAMT` | Reading out the HVIL status in the EME; if HVIL is interrupted, then not ok | 1 |
-| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Infospeicher zur Spannungsfreiheit des Hochvoltsystems (durch HVPM überwacht) | 40 |
+| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Info memory for the de-energized state of the high-voltage system (monitored by HVPM) | 40 |
 | `0xDE19` | 22 | `EME_ELUP` | Number of brake actuations, running time and starts of the ELUP | 3 |
 | `0xDE1C` | 22 | `EME_HVPM_DCDC_ALS` | HVPM DCDC ALS | 4 |
 | `0xDE2D` | 22 | `AE_CPLD_VERSION` | CPLD version | 1 |
@@ -891,11 +891,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDEA6` | 22 | `AE_TEMP_EMASCHINE` | Value of the current temperatures of the e-machine in degrees Celsius | 2 |
 | `0xDEA7` | 22 | `AE_ELEKTRISCHE_MASCHINE` | Reading out the speed, torque and operating mode of the electric machine | 4 |
 | `0xDEA9` | 22 | `AE_ZUSTAND_2_DCDC` | Various statuses returned from the DCDC converter | 1 |
-| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direktes Schreiben des Resolveroffset Winkels | 1 |
+| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direct write of the resolver offset angle | 1 |
 | `0xDEB2` | 2E | `AE_DCDC_TEMPHISTOGRAMM_LESEN` | Read out temperature histograms DCDC / reset temperature histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB3` | 2E | `AE_DCDC_LEISTUNGSHISTOGRAMM` | Read out power histograms DCDC converter / reset power histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB4` | 2E | `AE_RESET_TEMP_MIN_MAX` | Resetting the minimum and maximum temperature of the DC / DC converter (0 = no reset; 1 = reset) | 1 |
-| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Gibt aktuellen Versionen der PIC-SW zurück | 2 |
+| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Returns current version of the PIC software | 2 |
 | `0xDEB6` | 2E | `AE_ROTORLAGESENSOR_RESET` | Resetting the resolver offset angle | 1 |
 | `0xDEB7` | 2E | `AE_KLASSIERUNG_LOESCHEN` | Deletion of the entire classification data | 1 |
 | `0xDEBC` | 22 | `AE_CTRL_VERSION` | Controller board version | 1 |
@@ -909,10 +909,10 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDEC8` | 22 | `AE_PRND_AKTOR_SPANNUNGEN` | Read the voltages of the PRND actuator | 2 |
 | `0xDEC9` | 22 | `AE_PRND_AKTOR_SW` | PRND actuator software status | 1 |
 | `0xDECA` | 22 | `AE_PRND_AKTOR_VERSION` | Read current version of the PRND actuator software | 2 |
-| `0xDECB` | 2E | `AE_PRND_AKTOR` | Initiert das Anfahren der Getiebepositionen P/R/N/D | 1 |
+| `0xDECB` | 2E | `AE_PRND_AKTOR` | Initiates the approach to the transmission positions P/R/N/D | 1 |
 | `0xDECC` | 2E | `AE_PRND_AKTOR_AUSLIEFERPOSITION` | Moves the actuator to the delivery position (based on default data, also possible in the non-learned state). The actuator can then be learned | 1 |
-| `0xDECD` | 2E | `AE_PRND_AKTOR_MAGNET` | Einschalten des Magneten für den PRND Aktor | 1 |
-| `0xDECE` | 2E | `AE_PRND_AKTOR_NVRAM_LOESCHEN` | Löscht die NV-Ram Daten des PRND-Aktors. Wichtig: nach diesem Job muss das SG einschlafen, damit die gelöschten Werte in NV-RAM übernommen werden | 1 |
+| `0xDECD` | 2E | `AE_PRND_AKTOR_MAGNET` | Switch on the solenoid for the PRND actuator | 1 |
+| `0xDECE` | 2E | `AE_PRND_AKTOR_NVRAM_LOESCHEN` | Clears the NV-RAM data of the PRND actuator. Important: after this job the ECU must go to sleep so that the cleared values are adopted in NV-RAM | 1 |
 | `0xDEDD` | 22 | `AE_FAHRSTUFE` | current actual position of the drive train (PRND) | 1 |
 | `0xDEDE` | 22 | `AE_LSC_LADEN` | Feedback on the charging process | 26 |
 | `0x400C` | 2E | `AE_SN_SETZEN` | serial number | 4 |
@@ -931,7 +931,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xADF7` | 31 | `EME_IGBT_FREILAUF` | Opening the IGBTs to switch the e-machine to high impedance on the AC side | 1 |
 | `0xDDF0` | 22 | `EME_TEMP_EMASCHINE` | Read the current temperature value of the e-machine in degrees Celsius | 5 |
 | `0xDDF1` | 22 | `EME_SPANNUNG_DC_HV` | DC voltage of the e-machine after rectification by the EME (HV battery side, referred to internal) | 1 |
-| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV-Strom des DCDC Wandlers und dem gemitteltem Effektivstrom der E-Maschine | 3 |
+| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV current of the DC/DC converter and the averaged RMS current of the e-machine | 3 |
 | `0xDDF4` | 22 | `EME_STROM_EMASCHINE_DC` | DC current (on the HV side) caused by the EMK | 1 |
 | `0xDDF5` | 22 | `EME_POSITIONSGEBER` | Angular position of the e-machines in degrees | 1 |
 | `0xDDF7` | 22 | `EME_ELEKTRISCHE_MASCHINE` | Read speed and torque of the e-machine | 3 |
@@ -948,32 +948,32 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xAD6B` | 31 | `SYMMETRIERUNG` | Activate balancing | 1 |
 | `0xAD6E` | 31 | `ZELLSPANNUNG_LESEN` | Cell whose voltage is to be determined | 2 |
 | `0xAD7B` | 31 | `ENTLUEFTUNG_KUEHLKREIS` | Routine for venting the coolant circuit (dedicated cooling for HV battery) | 1 |
-| `0xDD60` | 22 | `SCHUETZ_SCHALTER` | Job: Status Schützschalter: geschlossen oder offen Result: Status der Schützschalter: geschlossen oder offen. Ergebnisse siehe Tabelle TAB_SCHUETZ_SCHALTER | 1 |
+| `0xDD60` | 22 | `SCHUETZ_SCHALTER` | Job: Status, contactor switch: closed or open Result: Status of the contactor switch: closed or open. See table TAB_SCHUETZ_SCHALTER for results | 1 |
 | `0xDD61` | 22;2E | `SCHUETZ_FREIGABE` | Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe | 2 |
-| `0xDD64` | 22 | `HVIL` | Job: Ergebnis HVIL-Prüfung Result: Ergebnis HVIL-Prüfung | 1 |
-| `0xDD66` | 22 | `HV_SPANNUNG` | Job: HV-Spannung des Zwischenkreises vor den Schützen Result: Zwischenkreisspannung vor den Schützen, unabhängig vom Schützzustand | 1 |
-| `0xDD67` | 22 | `ANZAHL_KUEHLANFORDERUNG_DRINGEND` | Job: Zähler beschreibt wie häufig in aufeinanderfolgenden Klemmenzyklen in einen höheren Temperaturzustand gefahren wurde. (Maximalwert) Result: Anzahl der höheren T-Zustände in aufeinanderfolgenden Klemmenzyklen. | 1 |
-| `0xDD69` | 22 | `HV_STROM` | Job: HV-Strom Result: HV-Strom in A | 1 |
+| `0xDD64` | 22 | `HVIL` | Job: Result of HVIL test Result: Result of HVIL test | 1 |
+| `0xDD66` | 22 | `HV_SPANNUNG` | Job: HV voltage of the DC link before the contactors Result: DC-link voltage before the contactors, independent of contactor state | 1 |
+| `0xDD67` | 22 | `ANZAHL_KUEHLANFORDERUNG_DRINGEND` | Job: Counter describes how often a higher temperature state was reached in consecutive terminal cycles. (Maximum value) Result: Number of higher temperature states in consecutive terminal cycles. | 1 |
+| `0xDD69` | 22 | `HV_STROM` | Job: HV current Result: HV current in A | 1 |
 | `0xDD6A` | 22 | `ISOLATIONSWIDERSTAND` | Reading out the currently applied insulation resistance | 4 |
-| `0xDD6C` | 22 | `KUEHLKREISLAUF_TEMP` | Job: Temperatur des Kühlkreislaufs Result: Temperatur des Kühlmediums in °C | 1 |
+| `0xDD6C` | 22 | `KUEHLKREISLAUF_TEMP` | Job: Temperature of the coolant circuit Result: Temperature of the coolant medium in °C | 1 |
 | `0xDD6F` | 22;2E | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open | 2 |
-| `0xDD73` | 22 | `CUMULATIVE_LADUNG` | Job: Status kumulierte Ladung Result: Die kumulierte Ladung für Ladevorgänge in Ah | 1 |
-| `0xDD74` | 22 | `CUMULATIVE_ENTLADUNG` | Job: Status kumulierte Entladung Result: Die kumulierte Ladung für Entladevorgänge in Ah | 1 |
-| `0xDD76` | 22 | `STATUS_KL30C_SPANNUNG` | Job: Spannung Klemme 30C Result: Spannung Klemme 30C in V | 1 |
+| `0xDD73` | 22 | `CUMULATIVE_LADUNG` | Job: Status, cumulative charge Result: The cumulative charge for charging events in Ah | 1 |
+| `0xDD74` | 22 | `CUMULATIVE_ENTLADUNG` | Job: Status, cumulative discharge Result: The cumulative charge for discharge events in Ah | 1 |
+| `0xDD76` | 22 | `STATUS_KL30C_SPANNUNG` | Job: Voltage, terminal 30C Result: Voltage, terminal 30C in V | 1 |
 | `0xDD7D` | 22 | `STROMGRENZEN` | Current limits | 2 |
 | `0xDD7E` | 22 | `SPANNUNGSGRENZEN` | Voltage limits | 2 |
 | `0xDD91` | 22 | `ZEIT_SOC_KLASSE` | Time since installation in SOC classes | 12 |
 | `0xDDA1` | 2E;22 | `KUEHLMITTELPUMPE` | Result values or control of the coolant pump for cooling the HV battery in % (0-100%) | 3 |
-| `0xDDB4` | 22 | `HV_SPANNUNG_BATTERIE` | Job: Batteriespannung hinter den Schützen, unabhängig vom Schützzustand Result: Batteriespannung hinter den Schützen, unabhängig vom Schützzustand | 1 |
-| `0xDDB6` | 22 | `ALTERUNG_INNENWIDERSTAND` | Job: Alterung des Innenwiderstands in Prozent: Innenwiderstand des Speichers im Neuzustand auf den aktuellen Wert des Innenwiderstands bezogen  (R_neu /R_akt) *100   (100% = Neuzustand, sinkt mit Alterung) Result: Alterung des Innenwiderstands in Prozent: Innenwiderstand des Speichers im Neuzustand auf den aktuellen Wert des Innenwiderstands bezogen  (R_neu /R_akt) *100   (100% = Neuzustand, sinkt mit Alterung) | 1 |
-| `0xDDB7` | 22 | `REFERENZ_KAPAZITAET` | Job: Restkapazität des Speichers, prozentualer Wert: ( C_akt/C_nenn(neu) ) * 100, 100 = Neuzustand. Roh-Schätzwert des Onboard-Kapazitätsschätzers des Gesamtspeichers Result: Restkapazität des Speichers, prozentualer Wert: ( C_akt/C_nenn(neu) ) * 100, 0 = Lebensdauerende erreicht, 100 = Neuzustand | 1 |
+| `0xDDB4` | 22 | `HV_SPANNUNG_BATTERIE` | Job: Battery voltage behind the contactors, independent of contactor state Result: Battery voltage behind the contactors, independent of contactor state | 1 |
+| `0xDDB6` | 22 | `ALTERUNG_INNENWIDERSTAND` | Job: Internal resistance aging in percent: internal resistance of the storage (battery) in new condition relative to the current internal resistance value  (R_neu /R_akt) *100   (100% = new condition, decreases with aging) Result: Internal resistance aging in percent: internal resistance of the storage (battery) in new condition relative to the current internal resistance value  (R_neu /R_akt) *100   (100% = new condition, decreases with aging) | 1 |
+| `0xDDB7` | 22 | `REFERENZ_KAPAZITAET` | Job: Remaining capacity of the storage (battery), percentage value: ( C_akt/C_nenn(neu) ) * 100, 100 = new condition. Raw estimate from the onboard capacity estimator of the overall storage Result: Remaining capacity of the storage (battery), percentage value: ( C_akt/C_nenn(neu) ) * 100, 0 = end of life reached, 100 = new condition | 1 |
 | `0xDDBC` | 22 | `ANZEIGE_SOC` | current advertisement Soc | 3 |
-| `0xDDBD` | 22 | `SERVICE_DISCONNECT` | Job: Status des Service Disconnects (0 = offen,1 = geschlossen) Result: Status Service Disconnect (0 = offen, 1 = geschlossen) | 1 |
+| `0xDDBD` | 22 | `SERVICE_DISCONNECT` | Job: Status of the service disconnect (0 = open, 1 = closed) Result: Status, service disconnect (0 = open, 1 = closed) | 1 |
 | `0xDDBE` | 22 | `VORLADUNG` | Info about time, current and temperatures during pre-charging | 15 |
 | `0xDDBF` | 22 | `ZELLSPANNUNGEN_MIN_MAX` | minimum and maximum single cell voltages are output | 2 |
 | `0xDDC0` | 22 | `TEMPERATUREN` | Output of minimum measured temperature, maximum measured temperature, average measured temperature, maximum cell core temperature | 4 |
 | `0xDDC4` | 2E;22 | `SOC` | Read out SOC value (in%) and plausibility or specification of the SOC value (0-100%) | 4 |
-| `0xDDCA` | 22 | `SERIENNUMMER_ECU` | Job: Seriennummer SME Steuergerät Result: Seriennummer des SME Steuergeräts | 1 |
+| `0xDDCA` | 22 | `SERIENNUMMER_ECU` | Job: Serial number, SME ECU Result: Serial number of the SME ECU | 1 |
 | `0xDDCB` | 22 | `SOC_GRENZEN` | Reading and changing the SOC limits | 2 |
 | `0xDDCD` | 2E | `CC_MELDUNG` | Activation / deactivation of the sending of CC messages (0 = sending not active; 1 = sending active) | 1 |
 | `0xDF61` | 2E | `SOC_GRENZE_OBEN` | Opening/resetting the upper SOC limit | 2 |
@@ -999,15 +999,15 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xADF9` | 31 | `AE_DCDC_HISTOGRAMM` | Reading the requested histogram of the DCDC converter | 11 |
 | `0xDDF6` | 22 | `EME_DCDC_LV` | Voltage / current DCDC (12V vehicle electrical system) at the B + bolt | 2 |
 | `0xDE00` | 22 | `EME_HVPM_DCDC_ANSTEUERUNG` | Return values from the HVPM for DCDC control | 16 |
-| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | Hochvoltsystem An / Aus | 7 |
+| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | High-voltage system on / off | 7 |
 | `0xDE03` | 22 | `EME_HVPM_ENERGIEBORDNETZ` | Return values of the HVPM for HV energy and cell voltages | 34 |
 | `0xDE04` | 22 | `EME_HVPM_ENERGIEBORDNETZ_2` | Number of times the vehicle was ready to drive in the SOC area | 14 |
 | `0xDE06` | 22 | `EME_HVPM_PKOR` | HVPM performance coordinator | 24 |
 | `0xDE08` | 2E | `EME_HVPM_INFOSPEICHER_PKOR_LOESCHEN` | All fault memory entries of diagnostic job STATUS_HVPM_EKMV are set to zero. | 1 |
-| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Löschen des Infospeicher HSPM (STRZL) | 1 |
+| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Clear the info memory HSPM (STRZL) | 1 |
 | `0xDE0A` | 2E | `EME_HVPM_INFOSPEICHER_SPMON_LOESCHEN` | Deleting the information memory HVPMP (SPMON) | 1 |
 | `0xDE0C` | 22 | `EME_HVIL_GESAMT` | Reading out the HVIL status in the EME; if HVIL is interrupted, then not ok | 1 |
-| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Infospeicher zur Spannungsfreiheit des Hochvoltsystems (durch HVPM überwacht) | 40 |
+| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Info memory for the de-energized state of the high-voltage system (monitored by HVPM) | 40 |
 | `0xDE19` | 22 | `EME_ELUP` | Number of brake actuations, running time and starts of the ELUP | 3 |
 | `0xDE1C` | 22 | `EME_HVPM_DCDC_ALS` | HVPM DCDC ALS | 4 |
 | `0xDE2D` | 22 | `AE_CPLD_VERSION` | CPLD version | 1 |
@@ -1036,11 +1036,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDEA6` | 22 | `AE_TEMP_EMASCHINE` | Value of the current temperatures of the e-machine in degrees Celsius | 2 |
 | `0xDEA7` | 22 | `AE_ELEKTRISCHE_MASCHINE` | Reading out the speed, torque and operating mode of the electric machine | 4 |
 | `0xDEA9` | 22 | `AE_ZUSTAND_2_DCDC` | Various statuses returned from the DCDC converter | 1 |
-| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direktes Schreiben des Resolveroffset Winkels | 1 |
+| `0xDEB1` | 2E | `AE_ROTORLAGESENSOR_SCHREIBEN` | Direct write of the resolver offset angle | 1 |
 | `0xDEB2` | 2E | `AE_DCDC_TEMPHISTOGRAMM_LESEN` | Read out temperature histograms DCDC / reset temperature histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB3` | 2E | `AE_DCDC_LEISTUNGSHISTOGRAMM` | Read out power histograms DCDC converter / reset power histograms (0 = no reset; 1 = reset) | 1 |
 | `0xDEB4` | 2E | `AE_RESET_TEMP_MIN_MAX` | Resetting the minimum and maximum temperature of the DC / DC converter (0 = no reset; 1 = reset) | 1 |
-| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Gibt aktuellen Versionen der PIC-SW zurück | 2 |
+| `0xDEB5` | 22 | `AE_PIC_SW_VERSION` | Returns current version of the PIC software | 2 |
 | `0xDEB6` | 2E | `AE_ROTORLAGESENSOR_RESET` | Resetting the resolver offset angle | 1 |
 | `0xDEB7` | 2E | `AE_KLASSIERUNG_LOESCHEN` | Deletion of the entire classification data | 1 |
 | `0xDEBC` | 22 | `AE_CTRL_VERSION` | Controller board version | 1 |
@@ -1070,7 +1070,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDEF5` | 22 | `PROXIMITY` | Current status of the proximity | 2 |
 | `0xDEF6` | 22 | `PILOTSIGNAL` | current data of the pilot signal about the charging current | 6 |
 | `0xDF20` | 22 | `BETRIEBSART_AKTUELL` | Status of the current operating mode of the charger electronics | 1 |
-| `0xDF21` | 22 | `FEHLERZUSTAENDE` | Fehlerzustände der Ladeelektronik | 3 |
+| `0xDF21` | 22 | `FEHLERZUSTAENDE` | Fault states of the charging electronics | 3 |
 | `0xDF23` | 22 | `WIRKUNGSGRAD` | Efficiency status | 1 |
 | `0xDF24` | 22 | `WIRKUNGSGRAD_LADEZYKLUS` | Charge cycle efficiency status | 1 |
 | `0xDF25` | 22 | `AC_PHASENANZAHL` | Status of the number of AC phases | 1 |
@@ -1082,7 +1082,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDF2F` | 22 | `HVDC_LEISTUNG_MAX` | Status maximum HV DC power of the charger electronics | 1 |
 | `0xDF30` | 22 | `AC_WIRKLEISTUNG_LADEZYKLUS` | Status of active power drawn from the mains, current charge cycle | 1 |
 | `0xDF31` | 22 | `AC_SPANNUNG_EFFEKTIV` | Status RMS values of the AC phase voltages per phase | 1 |
-| `0xDF32` | 22 | `HVDC_SPANNUNG` | HV-DC Spannung an der Ladeelektronik | 1 |
+| `0xDF32` | 22 | `HVDC_SPANNUNG` | HV DC voltage at the charging electronics | 1 |
 | `0xDF33` | 22 | `HVDC_SPANNUNG_MAX` | Maximum HV DC voltage at the charging electronics | 1 |
 | `0xDF34` | 22 | `HVDC_STROM` | Status HV DC current of the charger electronics | 1 |
 | `0xDF35` | 22 | `HVDC_STROM_MAX` | Status maximum HV DC current of the charger electronics | 1 |
@@ -1109,14 +1109,14 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD6A` | 22 | `ISOLATIONSWIDERSTAND` | Reading out the currently applied insulation resistance | 4 |
 | `0xDD6B` | 22 | `TEMP_SENSOREN` | Cell temperature | 8 |
 | `0xDD6C` | 22 | `KUEHLKREISLAUF_TEMP` | Temperature of the coolant medium in °C | 1 |
-| `0xDD6E` | 2E | `SCHUETZE_MAX_SOC_SICHERHEITABFRAGE` | Hauptschütze schalten bei SOC > 90 %, Passwort gesichert! | 2 |
+| `0xDD6E` | 2E | `SCHUETZE_MAX_SOC_SICHERHEITABFRAGE` | Switch main contactors at SOC > 90%, password protected! | 2 |
 | `0xDD6F` | 22;2E | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open | 2 |
 | `0xDD72` | 22 | `AUFSTART_VERHINDERER` | Reason for not starting the HV system | 1 |
 | `0xDD73` | 22 | `CUMULATIVE_LADUNG` | The accumulated charge for charges in Ah | 1 |
 | `0xDD74` | 22 | `CUMULATIVE_ENTLADUNG` | The accumulated charge for discharges in Ah | 1 |
 | `0xDD76` | 22 | `STATUS_KL30C_SPANNUNG` | Voltage terminal 30C in V | 1 |
 | `0xDD78` | 2E | `SOC_REKALIBRIERUNG` | Trigger the SOC recalibration procedure (0 = not active; 1 = active) | 1 |
-| `0xDD79` | 2E | `SCHUETZE_MIN_SOC_SICHERHEITABFRAGE` | Hauptschütze schalten bei min SOC (< 5% SOC) Achtung!Dieser Job muss in allen Folgetools mit Security Abfrage gesichert sein. Nicht möglich während der Fahrt. | 2 |
+| `0xDD79` | 2E | `SCHUETZE_MIN_SOC_SICHERHEITABFRAGE` | Switch main contactors at min SOC (< 5% SOC). Caution! This job must be protected by a security query in all follow-up tools. Not possible while driving. | 2 |
 | `0xDD7B` | 22;2E | `REFERENZ_KAPAZITAET` | Read and adjust battery capacity | 2 |
 | `0xDD7C` | 22 | `GW_INFO` | Warranty data | 26 |
 | `0xDD7D` | 22 | `STROMGRENZEN` | Current limits | 2 |
@@ -1124,13 +1124,13 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD8E` | 22 | `HVB_HISTORIE_ZYKLEN` | Output of the number of charge/discharge strokes (Ah throughput) in the respective class and output of the current load (current histogram) | 28 |
 | `0xDD90` | 22 | `ZEIT_TEMP_HISTOGRAMM` | Time in various temperature classes and main contactor states | 28 |
 | `0xDD91` | 22 | `ZEIT_SOC_KLASSE` | Time since installation in SOC classes | 12 |
-| `0xDD94` | 22 | `HV_BATT_HIST_SOC_T1` | Dauer bei Temperatur <-20°C und bei unterschiedlichen Werten von Strom und SOC | 70 |
-| `0xDD95` | 22 | `HV_BATT_HIST_SOC_T2` | Dauer bei Temperatur -20°C < T < -13°C und bei unterschiedlichen Werten von Strom und SoC | 70 |
-| `0xDD96` | 22 | `HV_BATT_HIST_SOC_T3` | Dauer bei Temperatur -13°C < T < -7°C und bei unterschiedlichen Werten von Strom und SoC. | 70 |
-| `0xDD97` | 22 | `HV_BATT_HIST_SOC_T4` | Dauer bei Temperatur -7°C < T < 0°C und bei unterschiedlichen Werten von Strom und SoC | 70 |
-| `0xDD98` | 22 | `HV_BATT_HIST_SOC_T5` | Dauer bei Temperatur 0°C < T < 8°C und bei unterschiedlichen Werten von Strom und SoC. | 70 |
-| `0xDD99` | 22 | `HV_BATT_HIST_SOC_T6` | Dauer bei Temperatur 8°C < T < 25°C und bei unterschiedlichen Werten von Strom und SoC | 70 |
-| `0xDD9A` | 22 | `HV_BATT_HIST_SOC_T7` | Dauer bei Temperatur 25°C < T und bei unterschiedlichen Werten von Strom und SoC | 70 |
+| `0xDD94` | 22 | `HV_BATT_HIST_SOC_T1` | Duration at temperature <-20°C and at varying values of current and SOC | 70 |
+| `0xDD95` | 22 | `HV_BATT_HIST_SOC_T2` | Duration at temperature -20°C < T < -13°C and at varying values of current and SoC | 70 |
+| `0xDD96` | 22 | `HV_BATT_HIST_SOC_T3` | Duration at temperature -13°C < T < -7°C and at varying values of current and SoC. | 70 |
+| `0xDD97` | 22 | `HV_BATT_HIST_SOC_T4` | Duration at temperature -7°C < T < 0°C and at varying values of current and SoC | 70 |
+| `0xDD98` | 22 | `HV_BATT_HIST_SOC_T5` | Duration at temperature 0°C < T < 8°C and at varying values of current and SoC. | 70 |
+| `0xDD99` | 22 | `HV_BATT_HIST_SOC_T6` | Duration at temperature 8°C < T < 25°C and at varying values of current and SoC | 70 |
+| `0xDD9A` | 22 | `HV_BATT_HIST_SOC_T7` | Duration at temperature 25°C < T and at varying values of current and SoC | 70 |
 | `0xDDAE` | 22 | `ZELLSPANNUNG_MODUL_4` | Currently measured cell voltages, module 4 | 12 |
 | `0xDDAF` | 22 | `ZELLSPANNUNG_MODUL_5` | Currently measured cell voltages, module 5 | 12 |
 | `0xDDB0` | 22 | `ZELLSPANNUNG_MODUL_6` | Currently measured cell voltages, module 6 | 12 |
@@ -1148,8 +1148,8 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDBE` | 22 | `VORLADUNG` | Info about time, current and temperatures during pre-charging | 15 |
 | `0xDDBF` | 22 | `ZELLSPANNUNGEN_MIN_MAX` | minimum and maximum single cell voltages are output | 2 |
 | `0xDDC0` | 22 | `TEMPERATUREN` | Output of minimum measured temperature, maximum measured temperature, average measured temperature, maximum cell core temperature | 4 |
-| `0xDDC1` | 2E;22 | `CSC_IDS` | Hardware IDs der einzelnen CSCs (Cell Supervisory Circuit) | 9 |
-| `0xDDC2` | 22 | `ALTERUNG_PARAMETER` | Korrekturfaktor des seriellen ohmischen Wiederstandes bei Entladung. | 6 |
+| `0xDDC1` | 2E;22 | `CSC_IDS` | Hardware IDs of the individual CSCs (Cell Supervisory Circuit) | 9 |
+| `0xDDC2` | 22 | `ALTERUNG_PARAMETER` | Correction factor of the series ohmic resistance during discharge. | 6 |
 | `0xDDC4` | 2E;22 | `SOC` | Read out SOC value (in%) and plausibility or specification of the SOC value (0-100%) | 4 |
 | `0xDDC5` | 22 | `MODULSPANNUNG_UNPLAUSIBEL` | Returns the module number of the CSCs in which an implausible voltage value was detected (linked to DTC). Return value is a component vector (length 8) with assignment 0 = no fault, 1 = fault detected. | 8 |
 | `0xDDC6` | 22 | `HISTO_SYM_DAUER` | Read the number of cell balancing events in the respective time classes (target time during which the balancing resistors are to be switched active). | 8 |
@@ -1160,7 +1160,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDCB` | 22 | `SOC_GRENZEN` | Reading and changing the SOC limits | 2 |
 | `0xDDCC` | 22;2E | `SCHUETZ_RESTZAEHLER` | Read out or reset (0 = no reset; 1 = reset) of the counter for the possible switching of contactors K1, K2, K3 | 4 |
 | `0xDDCD` | 2E | `CC_MELDUNG` | Activation / deactivation of the sending of CC messages (0 = sending not active; 1 = sending active) | 1 |
-| `0xDDCF` | 22 | `DIFFERENZ_SPANNUNGEN` | Differenzspannung: Gesamtspannung Batterie - Summenzellspannung | 2 |
+| `0xDDCF` | 22 | `DIFFERENZ_SPANNUNGEN` | Differential voltage: total battery voltage - sum of cell voltages | 2 |
 | `0xDDE8` | 22 | `ALTERUNG_KAPAZITAET_DEGRADATION` | Number of age-related stress degradations | 2 |
 | `0xDDE9` | 22 | `ALTERUNG_KAPAZITAET_HISTOGRAMM_SOC_HUB` | Histogram with the frequency of individual SoC strokes that occurred during the operating period | 24 |
 | `0xDF60` | 22 | `BETRIEBSSTUNDEN` | Time for closed main switches and total battery lifetime (closed + open time of the main switches) | 2 |
@@ -1170,7 +1170,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDF64` | 22 | `KUEHLDAUER` | HV battery cooling time | 4 |
 | `0xDF65` | 22 | `TEMP_SPREIZUNG_SYSTEM` | Time in different dT classes with active cooling | 5 |
 | `0xDF66` | 22 | `TEMP_KUEHLMITTEL` | Time in different temperature classes of the coolant | 6 |
-| `0xDF67` | 22 | `LADUNG_KUEHLUNG` | Ladungsmengen bei eingeschalteter Kühlung | 2 |
+| `0xDF67` | 22 | `LADUNG_KUEHLUNG` | Charge quantities with cooling switched on | 2 |
 | `0xF190` | 22 | `VIN` | 17-digit vehicle identification number, 00000000000000000 if no VIN is present (virgin ECU). Note: the result value 00000000000000000 is returned if the CAS returns 0xFF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF in the response telegram. | 1 |
 | `0x6334` | 22 | `ALTERUNG_INNENWIDERSTAND_TS` | Aging of the internal resistance in percent: Internal resistance of the storage tank when new is related to the current value of the internal resistance (R_neu / R_akt) * 100 (100% = new condition, decreases with aging) | 1 |
 | `0x6335` | 22 | `ALTERUNG_KAPAZITAET_TS` | Remaining capacity of the battery (storage), percentage value: ( C_akt/C_nenn(neu) ) * 100, 0 = end of life reached, 100 = new condition | 1 |
@@ -1206,45 +1206,45 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDF0` | 22 | `EME_TEMP_EMASCHINE` | Read the current temperature value of the e-machine in degrees Celsius | 5 |
 | `0xDDF1` | 22 | `EME_SPANNUNG_DC_HV` | DC voltage of the e-machine after rectification by the EME (HV battery side, referred to internal) | 1 |
 | `0xDDF2` | 22 | `EME_SPANNUNG_DC_HV_DCDC` | High-voltage vehicle electrical system voltage measured by the DC/DC converter (in the EME) | 1 |
-| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV-Strom des DCDC Wandlers und dem gemitteltem Effektivstrom der E-Maschine | 2 |
+| `0xDDF3` | 22 | `EME_STROM_EMASCHINE_AC` | HV current of the DC/DC converter and the averaged RMS current of the e-machine | 2 |
 | `0xDDF4` | 22 | `EME_STROM_EMASCHINE_DC` | DC current (on the HV side) caused by the EMK | 1 |
 | `0xDDF5` | 22 | `EME_POSITIONSGEBER` | Angular position of the e-machines in degrees | 1 |
 | `0xDDF6` | 22 | `EME_DCDC_LV` | Voltage / current DCDC (12V vehicle electrical system) at the B + bolt | 2 |
 | `0xDDF7` | 22 | `EME_ELEKTRISCHE_MASCHINE` | Read speed and torque of the e-machine | 3 |
 | `0xDDF8` | 22 | `EME_DCDC_LADEMODUS` | Query the DC/DC converter for operating mode and battery state of charge | 2 |
-| `0xDDF9` | 22 | `EME_EPSOFFSET` | EPS Offset (-180,00° .. +180,00°) | 1 |
+| `0xDDF9` | 22 | `EME_EPSOFFSET` | EPS offset (-180.00° .. +180.00°) | 1 |
 | `0xDDFC` | 22 | `EME_INFO_EMK` | Bit-coded derating information from the e-machine control | 1 |
 | `0xDDFD` | 2E | `EME_DME_LEERLAUFREGELUNG_AKTIVIEREN` | Activation/deactivation of idle speed control on the DME | 1 |
 | `0xDDFE` | 22;2E | `EME_ANTRIEBSART` | Current hybrid operating mode and EME operating mode control | 2 |
-| `0xDDFF` | 2E | `EME_ELEKTRISCHE_MASCHINE_GENERATORBETRIEB` | Einstellen generatorischer Betrieb der E-Maschine oder Regelung durch EME SW | 1 |
+| `0xDDFF` | 2E | `EME_ELEKTRISCHE_MASCHINE_GENERATORBETRIEB` | Set generator mode of the e-machine or control via EME software | 1 |
 | `0xDE00` | 22 | `EME_HVPM_DCDC_ANSTEUERUNG` | Return values from the HVPM for DCDC control | 16 |
 | `0xDE01` | 22 | `EME_HVPM_VERBRAUCHERREDUZIERUNG` | Return values for HVPM consumer reduction | 9 |
-| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | Hochvoltsystem An / Aus | 7 |
+| `0xDE02` | 22 | `EME_HVPM_HV_SYSTEM_ON_OFF` | High-voltage system on / off | 7 |
 | `0xDE03` | 22 | `EME_HVPM_ENERGIEBORDNETZ` | Return values of the HVPM for HV energy and cell voltages | 34 |
 | `0xDE04` | 22 | `EME_HVPM_ENERGIEBORDNETZ_2` | Number of times the vehicle was ready to drive in the SOC area | 14 |
-| `0xDE05` | 22 | `EME_HVPM_MSA` | HVPM Motor Start-Stopp-Automatik | 39 |
+| `0xDE05` | 22 | `EME_HVPM_MSA` | HVPM engine start-stop automatic | 39 |
 | `0xDE06` | 22 | `EME_HVPM_PKOR` | HVPM performance coordinator | 24 |
 | `0xDE07` | 2E | `EME_HVPM_INFOSPEICHER_MSA_LOESCHEN` | All fault memory entries from diagnostic job STATUS_HVPM_MSA are set to zero. | 1 |
 | `0xDE08` | 2E | `EME_HVPM_INFOSPEICHER_PKOR_LOESCHEN` | All fault memory entries of diagnostic job STATUS_HVPM_EKMV are set to zero. | 1 |
-| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Löschen des Infospeicher HSPM (STRZL) | 1 |
+| `0xDE09` | 2E | `EME_HVPM_INFOSPEICHER_STRZLR_LOESCHEN` | Clear the info memory HSPM (STRZL) | 1 |
 | `0xDE0A` | 2E | `EME_HVPM_INFOSPEICHER_SPMON_LOESCHEN` | Deleting the information memory HVPMP (SPMON) | 1 |
 | `0xDE0B` | 22 | `EME_HV_ISOLATION` | External insulation fault, SME | 1 |
 | `0xDE0C` | 22 | `EME_HVIL_GESAMT` | Reading out the HVIL status in the EME; if HVIL is interrupted, then not ok | 1 |
 | `0xDE0D` | 22 | `EME_LV_BAT` | Status of the LV battery | 3 |
 | `0xDE0E` | 22 | `EME_ANSTEUERUNG_ELUP` | Current switching status ELUP (0 - off; 1 - on) | 1 |
 | `0xDE0F` | 22 | `EME_KL30C_SPANNUNG` | 0 = crash not detected, 1 = crash detected | 1 |
-| `0xDE10` | 22 | `EME_HVB_TAUSCH_LESEN` | Kilometerstand (km) des letzten Batterietausches | 2 |
-| `0xDE12` | 22 | `EME_PUMPEN` | Ist-Drehzahl der Kühlmittelpumpe | 1 |
+| `0xDE10` | 22 | `EME_HVB_TAUSCH_LESEN` | Odometer reading (km) of the last battery replacement | 2 |
+| `0xDE12` | 22 | `EME_PUMPEN` | Actual speed of the coolant pump | 1 |
 | `0xDE13` | 22 | `EME_BETRIEBSART_HYBRID` | Hybrid operating mode (Ba_hybrid) is output | 1 |
-| `0xDE14` | 22 | `EME_ANF_NL` | Historienspeicher von St_anf_nl_eme auslesen | 48 |
-| `0xDE15` | 22 | `EME_NLM_DEAK` | Historienspeicher von St_nlm_deakt_msa auslesen | 48 |
-| `0xDE17` | 2E | `EME_NLM_INFO_ERS_LOESCHEN` | Historienspeicher NLM Infos Ersatzreaktionen Null setzen | 1 |
-| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Infospeicher zur Spannungsfreiheit des Hochvoltsystems (durch HVPM überwacht) | 40 |
+| `0xDE14` | 22 | `EME_ANF_NL` | Read out history memory of St_anf_nl_eme | 48 |
+| `0xDE15` | 22 | `EME_NLM_DEAK` | Read out history memory of St_nlm_deakt_msa | 48 |
+| `0xDE17` | 2E | `EME_NLM_INFO_ERS_LOESCHEN` | Reset history memory of NLM info substitute reactions to zero | 1 |
+| `0xDE18` | 22 | `EME_HVPM_SPANNUNGSFREIHEIT` | Info memory for the de-energized state of the high-voltage system (monitored by HVPM) | 40 |
 | `0xDE19` | 22 | `EME_ELUP` | Number of brake actuations, running time and starts of the ELUP | 3 |
-| `0xDE1A` | 22 | `EME_12VBATT_ENTL_STANDKL` | Ladungsmenge | 1 |
+| `0xDE1A` | 22 | `EME_12VBATT_ENTL_STANDKL` | Charge quantity | 1 |
 | `0xDE1B` | 22 | `EME_HVPM_MSA_2` | HVPM MSA2 | 10 |
 | `0xDE1C` | 22 | `EME_HVPM_DCDC_ALS` | HVPM DCDC ALS | 4 |
-| `0xDE1E` | 22 | `EME_SZE_ZSEBATTERIE` | Ergebnisse der Speicherzustandserkennung der ZSE-Batterie auslesen | 46 |
+| `0xDE1E` | 22 | `EME_SZE_ZSEBATTERIE` | Read out the results of the ZSE battery state-detection | 46 |
 | `0xDE1F` | 2E | `EME_TAUSCH_ZSEBATT_REGISTRIEREN` | Register ZSE battery replacement: 0 = no request; 1 = register ZSE battery replacement | 1 |
 | `0xDE20` | 2E | `EME_ZSEBATT_SZEWERTE_LOESCHEN` | Reset all histograms, counters, etc. of the ZSE battery | 1 |
 | `0xDE21` | 22 | `EME_TEMP_DCDC` | Current temperature value of the DC/DC converter transformer | 1 |
@@ -1256,7 +1256,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDE27` | 22 | `EME_EM_TEMP_HIST` | Read e-machine temperature histogram | 6 |
 | `0xDE28` | 22 | `EME_EBS_1` | Read out teleservice data | 32 |
 | `0xDE29` | 2E;22 | `EME_NOTENTL_ZAEHLER` | Emergency discharge counter: counter status / reset counter (0 = no reset; 1 = reset) | 2 |
-| `0xDE2A` | 22 | `EME_FELDDATEN_LESEN` | Felddaten der EME auslesen | 11 |
+| `0xDE2A` | 22 | `EME_FELDDATEN_LESEN` | Read out field data of the EME | 11 |
 | `0xDE2B` | 2E | `EME_RESET_EM_TEMPHIST` | Reset the temperature histogram of the EMM | 1 |
 | `0xDE2C` | 22 | `EME_EBS_2` | Read teleservice data 2 | 56 |
 | `0xDE2E` | 22 | `EME_SERIENNUMMERN_BOSCH` | Serial, part and revision number of the ECU (Bosch) | 4 |
@@ -1277,13 +1277,13 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD61` | 22;2E | `SCHUETZ_FREIGABE` | Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe | 2 |
 | `0xDD63` | 22 | `SCHUETZSCHALTUNGEN_ANZAHL` | Number of switchings of the contactor switch (currentless and under load) | 1 |
 | `0xDD64` | 22 | `HVIL` | Disturb/disable the interlock generator in the BMS / HVIL test result | 1 |
-| `0xDD66` | 22 | `HV_SPANNUNG` | HV-Spannung Zwischenkreisspannung vor den Schützen | 1 |
-| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV-Spannung berechnet aus einzelnen Zellen  Batteriespannung hinter den Schützen | 1 |
+| `0xDD66` | 22 | `HV_SPANNUNG` | HV voltage, DC-link voltage before the contactors | 1 |
+| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV voltage calculated from individual cells, battery voltage behind the contactors | 1 |
 | `0xDD69` | 22 | `HV_STROM` | HV electricity | 1 |
 | `0xDD6A` | 22 | `ISOLATIONSWIDERSTAND` | Reading out the currently applied insulation resistance | 2 |
 | `0xDD6B` | 22 | `TEMP_SENSOREN` | Cell temperature | 4 |
 | `0xDD6C` | 22 | `KUEHLKREISLAUF_TEMP` | Coolant circuit temperature | 1 |
-| `0xDD6D` | 22 | `KAPAZITAETSVERLUST` | HV-Batterie Kapazitätsverlust | 2 |
+| `0xDD6D` | 22 | `KAPAZITAETSVERLUST` | HV battery capacity loss | 2 |
 | `0xDD6F` | 22;2E | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: closed or open | 2 |
 | `0xDD70` | 22 | `AUSLIEFERUNGSDATEN` | Read manufacturer data | 5 |
 | `0xDD71` | 22 | `ZELLSPANNUNG` | Cell voltages | 35 |
@@ -1293,7 +1293,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD75` | 22 | `SERIENNUMMER` | Write/read serial number | 1 |
 | `0xDD76` | 22 | `STATUS_KL30C_SPANNUNG` | Voltage terminal30C | 1 |
 | `0xDD77` | 22 | `HISTOGRAM` | Time/temperature histogram SoC 1-3 | 18 |
-| `0xDD79` | 2F | `SCHUETZE_MIN_SOC_SICHERHEITABFRAGE` | Hauptschütze schalten bei min SOC (< 5% SOC) Achtung!Dieser Job muss in allen Folgetools mit Security Abfrage gesichert sein Nicht möglich während der Fahrt. Auch bei tiefer Entladung (5% SOC) noch möglich. Achtung! Dieser Job muss in allen Folgetools mit Security Abfrage gesichert sein, um sicher zu stellen, dass ein Ladegerät bereits angeschlossen ist! | 2 |
+| `0xDD79` | 2F | `SCHUETZE_MIN_SOC_SICHERHEITABFRAGE` | Switch main contactors at min SOC (< 5% SOC). Caution! This job must be protected by a security query in all follow-up tools. Not possible while driving. Also still possible at deep discharge (5% SOC). Caution! This job must be protected by a security query in all follow-up tools, to make sure a charger is already connected! | 2 |
 | `0xDD7B` | 22;2E | `REFERENZ_KAPAZITAET` | Read and adjust battery capacity | 2 |
 | `0xDD7C` | 22 | `GW_INFO` | Warranty data | 52 |
 | `0xDD7D` | 22 | `STROMGRENZEN` | Current limits | 2 |
@@ -1301,26 +1301,26 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD7F` | 22;2E | `OCV_KENNLINIE` | SoC-dependent open-circuit voltage | 42 |
 | `0xAD60` | 31 | `ZELLAUSGLEICHSENTLADESPANNUNG` | Cell balancing discharge voltage | 7 |
 | `0xAD61` | 31 | `ISOLATION` | Isolation test result | 1 |
-| `0xAD62` | 31 | `SOC` | HV-Batterie SOC (state of charge) | 4 |
+| `0xAD62` | 31 | `SOC` | HV battery SOC (state of charge) | 4 |
 | `0xDD64` | 22;2F | `HVIL` | Disturb/disable the interlock generator in the BMS / HVIL test result | 2 |
 | `0xDD6F` | 2E;22 | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: closed or open | 2 |
 | `0xDD7F` | 2E | `OCV_KENNLINIE` | still to be defined | 2 |
-| `0xDD7A` | 2F | `SCHUETZE_MAX_SOC` | Hauptschütze schalten in normalem Betriebszustand (>95% SOC) Nicht möglich während der Fahrt. Auch bei hohem Ladezustand (> 95% SOC) noch möglich. | 1 |
-| `0xDD78` | 2F | `SCHUETZE_MIN_SOC` | Hauptschütze schalten bei min SOC(10% - 5% SOC) Nicht möglich während der Fahrt! Nur zwischen 10%  und 5 % SOC möglich! | 1 |
-| `0xDD6D` | 22 | `SOH` | HV-Batterie SOH (state of health) | 2 |
-| `0xDAFE` | 22 | `STATUS_KLEMME_15_EIN` | Liefert Status der Klemme(n) im Steuergerät: 0=AUS; 1=EIN | 1 |
+| `0xDD7A` | 2F | `SCHUETZE_MAX_SOC` | Switch main contactors in normal operating state (>95% SOC). Not possible while driving. Also still possible at high state of charge (> 95% SOC). | 1 |
+| `0xDD78` | 2F | `SCHUETZE_MIN_SOC` | Switch main contactors at min SOC (10% - 5% SOC). Not possible while driving! Only possible between 10% and 5% SOC! | 1 |
+| `0xDD6D` | 22 | `SOH` | HV battery SOH (state of health) | 2 |
+| `0xDAFE` | 22 | `STATUS_KLEMME_15_EIN` | Returns status of the terminal(s) in the ECU: 0=OFF; 1=ON | 1 |
 
 ## ActiveHybrid 7 (F04) — EME (E-machine electronics)
 
 | DID | Svc | Job argument | Description | Fields |
 |---|---|---|---|---:|
-| `0x6300` | 22 | `STATUS_EPSOFFSET` | EPS Offset -180,00° .. +180,00° | 1 |
+| `0x6300` | 22 | `STATUS_EPSOFFSET` | EPS offset -180.00° .. +180.00° | 1 |
 | `0x6301` | 22 | `STATUS_TEMPERATUREN` | Read temperatures from the e-motor DCB (power stage) control board | 9 |
 | `0x6302` | 22 | `STATUS_HVIL_GESAMT` | Read the HVIL status; if HVIL is interrupted, then not OK | 1 |
 | `0x6303` | 22 | `STATUS_HV_ISOLATION` | Read the insulation monitor; if insulation fault, then not OK | 1 |
 | `0x6304` | 22 | `STATUS_PRECHARGE` | Variable in the base SW: ECUM_eSystemState = Run -> precharge complete. However, precharge is performed by the SME | 1 |
 | `0x6305` | 22 | `STATUS_SPANNUNG_DC_HV` | DC voltage of the EMK EMR (HV battery side) (referred to internal) | 1 |
-| `0x6306` | 22 | `STATUS_HV_STROM` | HV-Strom  Bordnetz | 4 |
+| `0x6306` | 22 | `STATUS_HV_STROM` | HV current, electrical system (Bordnetz) | 4 |
 | `0x6307` | 22 | `STATUS_POSITIONSGEBER` | Angular position of the e-machines in degrees | 1 |
 | `0x6308` | 22 | `STATUS_LV_BAT` |  | 3 |
 | `0x6309` | 22 | `STATUS_ELEKTRISCHE_MASCHINE` |  | 3 |
@@ -1560,7 +1560,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x63A0` | 22 | `STATUS_HVBHIST_STARTSOC_80_HUB_35_EL` |  | 6 |
 | `0x63A1` | 22 | `STATUS_HVBHIST_STARTSOC_80_HUB_50_EL` |  | 6 |
 | `0x6301` | 22 | `STEUERN_TEMPERATUREN_LESEN` | Read temperatures from the e-motor DCB (power stage) control board | 9 |
-| `0x6300` | 22 | `STEUERN_EPSOFFSET_LESEN` | EPS Offset -180,00° .. +180,00° | 1 |
+| `0x6300` | 22 | `STEUERN_EPSOFFSET_LESEN` | EPS offset -180.00° .. +180.00° | 1 |
 
 ## BMW ActiveE (E82, "BEV10") — SME (HV battery management (master))
 
@@ -1570,8 +1570,8 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD61` | 22;2E | `SCHUETZ_FREIGABE` | Writes or reads the bit to enable or disable the contactor switch. Job is clamp-safe | 2 |
 | `0xDD63` | 22 | `SCHUETZSCHALTUNGEN_ANZAHL` | Number of switchings of the contactor switch (currentless and under load) | 1 |
 | `0xDD64` | 22 | `HVIL` | HVIL test result | 1 |
-| `0xDD66` | 22 | `HV_SPANNUNG` | HV-Spannung des Zwischenkreises vor den Schützen | 1 |
-| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV-Spannung berechnet aus den einzelnen Zellen (Batteriespannung hinter den Schützen) | 1 |
+| `0xDD66` | 22 | `HV_SPANNUNG` | HV voltage of the DC link before the contactors | 1 |
+| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV voltage calculated from the individual cells (battery voltage behind the contactors) | 1 |
 | `0xDD69` | 22 | `HV_STROM` | HV electricity | 1 |
 | `0xDD6F` | 22;2E | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open | 2 |
 | `0xDD73` | 22 | `CUMULATIVE_LADUNG` | Status cumulative charge | 1 |
@@ -1599,10 +1599,10 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDA1` | 2E;22 | `KUEHLMITTELPUMPE` | Result values or control of the coolant pump for cooling the HV battery in % (0-100%) | 3 |
 | `0xDDA2` | 22 | `TEMP_SENSOREN_BEV10` | Return the temperature values of all CSCs | 52 |
 | `0xDDA3` | 22 | `ZELLSPANNUNG_MODUL_13` | Currently measured cell voltages, module 13 | 12 |
-| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Freigeben oder Auslesen Status der Kühlmittelpumpe (0 = nicht freigegeben, 1 = freigegeben) | 2 |
+| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled) | 2 |
 | `0xDDA6` | 22 | `SCHUETZ_SCHALTER_BEV10` | Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank | 3 |
 | `0xDDA7` | 22 | `ISOLATIONSWIDERSTAND_BEV10` | Value of all insulation resistances (all HV batteries) | 12 |
-| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW Nummern aller CSCs (Cell Supervisory Circuit) vom BEV2010 | 13 |
+| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010 | 13 |
 | `0xDDA9` | 22 | `KUEHLKREISLAUF_TEMP_BEV10` | Coolant circuit temperature BEV2010 | 3 |
 | `0xDDAA` | 22 | `HV_SPANNUNG_BATT_BEV10` | Values for HV voltages for the BEV2010 | 14 |
 | `0xDDAD` | 22 | `VARIANTE_CSCS_BEV10` | Return the CSC variant of all modules | 13 |
@@ -1637,11 +1637,11 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x6508` | 2E | `_SCHUETZ_K3` | K3 contactor | 2 |
 | `0x6509` | 2E | `_SERIENNUMMER` | HV battery (storage) serial number | 2 |
 | `0x650B` | 2E | `_ENTLADE_SPANNUNGSGRENZE` | Discharge voltage limit | 2 |
-| `0x650C` | 2E | `_SCHUETZ_K4` | K4 Schütz | 2 |
-| `0x650D` | 2E | `_SCHUETZ_K5` | K5 Schütz | 2 |
-| `0x650E` | 2E | `_SCHUETZ_K6` | K6 Schütz | 2 |
-| `0x650F` | 2E | `_SCHUETZ_K7` | K7 Schütz | 2 |
-| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Entprellzeiten für FuSi-Ebene2-Funktionen hochsetzen | 2 |
+| `0x650C` | 2E | `_SCHUETZ_K4` | K4 contactor | 2 |
+| `0x650D` | 2E | `_SCHUETZ_K5` | K5 contactor | 2 |
+| `0x650E` | 2E | `_SCHUETZ_K6` | K6 contactor | 2 |
+| `0x650F` | 2E | `_SCHUETZ_K7` | K7 contactor | 2 |
+| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Increase debounce times for FuSi level 2 (functional safety) functions | 2 |
 | `0x6518` | 2E | `_CSC_INDIZIERUNG_BEV_10` | CSC indexing for BEV-10 | 2 |
 | `0x6519` | 2E | `_CSC_STANDBY` | Put CSCs in standby mode | 2 |
 | `0x651B` | 2E | `_ANFORDERUNG_SCHUETZE_SCHLIESSEN` | Close contactor | 2 |
@@ -1660,13 +1660,13 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x6508` | 2E | `_SCHUETZ_K3` | K3 contactor | 2 |
 | `0x6509` | 2E | `_SERIENNUMMER` | HV battery (storage) serial number | 2 |
 | `0x650B` | 2E | `_ENTLADE_SPANNUNGSGRENZE` | Discharge voltage limit | 2 |
-| `0x650C` | 2E | `_SCHUETZ_K4` | K4 Schütz | 2 |
-| `0x650D` | 2E | `_SCHUETZ_K5` | K5 Schütz | 2 |
-| `0x650E` | 2E | `_SCHUETZ_K6` | K6 Schütz | 2 |
-| `0x650F` | 2E | `_SCHUETZ_K7` | K7 Schütz | 2 |
+| `0x650C` | 2E | `_SCHUETZ_K4` | K4 contactor | 2 |
+| `0x650D` | 2E | `_SCHUETZ_K5` | K5 contactor | 2 |
+| `0x650E` | 2E | `_SCHUETZ_K6` | K6 contactor | 2 |
+| `0x650F` | 2E | `_SCHUETZ_K7` | K7 contactor | 2 |
 | `0x6511` | 2E | `_SYM_MODUS` | Symmetry mode of the SEM | 2 |
 | `0x6512` | 2E | `_MESSBOTSCHAFTEN` | Switch measurement messages on / off | 2 |
-| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Entprellzeiten für FuSi-Ebene2-Funktionen hochsetzen | 2 |
+| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Increase debounce times for FuSi level 2 (functional safety) functions | 2 |
 | `0x6516` | 22 | `_ST_SYM_MODUS` | Status of the SME cell balancing mode | 1 |
 | `0x6518` | 2E | `_CSC_INDIZIERUNG_BEV_10` | CSC indexing for BEV-10 | 1 |
 | `0x6519` | 2E | `_CSC_STANDBY` | Put CSCs in standby mode | 2 |
@@ -1677,9 +1677,9 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD63` | 22 | `SCHUETZSCHALTUNGEN_ANZAHL` | Number of switchings of the contactor switch (currentless and under load) | 1 |
 | `0xDD64` | 22 | `HVIL` | Disturb/disable the interlock generator in the BMS / HVIL test result | 1 |
 | `0xDD65` | 22 | `SOC_MIN_MAX` | Min/max values of the SOC | 2 |
-| `0xDD66` | 22 | `HV_SPANNUNG` | HV-Spannung des Zwischenkreises vor den Schützen | 1 |
+| `0xDD66` | 22 | `HV_SPANNUNG` | HV voltage of the DC link before the contactors | 1 |
 | `0xDD67` | 22 | `ANZAHL_KUEHLANFORDERUNG_DRINGEND` | Counter describing how often a higher temperature state was reached in consecutive terminal cycles. (Maximum value) | 1 |
-| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV-Spannung berechnet aus den einzelnen Zellen (Batteriespannung hinter den Schützen) | 1 |
+| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV voltage calculated from the individual cells (battery voltage behind the contactors) | 1 |
 | `0xDD69` | 22 | `HV_STROM` | HV electricity | 1 |
 | `0xDD6F` | 2E;22 | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open | 2 |
 | `0xDD72` | 22 | `AUFSTART_VERHINDERER` | Reason for not starting the HV system | 1 |
@@ -1693,8 +1693,8 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD8E` | 22 | `HVB_HISTORIE_ZYKLEN` | Output of the sum of cyclizations in the respective range during charging/discharging and output of the current loads | 28 |
 | `0xDD90` | 22 | `ZEIT_TEMP_HISTOGRAMM` | Time in various temperature classes and main contactor states | 20 |
 | `0xDD91` | 22 | `ZEIT_SOC_KLASSE` | Time since installation in SOC classes | 10 |
-| `0xDD92` | 22 | `HVB_HISTORIE_MIN_SOC` | Historie Ladungszustand Minimalwert der letzten fünf Tage | 6 |
-| `0xDD93` | 22 | `HVB_HISTORIE_MAX_SOC` | Historie Ladungszustand Maximalwert der letzten fünf Tage | 6 |
+| `0xDD92` | 22 | `HVB_HISTORIE_MIN_SOC` | History, state of charge, minimum value of the last five days | 6 |
+| `0xDD93` | 22 | `HVB_HISTORIE_MAX_SOC` | History, state of charge, maximum value of the last five days | 6 |
 | `0xDD94` | 22 | `HV_BATT_HIST_SOC_T1` | Number of cycles at temperature < 0°C  and at different values of current and SoC | 70 |
 | `0xDD95` | 22 | `HV_BATT_HIST_SOC_T2` | Number of cycles at temperature 0°C < T < 10°C and at different values of current and SoC | 70 |
 | `0xDD96` | 22 | `HV_BATT_HIST_SOC_T3` | Number of cycles at temperature 10°C < T < 20°C and at different values of current and SoC. | 70 |
@@ -1710,10 +1710,10 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDA1` | 22;2E | `KUEHLMITTELPUMPE` | Result values or control of the coolant pump for cooling the HV battery in % (0-100%) | 3 |
 | `0xDDA2` | 22 | `TEMP_SENSOREN_BEV10` | Return the temperature values of all CSCs | 52 |
 | `0xDDA3` | 22 | `ZELLSPANNUNG_MODUL_13` | Currently measured cell voltages, module 13 | 12 |
-| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Freigeben oder Auslesen Status der Kühlmittelpumpe (0 = nicht freigegeben, 1 = freigegeben) | 2 |
+| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled) | 2 |
 | `0xDDA6` | 22 | `SCHUETZ_SCHALTER_BEV10` | Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank | 3 |
 | `0xDDA7` | 22 | `ISOLATIONSWIDERSTAND_BEV10` | Value of all insulation resistances (all HV batteries) | 12 |
-| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW Nummern aller CSCs (Cell Supervisory Circuit) vom BEV2010 | 13 |
+| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010 | 13 |
 | `0xDDA9` | 22 | `KUEHLKREISLAUF_TEMP_BEV10` | Coolant circuit temperature BEV2010 | 3 |
 | `0xDDAA` | 22 | `HV_SPANNUNG_BATT_BEV10` | Values for HV voltages for the BEV2010 | 14 |
 | `0xDDAD` | 22 | `VARIANTE_CSCS_BEV10` | Return the CSC variant of all modules | 13 |
@@ -1737,7 +1737,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDC6` | 22 | `HISTO_SYM_DAUER` | Read the number of cell balancing events in the respective time classes (target time during which the balancing resistors are to be switched active). | 8 |
 | `0xDDC7` | 22 | `HISTO_SYM_ZELLANZAHL` | Read the number of sleep events in which the respective cell count was commanded for cell balancing. | 8 |
 | `0xDDC8` | 22 | `SYM_DELTASOC` | Maximum SoC difference in% over the entire HVS. Ring memory of the last 5 trips | 5 |
-| `0xDDC9` | 22 | `MAX_SYM_DAUER` | Maximale Symmetrierdauer der zuletzt erfolgreichen Symmetriervorgängen | 10 |
+| `0xDDC9` | 22 | `MAX_SYM_DAUER` | Maximum cell-balancing duration of the last successful balancing operations | 10 |
 | `0xDDCA` | 22 | `SERIENNUMMER_ECU` | Serial number SME ECU | 1 |
 
 ## BMW ActiveE (E82, "BEV10") — SMES2 (HV battery management slave 2)
@@ -1754,13 +1754,13 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0x6508` | 2E | `_SCHUETZ_K3` | K3 contactor | 2 |
 | `0x6509` | 2E | `_SERIENNUMMER` | HV battery (storage) serial number | 2 |
 | `0x650B` | 2E | `_ENTLADE_SPANNUNGSGRENZE` | Discharge voltage limit | 2 |
-| `0x650C` | 2E | `_SCHUETZ_K4` | K4 Schütz | 2 |
-| `0x650D` | 2E | `_SCHUETZ_K5` | K5 Schütz | 2 |
-| `0x650E` | 2E | `_SCHUETZ_K6` | K6 Schütz | 2 |
-| `0x650F` | 2E | `_SCHUETZ_K7` | K7 Schütz | 2 |
+| `0x650C` | 2E | `_SCHUETZ_K4` | K4 contactor | 2 |
+| `0x650D` | 2E | `_SCHUETZ_K5` | K5 contactor | 2 |
+| `0x650E` | 2E | `_SCHUETZ_K6` | K6 contactor | 2 |
+| `0x650F` | 2E | `_SCHUETZ_K7` | K7 contactor | 2 |
 | `0x6511` | 2E | `_SYM_MODUS` | Symmetry mode of the SEM | 2 |
 | `0x6512` | 2E | `_MESSBOTSCHAFTEN` | Switch measurement messages on / off | 2 |
-| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Entprellzeiten für FuSi-Ebene2-Funktionen hochsetzen | 2 |
+| `0x6514` | 2E | `_FUSI_ENTPRELLZEITEN` | Increase debounce times for FuSi level 2 (functional safety) functions | 2 |
 | `0x6516` | 22 | `_ST_SYM_MODUS` | Status of the SME cell balancing mode | 1 |
 | `0x6518` | 2E | `_CSC_INDIZIERUNG_BEV_10` | CSC indexing for BEV-10 | 1 |
 | `0x6519` | 2E | `_CSC_STANDBY` | Put CSCs in standby mode | 2 |
@@ -1771,9 +1771,9 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD63` | 22 | `SCHUETZSCHALTUNGEN_ANZAHL` | Number of switchings of the contactor switch (currentless and under load) | 1 |
 | `0xDD64` | 22 | `HVIL` | Disturb/disable the interlock generator in the BMS / HVIL test result | 1 |
 | `0xDD65` | 22 | `SOC_MIN_MAX` | Min/max values of the SOC | 2 |
-| `0xDD66` | 22 | `HV_SPANNUNG` | HV-Spannung des Zwischenkreises vor den Schützen | 1 |
+| `0xDD66` | 22 | `HV_SPANNUNG` | HV voltage of the DC link before the contactors | 1 |
 | `0xDD67` | 22 | `ANZAHL_KUEHLANFORDERUNG_DRINGEND` | Counter describing how often a higher temperature state was reached in consecutive terminal cycles. (Maximum value) | 1 |
-| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV-Spannung berechnet aus den einzelnen Zellen (Batteriespannung hinter den Schützen) | 1 |
+| `0xDD68` | 22 | `HV_SPANNUNG_BERECHNET` | HV voltage calculated from the individual cells (battery voltage behind the contactors) | 1 |
 | `0xDD69` | 22 | `HV_STROM` | HV electricity | 1 |
 | `0xDD6F` | 2E;22 | `KUEHLKREISLAUF_VENTIL` | Status / control coolant valve: Closed or open / close or open | 2 |
 | `0xDD72` | 22 | `AUFSTART_VERHINDERER` | Reason for not starting the HV system | 1 |
@@ -1787,8 +1787,8 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDD8E` | 22 | `HVB_HISTORIE_ZYKLEN` | Output of the sum of cyclizations in the respective range during charging/discharging and output of the current loads | 28 |
 | `0xDD90` | 22 | `ZEIT_TEMP_HISTOGRAMM` | Time in various temperature classes and main contactor states | 20 |
 | `0xDD91` | 22 | `ZEIT_SOC_KLASSE` | Time since installation in SOC classes | 10 |
-| `0xDD92` | 22 | `HVB_HISTORIE_MIN_SOC` | Historie Ladungszustand Minimalwert der letzten fünf Tage | 6 |
-| `0xDD93` | 22 | `HVB_HISTORIE_MAX_SOC` | Historie Ladungszustand Maximalwert der letzten fünf Tage | 6 |
+| `0xDD92` | 22 | `HVB_HISTORIE_MIN_SOC` | History, state of charge, minimum value of the last five days | 6 |
+| `0xDD93` | 22 | `HVB_HISTORIE_MAX_SOC` | History, state of charge, maximum value of the last five days | 6 |
 | `0xDD94` | 22 | `HV_BATT_HIST_SOC_T1` | Number of cycles at temperature < 0°C  and at different values of current and SoC | 70 |
 | `0xDD95` | 22 | `HV_BATT_HIST_SOC_T2` | Number of cycles at temperature 0°C < T < 10°C and at different values of current and SoC | 70 |
 | `0xDD96` | 22 | `HV_BATT_HIST_SOC_T3` | Number of cycles at temperature 10°C < T < 20°C and at different values of current and SoC. | 70 |
@@ -1804,10 +1804,10 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDA1` | 22;2E | `KUEHLMITTELPUMPE` | Result values or control of the coolant pump for cooling the HV battery in % (0-100%) | 3 |
 | `0xDDA2` | 22 | `TEMP_SENSOREN_BEV10` | Return the temperature values of all CSCs | 52 |
 | `0xDDA3` | 22 | `ZELLSPANNUNG_MODUL_13` | Currently measured cell voltages, module 13 | 12 |
-| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Freigeben oder Auslesen Status der Kühlmittelpumpe (0 = nicht freigegeben, 1 = freigegeben) | 2 |
+| `0xDDA5` | 2E;22 | `FREIGABE_KUEHLMITTELPUMPE` | Enable or read out status of the coolant pump (0 = not enabled, 1 = enabled) | 2 |
 | `0xDDA6` | 22 | `SCHUETZ_SCHALTER_BEV10` | Status of the three contactor switches for the 3 HV batteries: transmission tunnel, front section, tank | 3 |
 | `0xDDA7` | 22 | `ISOLATIONSWIDERSTAND_BEV10` | Value of all insulation resistances (all HV batteries) | 12 |
-| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW Nummern aller CSCs (Cell Supervisory Circuit) vom BEV2010 | 13 |
+| `0xDDA8` | 22 | `CSC_IDS_BEV10` | HW numbers of all CSCs (Cell Supervisory Circuit) of the BEV2010 | 13 |
 | `0xDDA9` | 22 | `KUEHLKREISLAUF_TEMP_BEV10` | Coolant circuit temperature BEV2010 | 3 |
 | `0xDDAA` | 22 | `HV_SPANNUNG_BATT_BEV10` | Values for HV voltages for the BEV2010 | 14 |
 | `0xDDAD` | 22 | `VARIANTE_CSCS_BEV10` | Return the CSC variant of all modules | 13 |
@@ -1831,7 +1831,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDDC6` | 22 | `HISTO_SYM_DAUER` | Read the number of cell balancing events in the respective time classes (target time during which the balancing resistors are to be switched active). | 8 |
 | `0xDDC7` | 22 | `HISTO_SYM_ZELLANZAHL` | Read the number of sleep events in which the respective cell count was commanded for cell balancing. | 8 |
 | `0xDDC8` | 22 | `SYM_DELTASOC` | Maximum SoC difference in% over the entire HVS. Ring memory of the last 5 trips | 5 |
-| `0xDDC9` | 22 | `MAX_SYM_DAUER` | Maximale Symmetrierdauer der zuletzt erfolgreichen Symmetriervorgängen | 10 |
+| `0xDDC9` | 22 | `MAX_SYM_DAUER` | Maximum cell-balancing duration of the last successful balancing operations | 10 |
 | `0xDDCA` | 22 | `SERIENNUMMER_ECU` | Serial number SME ECU | 1 |
 
 ## BMW ActiveE (E82, "BEV10") — KLE (On-board charger)
@@ -1839,7 +1839,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | DID | Svc | Job argument | Description | Fields |
 |---|---|---|---|---:|
 | `0xDF20` | 22 | `BETRIEBSART_AKTUELL` | Status of the current operating mode of the charger electronics | 1 |
-| `0xDF21` | 22 | `FEHLERZUSTAENDE` | Fehlerzustände der Ladeelektronik | 1 |
+| `0xDF21` | 22 | `FEHLERZUSTAENDE` | Fault states of the charging electronics | 1 |
 | `0xDF22` | 22 | `URSACHE_DERATING` | Derating status (cause and value of the degradation) | 1 |
 | `0xDF23` | 22 | `WIRKUNGSGRAD` | Efficiency status | 1 |
 | `0xDF24` | 22 | `WIRKUNGSGRAD_LADEZYKLUS` | Charge cycle efficiency status | 1 |
@@ -1856,7 +1856,7 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDF2F` | 22 | `HVDC_LEISTUNG_MAX` | Status maximum HV DC power of the charger electronics | 1 |
 | `0xDF30` | 22 | `AC_WIRKLEISTUNG_LADEZYKLUS` | Status of active power drawn from the mains, current charge cycle | 1 |
 | `0xDF31` | 22 | `AC_SPANNUNG_EFFEKTIV` | Status RMS values of the AC phase voltages per phase | 1 |
-| `0xDF32` | 22 | `HVDC_SPANNUNG` | HV-DC Spannung an der Ladeelektronik | 1 |
+| `0xDF32` | 22 | `HVDC_SPANNUNG` | HV DC voltage at the charging electronics | 1 |
 | `0xDF33` | 22 | `HVDC_SPANNUNG_MAX` | Maximum HV DC voltage at the charging electronics | 1 |
 | `0xDF34` | 22 | `HVDC_STROM` | Status HV DC current of the charger electronics | 1 |
 | `0xDF35` | 22 | `HVDC_STROM_MAX` | Status maximum HV DC current of the charger electronics | 1 |
@@ -1869,4 +1869,4 @@ Generated from EDIABAS SGBD `SG_FUNKTIONEN` tables. See `tools/` for the parser.
 | `0xDF3D` | 22 | `SOFTWAREVERSION_LADEELEKTRONIK` | SW version of the charger electronics | 1 |
 | `0xDF3F` | 22 | `DIGITAL_IN_OUT` | Values of the digital inputs and outputs of the charger electronics | 1 |
 | `0xDF43` | 22 | `PROXIMITY_PIN` | Voltage and information about the connection of the proximity pin | 2 |
-| `0xDF44` | 22 | `PILOT_HW` | Information über Frequenz, Duty Cycle und Spannung des Pilot Pins | 4 |
+| `0xDF44` | 22 | `PILOT_HW` | Information on frequency, duty cycle, and voltage of the pilot pin | 4 |

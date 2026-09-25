@@ -59,10 +59,18 @@ with open(OUT + '/bmw_ev_did_fields.csv', 'w', newline='') as f:
                                 b['info_en'], b['info']])
 
 # compact JSON for the web page
+def scale(r):
+    def num(x, dflt):
+        try:
+            v = float(x)
+        except ValueError:
+            return None
+        return None if v == dflt else ('%g' % v)
+    m, d, a = num(r['mul'], 1), num(r['div'], 1), num(r['add'], 0)
+    return ''.join(p for p in ((m and '×' + m), (d and '÷' + d), (a and (a if a.startswith('-') else '+' + a))) if p)
+
 def cf(r):
-    o = [r['offset'], r['name'], r['type'], r['unit'],
-         '' if (r['mul'] in ('1.0', '1', '') and r['div'] in ('1.0', '1', '') and r['add'] in ('0.0', '0', ''))
-         else f"*{r['mul']}/{r['div']}+{r['add']}", r['info_en'] or r['info'], r['routine_phase'], r['mask']]
+    o = [r['offset'], r['name'], r['type'], r['unit'], scale(r), r['info_en'] or r['info'], r['routine_phase'], r['mask']]
     if r.get('bits'):
         o.append([[b['name'], b['mask'], b['info_en'] or b['info']] for b in r['bits']])
     return o

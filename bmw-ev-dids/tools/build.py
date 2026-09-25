@@ -13,7 +13,7 @@ GROUPS = [
      [('ovms', 'sme_i1'), ('prg', 'sme_i1')]),
     ('i3_eme', 'BMW i3 / i3s (I01)', 'Gen3 BEV (2013-2022)', 'EME', 'Drive inverter + DC/DC', '0x1A',
      [('ovms', 'eme_i01'), ('prg', 'eme_i01')]),
-    ('i3_eme_alt', 'BMW i3 (I01)', 'Gen3 BEV (2013-2022)', 'EME', 'Drive electronics (alternate SGBD EME_I1)', '0x1A',
+    ('i3_eme_alt', 'BMW i3 / i3s (I01)', 'Gen3 BEV (2013-2022)', 'EME', 'Drive electronics (alternate SGBD EME_I1)', '0x1A',
      [('prg', 'EME_I1')]),
     ('i3_kle', 'BMW i3 / i3s (I01)', 'Gen3 BEV (2013-2022)', 'KLE', 'On-board charger (UCX2)', '0x15',
      [('ovms', 'ucx2_i01')]),
