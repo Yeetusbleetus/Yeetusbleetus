@@ -33,7 +33,7 @@ RESULTS_ONLY = {'SME': {'0xAD61', '0xAD66', '0xAD6A', '0xAD6B', '0xAD73', '0xAD6
 
 # index arguments: how to sweep them. Known counts per pack; otherwise sweep and stop on NRC 0x31.
 SWEEP = {
-    'NR_ZELLE': dict(start=0, end=255, note='i3: 96 cells. Numbering base (0/1) not given in SGBD - sweep and keep all positive responses'),
+    'NR_ZELLE': dict(start=1, end=255, note='i3: cells 1..96 (1-based, confirmed by Battery-Emulator). Stop on repeated 7F 31 31'),
     'NR_MODUL': dict(start=0, end=32, note='i3: 8 modules. Sweep, keep positive responses'),
     'NR_CSC': dict(start=0, end=32, note='one CSC per module'),
     'SATZ': dict(start=0, end=32, note='history record number'),
@@ -100,6 +100,7 @@ for d in dids:
             req = f'22 {idb}'
         elif kind == 'routine_read':
             req = f'31 01 {idb}' + ''.join(' <' + s['arg'] + (f":{s['bytes']}B" if s['bytes'] > 1 else '') + '>' for s in sweep)
+            followup = f'31 03 {idb}'
         else:
             req = f'31 03 {idb}'
         e = out[key] = {
@@ -107,8 +108,10 @@ for d in dids:
             'sweep': sweep, 'names': [], 'description_en': d['info_en'], 'description_de': d['info'],
             'expected_payload_len': resp_len(d['results']) if kind == 'did' else None,
             'n_fields': len(d['results']), 'vehicles': [],
-            'relevance': 'battery' if ecu in BATTERY_ECUS else 'hv/charging/12v',
+            'relevance': 'battery' if ecu in BATTERY_ECUS else 'hv/charging/12v', 'source': 'sgbd',
         }
+        if kind == 'routine_read':
+            e['followup'] = followup
     if d['name'] not in e['names']:
         e['names'].append(d['name'])
     if d['vehicle'] not in e['vehicles']:
@@ -119,20 +122,85 @@ for d in dids:
         if l is not None and e['expected_payload_len'] not in (None, l):
             e['layout_differs_between_generations'] = True
 
+# community-documented reads for generations without public SGBDs
+comm = json.load(open(H + '/data/community_dids.json'))
+for c in comm['dids']:
+    req = c['request']
+    if req.startswith('31 01'):   # i3 two-step cell read is already covered by the SGBD routine entry
+        continue
+    parts = req.split()
+    did = '0x' + ''.join(parts[-2:]).upper()
+    kind = 'did' if parts[0] == '22' else 'routine_results'
+    match = next((e for e in out.values() if e['ecu'] == c['ecu'] and e['kind'] == kind and e['id'] == did), None)
+    if match:
+        match['vehicles'].append(c['family'] + ' (community)')
+        match.setdefault('community_layout', []).append({'family': c['family'], 'layout': c['layout'], 'source': c['source']})
+        continue
+    out[(c['ecu'], kind, did, c['family'])] = {
+        'ecu': c['ecu'], 'diag_addr_i3': c['addr'], 'kind': kind, 'id': did, 'request': req, 'sweep': [],
+        'names': [c['name']], 'description_en': c['name'], 'description_de': '', 'expected_payload_len': None,
+        'n_fields': 0, 'vehicles': [c['family'] + ' (community)'], 'relevance': 'battery', 'source': 'community',
+        'community_layout': [{'family': c['family'], 'layout': c['layout'], 'source': c['source']}]}
+# merge duplicate community rows (same DID seen for Gen4 and Gen5)
+merged = OrderedDict()
+for k, e in out.items():
+    kk = (e['ecu'], e['kind'], e['id'])
+    if kk in merged:
+        m = merged[kk]
+        m['vehicles'] += [v for v in e['vehicles'] if v not in m['vehicles']]
+        m['names'] += [n for n in e['names'] if n not in m['names']]
+        m.setdefault('community_layout', []).extend(e.get('community_layout', []))
+    else:
+        merged[kk] = e
+out = merged
+
+DISCOVERY = {
+    'purpose': 'Find what an uncovered car actually supports. Everything here is read-only. Save every response.',
+    'step_1_find_ecus': {
+        'how': 'For each diagnostic address 0x00..0xEF send the probe; any reply (positive or 7F) means an ECU lives there.',
+        'probe': ['22 F1 90', '22 F1 86', '3E 00'],
+        'known_battery_addresses': {'SME (Gen3, Gen4 PHEV, Gen5 iX/i4)': '0x07'},
+        'timeout_ms': 250,
+    },
+    'step_2_did_sweep': {
+        'how': 'Send 22 <hi> <lo> for every DID to the battery ECU (0x07) and any other HV ECU found. Priority ranges first.',
+        'priority_ranges': [['0xDD00', '0xDFFF'], ['0xE400', '0xE6FF'], ['0x6300', '0x65FF'], ['0xD400', '0xD6FF'],
+                            ['0xA800', '0xAFFF'], ['0x4000', '0x41FF'], ['0x1000', '0x10FF'], ['0xF100', '0xF1FF']],
+        'full_range': ['0x0100', '0xFEFF'],
+        'responses': {
+            '62 ...': 'supported - save payload',
+            '7F 22 31': 'requestOutOfRange - DID not supported (the common case)',
+            '7F 22 7F / 7F 22 7E': 'supported but not in this session - retry in extended session (10 03)',
+            '7F 22 33': 'securityAccessDenied - exists but locked; record, do not attempt unlock',
+            '7F 22 22': 'conditionsNotCorrect - exists; retry later (e.g. ignition on / HV active)',
+            '7F 22 78': 'responsePending - keep waiting (up to ~5 s)',
+            '7F 22 13': 'incorrect length - exists, may need a parameter; record',
+        },
+        'pace': 'about 10-20 ms per request; full range takes ~15-20 min. Send 3E 00 every 2 s.',
+    },
+    'step_3_routine_id_sweep_optional': {
+        'how': 'Send ONLY 31 03 <hi> <lo> (request routine results) over 0x0000..0xFFFF. This never starts a routine. '
+               'A routine that exists but was not run usually answers 7F 31 24 (requestSequenceError) instead of 7F 31 31.',
+        'never': 'Do not send 31 01 (start) or 31 02 (stop) to discovered IDs: routines open contactors, start tests or reset data.',
+    },
+    'step_4_dtcs': {'requests': ['19 02 FF', '19 0A'], 'note': 'Read stored / supported DTCs (read-only).'},
+}
+
 rows = sorted(out.values(), key=lambda e: (e['ecu'] not in BATTERY_ECUS, e['ecu'], e['kind'], e['id']))
 json.dump({'note': 'Read-only UDS requests for BMW EV/hybrid HV-battery related ECUs, merged across generations. '
                    'Send each to the ECU, save the raw response bytes (including negative responses).',
-           'requests': rows}, open(H + '/data/scan_reads.json', 'w'), ensure_ascii=False, indent=1)
+           'discovery': DISCOVERY, 'requests': rows}, open(H + '/data/scan_reads.json', 'w'), ensure_ascii=False, indent=1)
 with open(H + '/data/scan_reads.csv', 'w', newline='') as f:
     w = csv.writer(f)
-    w.writerow(['ecu', 'diag_addr_i3', 'kind', 'id', 'request', 'sweep', 'names', 'expected_payload_len',
+    w.writerow(['ecu', 'diag_addr_i3', 'kind', 'id', 'request', 'followup', 'sweep', 'names', 'expected_payload_len',
                 'layout_differs', 'vehicles', 'relevance', 'description_en'])
     for e in rows:
-        w.writerow([e['ecu'], e['diag_addr_i3'], e['kind'], e['id'], e['request'],
+        w.writerow([e['ecu'], e['diag_addr_i3'], e['kind'], e['id'], e['request'], e.get('followup', ''),
                     '; '.join(f"{s['arg']} {s['start']}..{s['end']}" for s in e['sweep']), ' / '.join(e['names']),
                     e['expected_payload_len'] if e['expected_payload_len'] is not None else '',
                     'yes' if e.get('layout_differs_between_generations') else '', ' | '.join(e['vehicles']),
-                    e['relevance'], e['description_en']])
+                    e['relevance'], e['description_en'] + (' | community layout: ' + '; '.join(
+                        f"{c['family']}: {c['layout']}" for c in e.get('community_layout', [])) if e.get('community_layout') else '')])
 
 from collections import Counter
 print(len(rows), 'requests')

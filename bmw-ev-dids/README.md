@@ -75,10 +75,10 @@ generations per ECU type, so one script can send them all to any car and keep th
 | kind | Request | What it is |
 |---|---|---|
 | `did` | `22 XX XX` | Every 0x22 DID of the battery ECUs (SME, SMES1/2). From EME, KLE, LIM, SLE, IHX, EDME, REME, RDME only DIDs about the HV battery, charging, isolation, contactors, DC/DC or the 12V battery. Gen1.5 hybrids keep a lot of battery history in the EME. |
-| `routine_read` | `31 01 XX XX <index>` | Routines that only read data, indexed by cell, module, CSC, history record or histogram number, e.g. `ZELLSPANNUNG_LESEN` (0xAD6E, one cell voltage per call). `sweep` gives the argument and a range to try. |
+| `routine_read` | `31 01 XX XX <index>`, then `followup` `31 03 XX XX` | Routines that only read data, indexed by cell, module, CSC, history record or histogram number, e.g. `ZELLSPANNUNG_LESEN` (0xAD6E, one cell voltage per call; i3 cells are 1..96). Start with the index, then fetch the value with request-results. `sweep` gives the argument and a range to try. |
 | `routine_results` | `31 03 XX XX` | Test/actuation routines (isolation test, capacity test, heating, balancing). Only *request results* is listed: it returns the last stored result and does not start the routine. Never send `31 01` for these. |
 
-Numbers: 594 DIDs, 18 read routines (swept), 9 results-only routines. Each entry carries the ECU,
+Numbers: 617 DIDs (23 of them community-documented for Gen4 PHEV and Gen5 iX/i4, `source: community`), 18 read routines (swept), 9 results-only routines. Each entry carries the ECU,
 the i3 diagnostic address, the vehicles whose SGBD defines it, and `expected_payload_len` when the
 layout is fixed. `layout_differs` marks DIDs whose layout changes between generations, so decode
 them with the table for the matching vehicle in `bmw_ev_dids.json`.
@@ -94,6 +94,19 @@ Recommended scan procedure:
 4. Send `3E 00` (tester present) every ~2 s during long sweeps.
 
 Unsupported entries simply return `7F`, so one list works for every generation.
+
+### Generations without public SGBDs
+
+- **Community DIDs:** `data/community_dids.json` lists read requests that open-source projects use on Gen4 PHEV and
+  Gen5 (iX/i4/i5/i7) batteries, with the byte layouts they decode. The source is mainly
+  [Battery-Emulator](https://github.com/dalathegreat/Battery-Emulator). Highlights: Gen4 PHEV `22 DF A5` returns all 96
+  cell voltages; Gen5 has `22 E5 54` (all cell voltages), `22 E5 9A` (cell SoC), `22 E5 CA` (cell temperatures),
+  `22 E5 45` (SoH), `22 E5 C7` (kWh capacity), `22 A8 60` (isolation). The battery ECU is at address `0x07` on every
+  generation. Gen4 PHEVs answer many of the same DIDs as the i3 (`0xDFA0`, `0xDD6A`, `0xDDC0`, …) with the same layout.
+- **Discovery mode:** the `discovery` block in `scan_reads.json` describes a read-only brute-force: find ECU addresses,
+  sweep every `22 XXXX` DID on the battery ECU (priority ranges first, full range ~15-20 min), optionally sweep routine
+  IDs using only `31 03` (request results, never starts anything; existing routines answer `7F 31 24`), and read DTCs.
+  It also lists how to interpret each negative response code.
 
 ## Regenerating
 
