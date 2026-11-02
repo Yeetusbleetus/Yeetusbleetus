@@ -1,0 +1,16 @@
+// Reconstructed from embedded descriptor: Expression.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_Expression {
+  map<uint32, float> blendshapes = 1;
+  map<uint32, float> macroExpressions = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_ExpressionFrame {
+  repeated HP.Omnicept.Abi.proto_Expression data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

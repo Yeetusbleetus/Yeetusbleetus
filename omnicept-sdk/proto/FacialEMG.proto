@@ -1,0 +1,15 @@
+// Reconstructed from embedded descriptor: FacialEMG.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_FacialEMG {
+  repeated double values = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_FacialEMGFrame {
+  repeated HP.Omnicept.Abi.proto_FacialEMG data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

@@ -1,0 +1,9 @@
+// Reconstructed from embedded descriptor: ByteMessage.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_ByteMessage {
+  string id = 1;
+  string message = 2;
+}
+

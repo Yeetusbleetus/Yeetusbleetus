@@ -1,0 +1,9 @@
+// Reconstructed from embedded descriptor: VSync.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_VSync {
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

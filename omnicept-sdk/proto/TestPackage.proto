@@ -1,0 +1,8 @@
+// Reconstructed from embedded descriptor: TestPackage.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_TestPackage {
+  repeated uint32 collection = 1;
+}
+

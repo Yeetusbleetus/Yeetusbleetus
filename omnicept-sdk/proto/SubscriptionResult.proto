@@ -1,0 +1,30 @@
+// Reconstructed from embedded descriptor: SubscriptionResult.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Subscription.proto";
+
+message proto_SubscriptionResult {
+  enum SubscriptionResultType {
+    UNKNOWN = 0;
+    REJECTED = 1;
+    PENDING = 2;
+    APPROVED = 3;
+  }
+  enum SubscriptionResultErrorType {
+    UNKNOWN_ERROR = 0;
+    SUCCESS_NO_ERROR = 1;
+    NOT_LICENSED_ERROR = 2;
+    REJECTED_BY_USER_ERROR = 3;
+    SPECIFIED_VERSION_NOT_AVAILABLE_ERROR = 4;
+    MESSAGE_NOT_SUPPORTED = 5;
+    LEGACY_SUBSCRIPTION_NOT_CHECKED = 6;
+  }
+  HP.Omnicept.Abi.proto_SubscriptionResult.SubscriptionResultType result = 1;
+  HP.Omnicept.Abi.proto_SubscriptionResult.SubscriptionResultErrorType error = 2;
+  HP.Omnicept.Abi.proto_Subscription subscription = 3;
+}
+
+message proto_SubscriptionResultList {
+  repeated HP.Omnicept.Abi.proto_SubscriptionResult subscriptionResults = 1;
+}
+

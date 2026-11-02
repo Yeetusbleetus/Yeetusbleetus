@@ -1,0 +1,28 @@
+// Reconstructed from embedded descriptor: CameraImage.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_CameraImage {
+  enum format_t {
+    UNKNOWN = 0;
+    RGB888 = 1;
+    YUY2 = 2;
+    UYVY = 3;
+    YVYU = 4;
+    YUYV = 5;
+    AYUV = 6;
+    YV12 = 7;
+    NV12 = 8;
+    L8 = 9;
+    CUSTOM = 100;
+  }
+  HP.Omnicept.Abi.proto_CameraImage.format_t format = 1;
+  bytes imageData = 2;
+  uint32 width = 3;
+  uint32 height = 4;
+  uint64 frameNumber = 5;
+  float fps = 6;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

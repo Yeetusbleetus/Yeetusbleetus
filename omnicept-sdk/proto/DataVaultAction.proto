@@ -1,0 +1,13 @@
+// Reconstructed from embedded descriptor: DataVaultAction.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_DataVaultAction {
+  enum DataVaultActionType {
+    UNKNOWN = 0;
+    START_RECORDING = 1;
+    STOP_RECORDING = 2;
+  }
+  HP.Omnicept.Abi.proto_DataVaultAction.DataVaultActionType action = 1;
+}
+

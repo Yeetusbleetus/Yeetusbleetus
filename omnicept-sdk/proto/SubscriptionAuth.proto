@@ -1,0 +1,27 @@
+// Reconstructed from embedded descriptor: SubscriptionAuth.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "SubscriptionResult.proto";
+
+message proto_SubscriptionAuth {
+  enum SubscriptionAuthType {
+    UNKNOWN = 0;
+    AUTH_REQUEST = 1;
+    AUTH_RESPONSE = 2;
+    QUERY_REQUEST = 3;
+    QUERY_RESPONSE = 4;
+    DELETE_REQUEST = 5;
+    DELETE_RESPONSE = 6;
+    IMPORT_REQUEST = 7;
+    IMPORT_RESPONSE = 8;
+    UPDATE_REQUEST = 9;
+  }
+  string connectionId = 1;
+  string clientExeFilePath = 2;
+  string clientExeHash = 3;
+  string digitalCertificate = 4;
+  HP.Omnicept.Abi.proto_SubscriptionResultList subscriptionResultList = 5;
+  HP.Omnicept.Abi.proto_SubscriptionResult.SubscriptionResultType status = 6;
+  HP.Omnicept.Abi.proto_SubscriptionAuth.SubscriptionAuthType type = 7;
+}
+

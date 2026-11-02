@@ -1,0 +1,24 @@
+// Reconstructed from embedded descriptor: CognitiveLoadInputFeature.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_nDimArrayFloat {
+  repeated int32 shape = 1;
+  repeated float valuesFlat = 2;
+}
+
+message proto_CognitiveLoadInputFeature {
+  enum TargetModel {
+    UNKNOWN = 0;
+    EYE_TRACKING = 1;
+    EYE_TRACKING_PPG = 2;
+  }
+  string dataState = 1;
+  HP.Omnicept.Abi.proto_Timestamp startDataCollectTime = 2;
+  HP.Omnicept.Abi.proto_Timestamp endDataCollectTime = 3;
+  HP.Omnicept.Abi.proto_nDimArrayFloat features = 4;
+  HP.Omnicept.Abi.proto_CognitiveLoadInputFeature.TargetModel targetModel = 5;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

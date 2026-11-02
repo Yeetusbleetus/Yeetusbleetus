@@ -1,0 +1,22 @@
+// Reconstructed from embedded descriptor: IMU.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_IMU3Axis {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message proto_IMU {
+  HP.Omnicept.Abi.proto_IMU3Axis acc = 1;
+  HP.Omnicept.Abi.proto_IMU3Axis gyro = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_IMUFrame {
+  repeated HP.Omnicept.Abi.proto_IMU data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

@@ -1,0 +1,11 @@
+// Reconstructed from embedded descriptor: HeartRateVariability.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_HeartRateVariability {
+  float sdnn = 1;
+  float rmssd = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

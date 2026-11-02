@@ -1,0 +1,11 @@
+// Reconstructed from embedded descriptor: Timestamp.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "google/protobuf/timestamp.proto";
+
+message proto_Timestamp {
+  google.protobuf.Timestamp systemTime = 1;
+  google.protobuf.Timestamp hardwareTime = 2;
+  google.protobuf.Timestamp omniceptTime = 3;
+}
+

@@ -1,0 +1,15 @@
+// Reconstructed from embedded descriptor: PackageDeclaration.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "SensorInfo.proto";
+
+message proto_PackageDeclaration {
+  uint32 messageType = 1;
+  uint32 messageVersion = 2;
+  uint64 messageLength = 3;
+  string sender = 4;
+  string destination = 5;
+  HP.Omnicept.Abi.proto_SensorInfo sensorInfo = 6;
+  string messageVersionEx = 7;
+}
+

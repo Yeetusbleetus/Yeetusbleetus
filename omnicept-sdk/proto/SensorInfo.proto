@@ -1,0 +1,14 @@
+// Reconstructed from embedded descriptor: SensorInfo.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_SensorDeviceID {
+  string id = 1;
+  string subId = 2;
+}
+
+message proto_SensorInfo {
+  HP.Omnicept.Abi.proto_SensorDeviceID deviceId = 1;
+  string location = 2;
+}
+

@@ -1,0 +1,14 @@
+// Reconstructed from embedded descriptor: ConnectionStatusSignal.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_ConnectionStatusSignal {
+  enum ConnectionStatus {
+    INVALID = 0;
+    CONNECTED = 1;
+    DISCONNECTED = 2;
+  }
+  HP.Omnicept.Abi.proto_ConnectionStatusSignal.ConnectionStatus connectionStatus = 1;
+  string id = 2;
+}
+

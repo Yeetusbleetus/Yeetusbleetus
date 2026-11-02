@@ -1,0 +1,28 @@
+// Reconstructed from embedded descriptor: DataVaultResult.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_DataVaultResult {
+  enum DataVaultResultType {
+    UNKNOWN = 0;
+    RECORDING_STARTED = 1;
+    RECORDING_START_REJECTED = 2;
+    RECORDING_STOPPED = 3;
+    RECORDING_STOP_REJECTED = 4;
+    RECORDING_ERROR = 5;
+  }
+  enum DataVaultResultErrorType {
+    UNKNOWN_ERROR = 0;
+    SUCCESS_NO_ERROR = 1;
+    INVALID_LICENSE_ERROR = 2;
+    CONNECTION_FAILED_ERROR = 3;
+    CONNECTION_NEGOTIATING_ERROR = 4;
+    RECORDING_HAS_ALREADY_STARTED_ERROR = 5;
+    RECORDING_HAS_NOT_STARTED_ERROR = 6;
+    RECORDING_STOP_NO_PERMISSON_ERROR = 7;
+  }
+  HP.Omnicept.Abi.proto_DataVaultResult.DataVaultResultType result = 1;
+  HP.Omnicept.Abi.proto_DataVaultResult.DataVaultResultErrorType error = 2;
+  string sessionId = 3;
+}
+

@@ -1,0 +1,28 @@
+// Reconstructed from embedded descriptor: SceneColor.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_Color {
+  float r = 1;
+  float g = 2;
+  float b = 3;
+  float y = 4;
+}
+
+message proto_EyeSceneColors {
+  HP.Omnicept.Abi.proto_Color ambient = 1;
+  HP.Omnicept.Abi.proto_Color foveal = 2;
+}
+
+message proto_SceneColor {
+  HP.Omnicept.Abi.proto_EyeSceneColors left = 1;
+  HP.Omnicept.Abi.proto_EyeSceneColors right = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_SceneColorFrame {
+  repeated HP.Omnicept.Abi.proto_SceneColor data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

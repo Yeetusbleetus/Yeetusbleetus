@@ -1,0 +1,15 @@
+// Reconstructed from embedded descriptor: ModuleControlSignal.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_ModuleControlSignal {
+  enum ModuleSignal {
+    UNKNOWN = 0;
+    READY = 10;
+    STOP = 20;
+    WAKE = 30;
+    SLEEP = 40;
+  }
+  HP.Omnicept.Abi.proto_ModuleControlSignal.ModuleSignal signal = 1;
+}
+

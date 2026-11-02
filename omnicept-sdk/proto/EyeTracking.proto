@@ -1,0 +1,51 @@
+// Reconstructed from embedded descriptor: EyeTracking.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+enum proto_WhichEye {
+  UNKNOWN = 0;
+  LEFT = 1;
+  RIGHT = 2;
+  BOTH = 3;
+}
+
+message proto_EyeGaze {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message proto_PupilPosition {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message proto_EyeTracking {
+  HP.Omnicept.Abi.proto_EyeGaze leftGaze = 1;
+  float leftGazeConfidence = 2;
+  HP.Omnicept.Abi.proto_EyeGaze rightGaze = 3;
+  float rightGazeConfidence = 4;
+  HP.Omnicept.Abi.proto_EyeGaze combinedGaze = 5;
+  float combinedGazeConfidence = 6;
+  float leftPupilDilation = 13;
+  float leftPupilDilationConfidence = 14;
+  float rightPupilDilation = 15;
+  float rightPupilDilationConfidence = 16;
+  HP.Omnicept.Abi.proto_PupilPosition leftPupilPosition = 17;
+  float leftPupilPositionConfidence = 18;
+  HP.Omnicept.Abi.proto_PupilPosition rightPupilPosition = 19;
+  float rightPupilPositionConfidence = 20;
+  float leftEyeOpenness = 25;
+  float leftEyeOpennessConfidence = 26;
+  float rightEyeOpenness = 27;
+  float rightEyeOpennessConfidence = 28;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_EyeTrackingFrame {
+  repeated HP.Omnicept.Abi.proto_EyeTracking data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

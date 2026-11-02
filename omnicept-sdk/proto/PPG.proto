@@ -1,0 +1,16 @@
+// Reconstructed from embedded descriptor: PPG.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_PPG {
+  repeated uint32 values = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_PPGFrame {
+  repeated HP.Omnicept.Abi.proto_PPG data = 1;
+  repeated uint32 ledCurrents = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

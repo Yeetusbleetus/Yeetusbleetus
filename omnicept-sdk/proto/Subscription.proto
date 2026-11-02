@@ -1,0 +1,16 @@
+// Reconstructed from embedded descriptor: Subscription.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "SensorInfo.proto";
+
+message proto_Subscription {
+  uint32 messageType = 1;
+  HP.Omnicept.Abi.proto_SensorInfo sensorInfo = 2;
+  string sender = 3;
+  string versionSemantic = 4;
+}
+
+message proto_SubscriptionList {
+  repeated HP.Omnicept.Abi.proto_Subscription subscriptions = 1;
+}
+

@@ -1,0 +1,16 @@
+// Reconstructed from embedded descriptor: ConnectionInfo.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_ConnectionInfo {
+  enum ConnectionType {
+    UNKNOWN = 0;
+    CLIENT = 1;
+    MODULE = 2;
+  }
+  HP.Omnicept.Abi.proto_ConnectionInfo.ConnectionType connectionType = 1;
+  string connectionId = 2;
+  string clientId = 3;
+  string accessKey = 4;
+}
+

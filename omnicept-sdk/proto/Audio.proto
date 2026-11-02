@@ -1,0 +1,38 @@
+// Reconstructed from embedded descriptor: Audio.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_WaveFormatExtensibleIEC61937 {
+  message proto_WaveFormatExtensible {
+    message proto_WaveFormatEx {
+      uint32 formatTag = 1;
+      uint32 channels = 2;
+      uint32 samplesPerSec = 3;
+      uint32 avgBytesPerSec = 4;
+      uint32 blockAlign = 5;
+      uint32 bitsPerSample = 6;
+    }
+    HP.Omnicept.Abi.proto_WaveFormatExtensibleIEC61937.proto_WaveFormatExtensible.proto_WaveFormatEx waveFormatEx = 1;
+    uint32 samples = 2;
+    uint32 channelMask = 3;
+    string subFormat = 4;
+  }
+  HP.Omnicept.Abi.proto_WaveFormatExtensibleIEC61937.proto_WaveFormatExtensible waveFormatExtensible = 1;
+  uint32 encodedSamplesPerSec = 2;
+  uint32 encodedChannelCount = 3;
+  uint32 averageBytesPerSec = 4;
+}
+
+message proto_Audio {
+  bytes buffer = 1;
+  HP.Omnicept.Abi.proto_WaveFormatExtensibleIEC61937 waveFormatExtensibleIEC61937 = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_AudioFrame {
+  repeated HP.Omnicept.Abi.proto_Audio data = 1;
+  HP.Omnicept.Abi.proto_WaveFormatExtensibleIEC61937 waveFormatExtensibleIEC61937 = 2;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

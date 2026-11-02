@@ -1,0 +1,15 @@
+// Reconstructed from embedded descriptor: HeartRate.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_HeartRate {
+  uint32 rate = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+
+message proto_HeartRateFrame {
+  repeated HP.Omnicept.Abi.proto_HeartRate data = 1;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

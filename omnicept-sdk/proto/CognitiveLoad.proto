@@ -1,0 +1,14 @@
+// Reconstructed from embedded descriptor: CognitiveLoad.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+import "Timestamp.proto";
+
+message proto_CognitiveLoad {
+  float cognitiveLoad = 1;
+  float standardDeviation = 2;
+  string dataState = 3;
+  HP.Omnicept.Abi.proto_Timestamp startDataCollectTime = 4;
+  HP.Omnicept.Abi.proto_Timestamp endDataCollectTime = 5;
+  HP.Omnicept.Abi.proto_Timestamp timestamp = 100;
+}
+

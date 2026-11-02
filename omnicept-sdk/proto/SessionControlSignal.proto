@@ -1,0 +1,40 @@
+// Reconstructed from embedded descriptor: SessionControlSignal.proto
+syntax = "proto3";
+package HP.Omnicept.Abi;
+
+message proto_SessionControlSignal {
+  enum SessionSignal {
+    UNKNOWN = 0;
+    CONNECT = 10;
+    ACCEPT = 20;
+    LICENSE_REQUEST_VALIDATION = 21;
+    LICENSE_ACCEPT_VALIDATION = 22;
+    REJECT = 30;
+    CLIENT_READY = 40;
+    FINALIZE = 50;
+  }
+  enum LicensingModel {
+    UNKNOWN_LICENSE = 0;
+    CORE = 1;
+    TRIAL = 2;
+    ENTERPRISE = 3;
+    REV_SHARE = 4;
+  }
+  message SessionLicense {
+    string clientId = 1;
+    string accessKey = 2;
+    HP.Omnicept.Abi.proto_SessionControlSignal.LicensingModel requestedLicense = 3;
+    bool isRunningInEditor = 4;
+  }
+  HP.Omnicept.Abi.proto_SessionControlSignal.SessionSignal signal = 1;
+  string connectionName = 2;
+  string connectionId = 3;
+  string endpointUuid = 4;
+  string endpointInUri = 5;
+  string endpointOutUri = 6;
+  string reasonForRejection = 8;
+  HP.Omnicept.Abi.proto_SessionControlSignal.SessionLicense sessionLicense = 9;
+  repeated uint32 handshakeVersions = 10;
+  string endpointAbiVersion = 11;
+}
+
